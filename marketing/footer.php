@@ -7,6 +7,8 @@
 
 
 
+<script src="../assets/dist/js/jquery.min.js"></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/dist/js/adminlte.min.js"></script>
 <script src="../assets/dist/js/onload.js"></script>
 

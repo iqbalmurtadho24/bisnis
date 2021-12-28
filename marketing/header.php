@@ -56,11 +56,11 @@
                         <a href="../config/logout.php" class="dropdown-item dropdown-footer">Logout</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
         </nav>
