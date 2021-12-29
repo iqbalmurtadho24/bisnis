@@ -220,7 +220,7 @@ CREATE TABLE `suplier` (
 --
 
 CREATE TABLE `transaksi` (
-  `kd_transaksi` bigint(255) NOT NULL,
+  `kd_transaksi` bigint(255) NOT NULL ,
   `id_user` bigint(255) DEFAULT NULL,
   `waktu` datetime DEFAULT NULL,
   `jenis` varchar(255) DEFAULT NULL,
@@ -238,12 +238,42 @@ CREATE TABLE `transaksi` (
 --
 
 CREATE TABLE `user` (
-  `id_user` bigint(255) NOT NULL,
+  `id_user` bigint(255)  PRIMARY KEY AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `level` varchar(255) DEFAULT NULL,
   `status` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `akses` (
+  `kd_akses` bigint(255) NOT NULL PRIMARY KEY,
+  `id_user` bigint(255) NOT NULL,
+  `akses` varchar(255) NOT NULL,
+  `status` int(255) NOT NULL,
+  `waktu` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `akses`
+--
+ALTER TABLE `akses`
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `akses`
+--
+ALTER TABLE `akses`
+  ADD CONSTRAINT `akses_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 --
 -- Indexes for dumped tables
@@ -252,6 +282,7 @@ CREATE TABLE `user` (
 --
 -- Indeks untuk tabel `gaji`
 --
+
 ALTER TABLE `gaji`
   ADD PRIMARY KEY (`kd_gaji`),
   ADD KEY `id_user` (`id_user`);

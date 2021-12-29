@@ -85,64 +85,11 @@
                with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
-                            <a href="admin.php" class="nav-link">
+                            <a href="index.php" class="nav-link">
 
                                 <i class="nav-icon fas fa-users-cog "></i>
-                                <p class="text">Data SDM</p>
+                                <p class="text">Data User</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="unit.php" class="nav-link">
-
-                                <i class="nav-icon fas fa-project-diagram"></i>
-                                <p class="text">Data Unit</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="jabatan.php" class="nav-link">
-
-                            <i class="fas fa-sitemap"></i>
-                                <p class="text">Data Jabatan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="detail.php" class="nav-link">
-
-                            <i class="fas fa-code-branch"></i>
-                               <p class="text">Data Detail Jabatan</p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-user-edit"></i>
-
-                                <p>
-                                    KPI
-                                    <i class="fas fa-angle-left right"></i>
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="kuesioner.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kuesioner</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="jabatan.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Jabatan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="skor.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Skor</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
