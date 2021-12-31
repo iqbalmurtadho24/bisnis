@@ -23,10 +23,10 @@
                 <img src="assets/login/images/logo.svg" alt="logo" class="logo">
               </div>
               <p class="login-card-description">Sign into your account</p>
-              <form action="marketing" method="POST">
+              <form action="config/login.php" method="POST">
                   <div class="form-group">
-                    <label for="email" class="sr-only">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email address">
+                    <label  class="sr-only">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
                   </div>
                   <div class="form-group mb-4">
                     <label for="password" class="sr-only">Password</label>

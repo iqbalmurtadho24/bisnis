@@ -40,7 +40,7 @@ if (isset($_GET['user']) !==  false) {
         $nama = $_POST['username'];
 
 
-        $sql = "insert into  user (id_user,username,password,status,level) values (null,'$nama','" . md5(1) . "',1,'{$_POST['level']}')  ";
+        $sql = "insert into  user (id_user,username,password,status,level) values (null,'$nama','{$_POST['password']}}',1,'{$_POST['level']}')  ";
         //   var_dump($sql) or die;
         $query = update($sql);
 
@@ -58,10 +58,11 @@ if (isset($_GET['user']) !==  false) {
         $kd = $_POST['id_user'];
         $nama = $_POST['username'];
         $status = $_POST['status'];
+        $password = $_POST['password'];
         $level = $_POST['level'];
 
 
-        $sql = "update user set  username= '$nama',status= $status,level='$level'  where id_user = $kd";
+        $sql = "update user set   username= '$nama', password = '$password' ,status= $status,level='$level'  where id_user = $kd";
         // var_dump($sql) or die;
         $query = update($sql);
 

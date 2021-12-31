@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+require_once('../config/config.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +18,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
- 
-   
+    
 </head>
 
 <body class="hold-transition sidebar-mini ">
@@ -28,41 +33,6 @@
 
             </ul>
 
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto ">
-
-
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-cog"></i>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">
-
-                            <div class="user-panel mt-4 pb-3 mb-3 d-flex">
-                                <div class="image">
-                                    <img class="img-fluid" id='bg1' src="<?= isset($_SESSION['gambar']) != false && $_SESSION['gambar'] != "" && file_exists("../assets/img/" . $_SESSION['gambar']) == 1 ? "../assets/img/" . $_SESSION['gambar'] . "?t=" . time() : ""; ?>" width=40 alt="">
-
-                                </div>
-                                <div class="info">
-                                    <a href="#" class="d-block"><?= $_SESSION['nry'] ?> / <?= $_SESSION['nama'] ?> </a>
-                                </div>
-                            </div>
-                        </span>
-
-                        <div class="dropdown-divider"></div>
-                        <a href="../config/logout.php" class="dropdown-item dropdown-footer">Logout</a>
-                    </div>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li> -->
-
-            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -83,12 +53,51 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+             
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">
 
-                                <i class="nav-icon fas fa-users-cog "></i>
-                                <p class="text">Data User</p>
+                                <i class="nav-icon fas fa-tachometer-alt "></i>
+                                <p class="text">Dashboard</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="profil.php" class="nav-link">
+
+                                <i class="nav-icon fas fa-user"></i>
+                                <p class="text">Profil</p>
+                            </a>
+                        </li>
+                        <?php
+                        $query = query("SELECT * FROM akses where id_user = {$_SESSION['id_user']}");
+                        while ($row = mysqli_fetch_array($query)) {
+                            $_SESSION[$row['akses']] = 0;
+                    
+                        ?>
+
+                            <li class="nav-item">
+                                <a href="<?= $row['akses'] ?>.php" class="nav-link">
+
+                                    <i class="nav-icon fas fa-laptop "></i>
+                                    <p class="text"><?= ucfirst($row['akses']) ?></p>
+                                </a>
+                            </li>
+                        <?php } 
+                        
+                        ?>
+                        <li class="nav-item">
+                            <a href="pendapatan.php" class="nav-link">
+
+                                <i class="nav-icon fas fa-hand-holding-usd "></i>
+                                <p class="text">Pendapatan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../config/logout.php" class="nav-link">
+
+                                <i class="nav-icon fas fa-power-off "></i>
+                                <p class="text">Logout</p>
                             </a>
                         </li>
                     </ul>

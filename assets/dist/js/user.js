@@ -15,6 +15,7 @@ function edit(i) {
               $("#modal_edit").modal("show");
               $("#id_user").val(response.id_user);
               $("#username").val(response.username);
+              $("#password").val(response.password);
               $("#level").val(response.level);
         
               // alert(response);
