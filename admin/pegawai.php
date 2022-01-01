@@ -1,4 +1,7 @@
-<?php require_once('../config/header.php') ?>
+<?php require_once('../config/header.php');
+$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
+$row = mysqli_fetch_assoc($result);
+?>
 
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -14,27 +17,108 @@
                 <form action="data.php?tambah_user=1" method="post">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Nama</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="nama" name="nama" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Tanggal Lahir</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="tanggal_lahir" name="tanggal_lahir" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">NIK</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="nik" name="nik" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Jalan</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="jalan" name="jalan" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">RT/RW</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="rt_rw" name="rt_rw" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Desa</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="desa" name="desa" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kecamatan</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="kecamatan" name="kecamatan" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Username</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Username" name="username" required>
                     </div>
+            
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
+                            <span class="input-group-text" id="basic-addon1">Username</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" required>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
                     </div>
+            
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
+                            <span class="input-group-text" id="basic-addon1">Username</span>
                         </div>
-                        <select name="level" class="custom-select" required>
-                            <option >--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
                     </div>
-
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+            
 
             </div>
             <div class="modal-footer">
@@ -112,14 +196,13 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Data User</h1>
+        <div class="col-sm-6">
+                <h1>Profil <?= $row['nama'] ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Admin</li>
-                    <li class="breadcrumb-item active">Data User</li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Profil <?= $row['nama'] ?></li>
                 </ol>
             </div>
         </div>
@@ -143,14 +226,12 @@
                         <table id="example" class="table  table-striped table-bordered ">
                             <thead>
                                 <tr>
-                                    <th>aksi</th>
-
-                                    <th>Username</th>
-
-                                    <th>Level</th>
-                                    <th>Status Akun</th>
-
-
+                                    <th><i class="fa fa-cog"></i></th>
+                                    <th>Nama</th>
+                                    <th>Kontak</th>
+                                    <th>Email</th>
+                                    <th>Bank</th>
+                                    <th>Rekening</th>
                                 </tr>
                             </thead>
                         </table>
@@ -179,6 +260,6 @@
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/pegawai.js"></script>
 
 <?php require_once('../config/footer.php') ?>

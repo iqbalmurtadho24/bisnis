@@ -1,4 +1,7 @@
-<?php require_once('../config/header.php') ?>
+<?php require_once('../config/header.php');
+$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
+$row = mysqli_fetch_assoc($result);
+?>
 
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -112,14 +115,13 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Data User</h1>
+        <div class="col-sm-6">
+                <h1>Profil <?= $row['nama'] ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Admin</li>
-                    <li class="breadcrumb-item active">Data User</li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Profil <?= $row['nama'] ?></li>
                 </ol>
             </div>
         </div>

@@ -2,6 +2,8 @@
 session_start();
 
 require_once('../config/config.php');
+$url  = explode('/', $_SERVER['REQUEST_URI']);
+$url = $url[3];
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ require_once('../config/config.php');
 
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini ">
@@ -53,46 +55,290 @@ require_once('../config/config.php');
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-             
-                        <li class="nav-item">
-                            <a href="index.php" class="nav-link">
+
+                        <li class="nav-item <?= $url == 'index.php' ? 'menu-open' : ""  ?> ">
+                            <a href="index.php" class="nav-link <?= $url == 'index.php' ? 'active' : ""  ?>">
 
                                 <i class="nav-icon fas fa-tachometer-alt "></i>
                                 <p class="text">Dashboard</p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="profil.php" class="nav-link">
+                        <li class="nav-item <?= $url == 'profil.php' ? 'menu-open' : ""  ?> ">
+                            <a href="profil.php" class="nav-link <?= $url == 'profil.php' ? 'active' : ""  ?> ">
 
                                 <i class="nav-icon fas fa-user"></i>
                                 <p class="text">Profil</p>
                             </a>
                         </li>
                         <?php
-                        $query = query("SELECT * FROM akses where id_user = {$_SESSION['id_user']}");
-                        while ($row = mysqli_fetch_array($query)) {
-                            $_SESSION[$row['akses']] = 0;
-                    
-                        ?>
+                        $query = query("SELECT akses FROM akses where `id_user` = {$_SESSION['id_user']} and `status`= 1");
 
-                            <li class="nav-item">
-                                <a href="<?= $row['akses'] ?>.php" class="nav-link">
 
-                                    <i class="nav-icon fas fa-laptop "></i>
-                                    <p class="text"><?= ucfirst($row['akses']) ?></p>
-                                </a>
-                            </li>
-                        <?php } 
-                        
-                        ?>
-                        <li class="nav-item">
-                            <a href="pendapatan.php" class="nav-link">
+                        while ($row = mysqli_fetch_assoc($query)) {
+
+                            if ($row['akses'] == 'sdm') { ?>
+
+                                <li class="nav-item <?= $url == 'pegawai.php' || $url == 'user.php' || $url == 'akses.php' || $url == 'gaji.php' || $url == 'bonus.php' || $url == 'gajian.php' ? 'menu-open' : ""  ?>  ">
+                                    <a href="#" class="nav-link <?= $url == 'pegawai.php' || $url == 'user.php' || $url == 'akses.php' || $url == 'gaji.php' || $url == 'bonus.php' || $url == 'gajian.php' ? 'active' : "" ?>">
+                                        <i class="nav-icon fas fa-user-tie"></i>
+                                        <p>
+                                            SDM
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="pegawai.php" class="nav-link <?= $url == 'pegawai.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Pegawai</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="user.php" class="nav-link <?= $url == 'user.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;User Akun</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="akses.php" class="nav-link <?= $url == 'akses.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;User Akses</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="gaji.php" class="nav-link <?= $url == 'gaji.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Gaji Pegawai</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="bonus.php" class="nav-link <?= $url == 'bonus.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Bonus Pegawai</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="gajian.php" class="nav-link <?= $url == 'gajian.php' ? 'active' : "" ?>">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pembayaran Gaji</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'logistik') { ?>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-box"></i>
+                                        <p>
+                                            Logistik Produk
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="produk.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Produk</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="suplier.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Suplier</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'konten') { ?>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-laptop"></i>
+                                        <p>
+                                            Konten
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="produksi_konten.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Produksi Konten</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="status_publikasi.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Status Publikasi</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'marketing') { ?>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-chart-line"></i>
+                                        <p>
+                                            Marketing
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="konten.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Konten</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="publikasi_konten.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Publikasi Konten</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="progres.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Progres</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="media_sosial.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Media Sosial</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="penjualan.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Penjualan</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'cs') { ?>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-headset"></i>
+                                        <p>
+                                            CS
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="pesan_masuk.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pesan Masuk</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="pesan_order.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pesan Order</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="status_order.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Status Order</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'penjualan') { ?>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-shopping-cart"></i>
+                                        <p>
+                                            Penjualan
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="pemesanan.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pemesanan</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="order_masuk.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Order Masuk</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="status_order.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Status Order</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php } elseif ($row['akses'] == 'keuangan') { ?>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-money-bill"></i>
+                                        <p>
+                                            Keuangan
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="pendapatan_keuangan.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pendapatan</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="pengeluaran.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pengeluaran</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="pembayaran.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Pembayaran Gaji</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="pinjam.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Pinjaman</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="piutang.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Piutang</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="aset.php" class="nav-link">&emsp;
+                                                <i class="fas fa-angle-double-right left"></i>
+                                                <p>&emsp;Data Aset</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                        <?php }
+                        } ?>
+                        <li class="nav-item <?= $url == 'pendapatan.php' ? 'menu-open' : ""  ?> ">
+                            <a href="pendapatan.php" class="nav-link <?= $url == 'pendapatan.php' ? 'active' : ""  ?> ">
 
                                 <i class="nav-icon fas fa-hand-holding-usd "></i>
                                 <p class="text">Pendapatan</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a href="../config/logout.php" class="nav-link">
 
@@ -109,3 +355,6 @@ require_once('../config/config.php');
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+
+
+            <script src=""></script>

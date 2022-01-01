@@ -8,6 +8,7 @@ function exist_array($data)
         return [];
     }
 }
+//show data
 if (isset($_GET['user']) !==  false) {
 
     if ($_GET['user'] === "1") {
@@ -33,7 +34,36 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-} elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {
+}elseif(isset($_GET['pegawai']) !==  false) {
+
+    if ($_GET['pegawai'] === "1") {
+        $query = query('select * from sdm ');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['id_user'] . ')" title="Edit Pegawai">
+            <i class="far fa-edit"></i>
+               </button> ';
+          
+            array_push($data['data'], [
+                'btn' => $modal, 
+                'nama' =>$row['nama'],
+                'kontak' =>$row['kontak'],
+                'email' =>$row['email'],
+                'bank' =>$row['bank'],
+                'rekening' =>$row['rekening']
+                
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+}
+
+//add
+elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {
     if (isset($_POST['username']) &&  !empty($_POST['username'])) {
 
 
@@ -53,7 +83,10 @@ if (isset($_GET['user']) !==  false) {
     } else {
         header("location:user.php?success=2");
     }
-} elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
+
+}
+//update
+ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     if (isset($_POST['username'], $_POST['id_user'], $_POST['status']) &&  !empty($_POST['username']) || !empty($_POST['status'])) {
         $kd = $_POST['id_user'];
         $nama = $_POST['username'];
