@@ -3,7 +3,7 @@ $DB = "bisnis";
 $HOST = "localhost";
 $USERNAME = "root";
 $PASSWORD = "";
-
+date_default_timezone_set('Asia/Jakarta');
 //koneksi database
 function connect_to_db()
 {

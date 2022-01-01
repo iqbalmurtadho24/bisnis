@@ -8,37 +8,45 @@ $row = mysqli_fetch_assoc($result);
     <div class="modal-dialog" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+                <h5 class="modal-title" id="my-modal-title">Tambah User Akses</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="data.php?tambah_user=1" method="post">
+                <form action="data.php?tambah_akses=1" method="post">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Pegawai</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
-                        </div>
-                        <select name="level" class="custom-select" required>
-                            <option >--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                        <select name="id_user" id="id_user" class="custom-select" required>
+                            <?php 
+                            $query = query('select * from sdm order by nama asc');
+                            while ($row = mysqli_fetch_assoc($query)) { ?>
+                                <option value="<?= $row['id_user'];?>"><?= $row['nama'];?></option>
+                            <?php } ?>
                         </select>
                     </div>
-
-
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Akses</span>
+                        </div>
+                        <select name="akses" id="akses" class="custom-select" required>
+                            <option value="cs">CS</option>
+                            <option value="sdm">SDM</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="keuangan">Keuangan</option>
+                            <option value="konten">Konten</option>
+                            <option value="penjualan">Penjualan</option>
+                            <option value="logistik">Logistik</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kontak Akses</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Kontak Akses" name="kontak_akses" required>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="submit">Tambah user</button>
@@ -54,46 +62,48 @@ $row = mysqli_fetch_assoc($result);
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Edit Data user </h5>
+                <h5 class="modal-title" id="my-modal-title">Edit Data Akses </h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="data.php?edit_user=1" method="post">
-                    <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+                <form action="data.php?edit_akses=1" method="post">
+                    <input type="text" class="form-control" name='kd_akses' id='kd_akses' hidden>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Akses</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
-                        </div>
-                        <select name="level" class="custom-select" id="level" required>
-                            <option >--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                        <select class="custom-select"  name="akses" id="akses" required> 
+                        <option value="cs">CS</option>
+                            <option value="sdm">SDM</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="keuangan">Keuangan</option>
+                            <option value="konten">Konten</option>
+                            <option value="penjualan">Penjualan</option>
+                            <option value="logistik">Logistik</option>
                         </select>
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">status</span>
+                            <span class="input-group-text" id="basic-addon1">Status</span>
                         </div>
                         <select name="status" id="status" class="custom-select">
-                            <option value="0">NONAKTIF</option>
-                            <option value="1">AKTIF</option>
+                                <option value="1">Aktif</option>
+                                <option value="0">Nonaktif</option>
                         </select>
+
                     </div>
+               
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kontak</span>
+                        </div>
+                        <input type="text" class="form-control"  name="kontak_akses" id="kontak_akses" required>
+                    </div>
+                    
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="submit">Edit user</button>
@@ -116,12 +126,12 @@ $row = mysqli_fetch_assoc($result);
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-                <h1>Profil <?= $row['nama'] ?></h1>
+                <h1>User Akses</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Profil <?= $row['nama'] ?></li>
+                    <li class="breadcrumb-item active">User Akses</li>
                 </ol>
             </div>
         </div>
@@ -145,14 +155,12 @@ $row = mysqli_fetch_assoc($result);
                         <table id="example" class="table  table-striped table-bordered ">
                             <thead>
                                 <tr>
-                                    <th>aksi</th>
-
-                                    <th>Username</th>
-
-                                    <th>Level</th>
-                                    <th>Status Akun</th>
-
-
+                                    <th><i class="fa fa-cog"></i></th>
+                                    <th>Nama</th>
+                                    <th>Akses</th>
+                                    <th>Kontak</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
                                 </tr>
                             </thead>
                         </table>
@@ -181,6 +189,6 @@ $row = mysqli_fetch_assoc($result);
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/akses.js"></script>
 
 <?php require_once('../config/footer.php') ?>

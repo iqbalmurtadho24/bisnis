@@ -7,24 +7,22 @@ function edit(i) {
     
           $.ajax({
             type: "GET",
-            url: "data.php?kd=" + kd + "&&edit_user=data",
+            url: "data.php?kd=" + kd + "&&edit_akses=data",
             async: false,
             success: function (text) {
          
               response = JSON.parse(text);
               $("#modal_edit").modal("show");
               $("#id_user").val(response.id_user);
-              $("#username").val(response.username);
-              $("#password").val(response.password);
-              $("#level").val(response.level);
+              $("#nama").val(response.nama);
+              $("#akses").val(response.akses);
+              $("#kontak_akses").val(response.kontak_akses);
+              $("#status").val(response.status);
+              $("#waktu").val(response.waktu);
+              
+
         
-              // alert(response);
-              if ( response.status != null && $("#status option[value='" + response.status + "']").length > 0) {
-                $('#status option[value="' + response.status + '"]'
-                ).attr("selected", "selected");
-              }
-        
-       
+     
             },
           });
         }

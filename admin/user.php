@@ -10,8 +10,24 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
                 <form action="data.php?tambah_user=1" method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Pegawai</span>
+                        </div>
+                        <select name="id_user" id="id_user" class="custom-select" required>
+                            
+                        <?php 
+                        
+                        $query = query('select * from sdm s where (s.id_user) not in (SELECT ss.id_user from sdm ss inner join user u on ss.id_user = u.id_user ); ');
+                        while ($row = mysqli_fetch_assoc($query)) { ?>
+                            
+                            <option value="<?= $row['id_user'];?>"><?= $row['nama'];?></option>
+                        <?php } ?>
+                        </select>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Username</span>
@@ -23,16 +39,6 @@
                             <span class="input-group-text" id="basic-addon1">Password</span>
                         </div>
                         <input type="text" class="form-control" placeholder="password" name="password" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
-                        </div>
-                        <select name="level" class="custom-select" required>
-                            <option >--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
                     </div>
 
 
@@ -77,7 +83,7 @@
                             <span class="input-group-text" id="basic-addon1">Level</span>
                         </div>
                         <select name="level" class="custom-select" id="level" required>
-                            <option >--</option>
+                            <option>--</option>
                             <option value="admin">Admin</option>
                             <option value="user">User</option>
                         </select>
@@ -113,13 +119,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Data User</h1>
+                <h1>User Akun</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Admin</li>
-                    <li class="breadcrumb-item active">Data User</li>
+                    <li class="breadcrumb-item active">User Akun</li>
                 </ol>
             </div>
         </div>
@@ -131,26 +136,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
-                <!-- card -->
-
                 <div class="card">
-                    <!-- <div class="card-header"> -->
-                    <!-- <h3 class="card-title">DataTable with default features</h3> -->
-                    <!-- </div> -->
-                    <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example" class="table  table-striped table-bordered ">
                             <thead>
                                 <tr>
-                                    <th>aksi</th>
-
+                                    <th><i class="fa fa-cog"></i></th>
                                     <th>Username</th>
-
-                                    <th>Level</th>
+                                    <th>Password</th>
+                                    <th>Nama</th>
                                     <th>Status Akun</th>
-
-
                                 </tr>
                             </thead>
                         </table>

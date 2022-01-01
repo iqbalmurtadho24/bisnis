@@ -7,22 +7,24 @@ function edit(i) {
 
   $.ajax({
     type: "GET",
-    url: "data.php?kd=" + kd + "&&edit_user=data",
+    url: "data.php?kd=" + kd + "&&edit_akses=data",
     async: false,
     success: function (text) {
 
       response = JSON.parse(text);
+  
       $("#modal_edit").modal("show");
-      $("#id_user").val(response.id_user);
-      $("#username").val(response.username);
-      $("#password").val(response.password);
-      $("#level").val(response.level);
-
-      // alert(response);
+      $("#kd_akses").val(response.kd_akses);
+      if (response.akses != null && $("#akses option[value='" + response.akses + "']").length > 0) {
+        $('#akses option[value="' + response.akses + '"]'
+        ).attr("selected", "selected");
+      }
       if (response.status != null && $("#status option[value='" + response.status + "']").length > 0) {
         $('#status option[value="' + response.status + '"]'
         ).attr("selected", "selected");
       }
+      $("#status").val(response.status);
+      $("#kontak_akses").val(response.kontak_akses);
 
 
     },
@@ -33,25 +35,27 @@ function edit(i) {
 $(document).ready(function () {
   var tableX = $("#example")
     .DataTable({
-      ajax: "data.php?user=1",
+      ajax: "data.php?gaji=1",
       columns: [
         {
           data: "btn",
         },
 
         {
-          data: "username",
-        },
-        {
-          data: "password",
-        },
-        {
           data: "nama",
+        },
+        {
+          data: "akses",
+        },
+        {
+          data: "gaji",
         },
         {
           data: "status",
         },
-
+        {
+          data: "update",
+        },
       ],
       paging: false,
 

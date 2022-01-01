@@ -14,7 +14,7 @@ $row = mysqli_fetch_assoc($result);
                 </button>
             </div>
             <div class="modal-body">
-                <form action="data.php?tambah_user=1" method="post">
+                <form action="data.php?tambah_pegawai=1" method="post">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Nama</span>
@@ -25,7 +25,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Tanggal Lahir</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="tanggal_lahir" name="tanggal_lahir" required>
+                        <input type="date" class="form-control" placeholder="tanggal_lahir" name="tanggal_lahir" required>
                     </div>
             
                     <div class="input-group mb-3">
@@ -67,59 +67,50 @@ $row = mysqli_fetch_assoc($result);
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="kota_kab" name="kota_kab" required>
+                    </div>
+            
+                
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Provinsi</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="provinsi" name="provinsi" required>
                     </div>
             
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Kontak</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="kontak" name="kontak" required>
                     </div>
             
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Email</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="email" name="email" required>
                     </div>
             
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Bank</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="bank" name="bank" required>
                     </div>
             
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Nama Rekening</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="nama_rekening" name="nama_rekening" required>
                     </div>
-            
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Rekening</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="rekening" name="rekening" required>
                     </div>
-            
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
-                    </div>
-            
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
-                    </div>
-            
-
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="submit">Tambah user</button>
@@ -141,39 +132,105 @@ $row = mysqli_fetch_assoc($result);
                 </button>
             </div>
             <div class="modal-body">
-                <form action="data.php?edit_user=1" method="post">
+                <form action="data.php?edit_pegawai=1" method="post">
                     <input type="text" class="form-control" name='id_user' id='id_user' hidden>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                            <span class="input-group-text" id="basic-addon1">Nama</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
+                        <input type="text" class="form-control"  name="nama" id="nama" required>
                     </div>
+          
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
+                            <span class="input-group-text" id="basic-addon1">Tanggal Lahir</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
+                        <input type="date" class="form-control"  name="tanggal_lahir" id="tanggal_lahir" required>
                     </div>
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
+                            <span class="input-group-text" id="basic-addon1">NIK</span>
                         </div>
-                        <select name="level" class="custom-select" id="level" required>
-                            <option >--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
+                        <input type="text" class="form-control"  name="nik" id="nik" required>
                     </div>
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">status</span>
+                            <span class="input-group-text" id="basic-addon1">Jalan</span>
                         </div>
-                        <select name="status" id="status" class="custom-select">
-                            <option value="0">NONAKTIF</option>
-                            <option value="1">AKTIF</option>
-                        </select>
+                        <input type="text" class="form-control"  name="jalan" id="jalan" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">RT / RW</span>
+                        </div>
+                        <input type="text" class="form-control"  name="rt_rw" id="rt_rw" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Desa</span>
+                        </div>
+                        <input type="text" class="form-control"  name="desa" id="desa" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kecamatan</span>
+                        </div>
+                        <input type="text" class="form-control"  name="kecamatan" id="kecamatan" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
+                        </div>
+                        <input type="text" class="form-control"  name="kota_kabupaten" id="kota_kabupaten" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Provinsi</span>
+                        </div>
+                        <input type="text" class="form-control"  name="provinsi" id="provinsi" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kontak</span>
+                        </div>
+                        <input type="text" class="form-control"  name="kontak" id="kontak" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Email</span>
+                        </div>
+                        <input type="text" class="form-control"  name="email" id="email" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Bank</span>
+                        </div>
+                        <input type="text" class="form-control"  name="bank" id="bank" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Nama Rekening</span>
+                        </div>
+                        <input type="text" class="form-control"  name="nama_rekening" id="nama_rekening" required>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Rekening</span>
+                        </div>
+                        <input type="text" class="form-control"  name="rekening" id="rekening" required>
                     </div>
             </div>
             <div class="modal-footer">
