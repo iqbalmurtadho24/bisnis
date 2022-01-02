@@ -2,111 +2,94 @@
 
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content bg-dark">
-            <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="data.php?tambah_user=1" method="post">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Username</span>
             </div>
-
-            <div class="modal-body">
-                <form action="data.php?tambah_user=1" method="post">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Pegawai</span>
-                        </div>
-                        <select name="id_user" id="id_user" class="custom-select" required>
-                            
-                        <?php 
-                        
-                        $query = query('select * from sdm s where (s.id_user) not in (SELECT ss.id_user from sdm ss inner join user u on ss.id_user = u.id_user ); ');
-                        while ($row = mysqli_fetch_assoc($query)) { ?>
-                            
-                            <option value="<?= $row['id_user'];?>"><?= $row['nama'];?></option>
-                        <?php } ?>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" required>
-                    </div>
-
-
+            <input type="text" class="form-control" placeholder="Username" name="username" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Password</span>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Tambah user</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-
-                </form>
-            </div>
+            <input type="text" class="form-control" placeholder="password" name="password" required>
+          </div>
         </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Tambah user</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Edit Data user </h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="data.php?edit_user=1" method="post">
-                    <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="my-modal-title">Edit Data user </h5>
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="data.php?edit_user=1" method="post">
+          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Level</span>
-                        </div>
-                        <select name="level" class="custom-select" id="level" required>
-                            <option>--</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">status</span>
-                        </div>
-                        <select name="status" id="status" class="custom-select">
-                            <option value="0">NONAKTIF</option>
-                            <option value="1">AKTIF</option>
-                        </select>
-                    </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Username</span>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Edit user</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-
-                </form>
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Password</span>
             </div>
-
+            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Level</span>
+            </div>
+            <select name="level" class="custom-select" id="level" required>
+              <option>--</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">status</span>
+            </div>
+            <select name="status" id="status" class="custom-select">
+              <option value="0">NONAKTIF</option>
+              <option value="1">AKTIF</option>
+            </select>
+          </div>
         </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Edit user</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+        </form>
+      </div>
+
     </div>
+  </div>
 </div>
 
 <!-- DataTables -->
@@ -116,50 +99,50 @@
 <!-- <link rel="stylesheet" href="../assets/dist/input.css"> -->
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>User Akun</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                    <li class="breadcrumb-item active">User Akun</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>User Akun</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+          <li class="breadcrumb-item active">User Akun</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
 </section>
 
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <table id="example" class="table  table-striped table-bordered ">
-                            <thead>
-                                <tr>
-                                    <th><i class="fa fa-cog"></i></th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Nama</th>
-                                    <th>Status Akun</th>
-                                </tr>
-                            </thead>
-                        </table>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <table id="example" class="table  table-striped table-bordered ">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-cog"></i></th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Nama</th>
+                  <th>Status Akun</th>
+                </tr>
+              </thead>
+            </table>
 
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.row -->
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
 </section>
 
 

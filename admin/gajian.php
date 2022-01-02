@@ -39,10 +39,10 @@ $row = mysqli_fetch_assoc($result);
                     </div>
 
 
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Tambah user</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Tambah user</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
                 </form>
             </div>
@@ -94,10 +94,10 @@ $row = mysqli_fetch_assoc($result);
                             <option value="1">AKTIF</option>
                         </select>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Edit user</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Edit user</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
                 </form>
             </div>
@@ -115,13 +115,13 @@ $row = mysqli_fetch_assoc($result);
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-        <div class="col-sm-6">
-                <h1>Profil <?= $row['nama'] ?></h1>
+            <div class="col-sm-6">
+                <h1>Pembayaran Gaji Pegawai</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Profil <?= $row['nama'] ?></li>
+                    <li class="breadcrumb-item active">Pembayaran Gaji Pegawai</li>
                 </ol>
             </div>
         </div>
@@ -138,49 +138,48 @@ $row = mysqli_fetch_assoc($result);
 
                 <div class="card">
                     <!-- <div class="card-header"> -->
-                    <!-- <h3 class="card-title">DataTable with default features</h3> -->
-                    <!-- </div> -->
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example" class="table  table-striped table-bordered ">
-                            <thead>
-                                <tr>
-                                    <th>aksi</th>
+                        <!-- <h3 class="card-title">DataTable with default features</h3> -->
+                        <!-- </div> -->
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example" class="table  table-striped table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-cog"></i></th>
+                                        <th>Nama</th>
+                                        <th>Bagian</th>
+                                        <th>Periode</th>
+                                        <th>Jumlah</th>
+                                        <th>Status</th>
+                                        <th>Waktu Pembayaran</th>
+                                    </tr>
+                                </thead>
+                            </table>
 
-                                    <th>Username</th>
-
-                                    <th>Level</th>
-                                    <th>Status Akun</th>
-
-
-                                </tr>
-                            </thead>
-                        </table>
-
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
+                <!-- /.col -->
             </div>
-            <!-- /.col -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-</section>
+        <!-- /.container-fluid -->
+    </section>
 
 
-<!-- jQuery -->
-<script src="../assets/dist/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../assets/datatables/jquery.dataTables.min.js"></script>
-<script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+    <!-- jQuery -->
+    <script src="../assets/dist/js/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/dist/js/user.js"></script>
 
-<?php require_once('../config/footer.php') ?>
+    <?php require_once('../config/footer.php') ?>

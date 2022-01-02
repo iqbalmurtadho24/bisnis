@@ -12,14 +12,14 @@ function exist_array($data)
 if (isset($_GET['user']) !==  false) {
 
     if ($_GET['user'] === "1") {
-        $query = query('select * from user u inner join sdm s on u.id_user=s.id_user');
+        $query = query('select * from sdm s inner join user u on s.id_user=u.id_user');
         // var_dump($query) or die;
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
             $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['id_user'] . ')" title="Edit user">
             <i class="far fa-edit"></i>
-               </button> ';
+            </button> ';
             array_push($data['data'], [
                 'btn' => $modal,
                 'username' => exist_array($row['username']),
@@ -42,7 +42,7 @@ if (isset($_GET['user']) !==  false) {
         while ($row = mysqli_fetch_assoc($query)) {
             $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['kd_akses'] . ')" title="Edit user">
             <i class="far fa-edit"></i>
-               </button> ';
+            </button> ';
             array_push($data['data'], [
                 'btn' => $modal,
                 'nama' => exist_array($row['nama']),
@@ -66,7 +66,7 @@ if (isset($_GET['user']) !==  false) {
         while ($row = mysqli_fetch_assoc($query)) {
             $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['kd_gaji'] . ')" title="Edit user">
             <i class="far fa-edit"></i>
-               </button> ';
+            </button> ';
             array_push($data['data'], [
                 'btn' => $modal,
                 'nama' => exist_array($row['nama']),
@@ -81,7 +81,7 @@ if (isset($_GET['user']) !==  false) {
         echo json_encode($data);
     }
 }
- elseif (isset($_GET['pegawai']) !==  false) {
+elseif (isset($_GET['pegawai']) !==  false) {
 
     if ($_GET['pegawai'] === "1") {
         $query = query('select * from sdm ');
@@ -91,7 +91,7 @@ if (isset($_GET['user']) !==  false) {
         while ($row = mysqli_fetch_assoc($query)) {
             $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['id_user'] . ')" title="Edit Pegawai">
             <i class="far fa-edit"></i>
-               </button> ';
+            </button> ';
 
             array_push($data['data'], [
                 'btn' => exist_array($modal),
