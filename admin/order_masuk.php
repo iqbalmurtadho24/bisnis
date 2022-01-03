@@ -145,15 +145,26 @@ $row = mysqli_fetch_assoc($result);
               <table id="example" class="table  table-striped table-bordered ">
                 <thead>
                   <tr>
-                    <th><i class="fa fa-cog"></i></th>
-                    <th>Kode Pemesanan</th>
-                    <th>Admin CS</th>
-                    <th>Kategori</th>
-                    <th>Produk</th>
-                    <th>Jumlah</th>
-                    <th>Suplier</th>
-                    <th>Harga Suplier</th>
-                    <th>Pembayaran Suplier</th>
+                    <th rowspan="2"><i class="fa fa-cog"></i></th>
+                    <th rowspan="2">Kode Pemesanan</th>
+                    <th rowspan="2">Admin CS</th>
+                    <th rowspan="2">Nama Pelanggan</th>
+                    <th rowspan="2">Kategori</th>
+                    <th rowspan="2">Produk</th>
+                    <th rowspan="2">Jumlah</th>
+                    <th rowspan="2">Harga</th>
+                    <th rowspan="2">Total</th>
+                    <th colspan="5">Alamat</th>
+                    <th rowspan="2">Metode Pembayaran</th>
+                    <th rowspan="2">Bank</th>
+                    <th rowspan="2">Status Pembayaran</th>
+                  </tr>
+                  <tr>
+                    <th>Alamat</th>
+                    <th>Desa / Kelurahan</th>
+                    <th>Kecamatan</th>
+                    <th>Kota / Kabupan</th>
+                    <th>Provinsi</th>
                   </tr>
                 </thead>
               </table>

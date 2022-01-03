@@ -147,7 +147,7 @@ $row = mysqli_fetch_assoc($result);
                   <tr>
                     <th rowspan="2"><i class="fa fa-cog"></i></th>
                     <th rowspan="2">Kode Pemesanan</th>
-                    <th rowspan="2">Pelanggan</th>
+                    <th rowspan="2">Nama Pelanggan</th>
                     <th rowspan="2">Kategori</th>
                     <th rowspan="2">Produk</th>
                     <th rowspan="2">Jumlah</th>

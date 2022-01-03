@@ -116,12 +116,12 @@ $row = mysqli_fetch_assoc($result);
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Data Produk</h1>
+        <h1>Status Order</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Data Produk</li>
+          <li class="breadcrumb-item active">Status Order</li>
         </ol>
       </div>
     </div>
@@ -142,10 +142,12 @@ $row = mysqli_fetch_assoc($result);
               <thead>
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
+                  <th>Kode Suplier</th>
+                  <th>Nama</th>
+                  <th>Nama Pelanggan</th>
                   <th>Kategori</th>
-                  <th>Jenis</th>
-                  <th>Merek</th>
-                  <th>Seri</th>
+                  <th>Keterangan</th>
+                  <th>Kontak</th>
                 </tr>
               </thead>
             </table>
