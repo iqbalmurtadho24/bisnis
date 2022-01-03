@@ -19,7 +19,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Username</span>
             </div>
-            <select name="id_user" id="id_user" class="custom-select" required>
+            <select name="id_user"  class="custom-select" required>
               <?php 
               $query = query('select * from user u where (u.id_user) not in (SELECT uu.id_user from user uu inner join sdm s on uu.id_user = s.id_user ); ');
               while ($row = mysqli_fetch_assoc($query)) { ?>
@@ -80,7 +80,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
             </div>
-            <input type="text" class="form-control" placeholder="kota_kab" name="kota_kab" required>
+            <input type="text" class="form-control" placeholder="kota_kabupaten" name="kota_kabupaten" required>
           </div>
 
 
