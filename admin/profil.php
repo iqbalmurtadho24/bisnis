@@ -1,5 +1,6 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
+$iduser = $_SESSION['id_user'];
+$result = query("SELECT * FROM sdm WHERE id_user = '$iduser'");
 $row = mysqli_fetch_assoc($result);
 ?>
 
