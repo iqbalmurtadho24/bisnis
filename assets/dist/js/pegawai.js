@@ -7,19 +7,29 @@ function edit(i) {
     
           $.ajax({
             type: "GET",
-            url: "data.php?kd=" + kd + "&&edit_akses=data",
+            url: "data.php?kd=" + kd + "&&edit_pegawai=data",
             async: false,
             success: function (text) {
          
               response = JSON.parse(text);
               $("#modal_edit").modal("show");
               $("#id_user").val(response.id_user);
+              console.log($("#id_user").attr('class'));
               $("#nama").val(response.nama);
-              $("#akses").val(response.akses);
-              $("#kontak_akses").val(response.kontak_akses);
-              $("#status").val(response.status);
-              $("#waktu").val(response.waktu);
-              
+              $("#tanggal_lahir").val(response.tanggal_lahir);
+              $("#nik").val(response.nik);
+              $("#jalan").val(response.jalan);
+              $("#rt_rw").val(response.rt_rw);
+              $("#desa").val(response.desa);
+              $("#kecamatan").val(response.kecamatan);
+              $("#kota_kabupaten").val(response.kota_kabupaten);
+              $("#provinsi").val(response.provinsi);
+              $("#kontak").val(response.kontak);
+              $("#email").val(response.email);
+              $("#bank").val(response.bank);
+              $("#nama_rekening").val(response.nama_rekening  );
+              $("#rekening").val(response.rekening  );
+         
 
         
      

@@ -45,9 +45,7 @@ $(document).ready(function () {
         {
           data: "password",
         },
-        {
-          data: "nama",
-        },
+     
         {
           data: "status",
         },

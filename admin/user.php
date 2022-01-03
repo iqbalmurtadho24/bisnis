@@ -127,7 +127,6 @@
                   <th><i class="fa fa-cog"></i></th>
                   <th>Username</th>
                   <th>Password</th>
-                  <th>Nama</th>
                   <th>Status Akun</th>
                 </tr>
               </thead>

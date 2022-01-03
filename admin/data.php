@@ -12,11 +12,12 @@ function exist_array($data)
 if (isset($_GET['user']) !==  false) {
 
     if ($_GET['user'] === "1") {
-        $query = query('select * from sdm s inner join user u on s.id_user=u.id_user');
+        $query = query('select * from  user');
         // var_dump($query) or die;
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
+            $a = $row['status'] == 1 ? 'AKTIF' : 'NONAKTIF';
             $modal = ' <button class="btn btn-warning" onclick="edit(' . $row['id_user'] . ')" title="Edit user">
             <i class="far fa-edit"></i>
             </button> ';
@@ -24,8 +25,7 @@ if (isset($_GET['user']) !==  false) {
                 'btn' => $modal,
                 'username' => exist_array($row['username']),
                 'password' => exist_array($row['password']),
-                'nama' => exist_array($row['nama']),
-                'status' => exist_array($row['status'])
+                'status' => $a
             ]);
         }
 
@@ -80,8 +80,7 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-}
-elseif (isset($_GET['pegawai']) !==  false) {
+} elseif (isset($_GET['pegawai']) !==  false) {
 
     if ($_GET['pegawai'] === "1") {
         $query = query('select * from sdm ');
@@ -115,12 +114,12 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
 
 
         $nama = $_POST['username'];
-        $id_user = $_POST['id_user'];
         $password = $_POST['password'];
 
-        $sql = "insert into  user (id_user,username,password,status,level) values ($id_user,'$nama','$password',1,'user')  ";
-        $query = update($sql);
+        $sql = "insert into  user (id_user,username,password,status,level) values (null,'$nama','$password',1,'user')  ";
 
+        $query = query($sql);
+        // var_dump($query) or die;
 
         if ($query != 0) {
             header("location:user.php?success=3");
@@ -211,9 +210,9 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         $level = $_POST['level'];
 
 
-        $sql = "update sdm set   username= '$nama', password = '$password' ,status= $status,level='$level'  where id_user = $kd";
-        // var_dump($sql) or die;
-        $query = update($sql);
+        $sql = "update user set   username= '$nama', password = '$password' ,status= $status,level='$level'  where id_user = $kd";
+        $query = query($sql);
+
 
 
         if ($query != 0) {
@@ -243,10 +242,9 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         $rekening = $_POST['rekening'];
 
 
-        $sql = "update sdm set  
-        nama='$nama',tanggal_lahir='$tanggal_lahir',nik=$nik,jalan='$jalan',rt_rw=$rt_rw,desa='$desa',kecamatan='$kecamatan',kota_kabupaten='$kota_kabupaten',provinsi='$provinsi',kontak=$kontak, email='$email',bank= '$bank',nama_rekening='$nama_rekening',rekening ='$rekening'  where id_user = $kd";
+
+        $sql = "update sdm set   nama='$nama',tanggal_lahir='$tanggal_lahir',nik=$nik,jalan='$jalan',rt_rw=$rt_rw,desa='$desa',kecamatan='$kecamatan',kota_kabupaten='$kota_kabupaten',provinsi='$provinsi',kontak=$kontak, email='$email',bank= '$bank',nama_rekening='$nama_rekening',rekening ='$rekening'  where id_user = $kd";
         $query = update($sql);
-        // var_dump($sql) or die;
 
 
         if ($query != 0) {
