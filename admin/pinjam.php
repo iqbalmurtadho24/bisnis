@@ -116,12 +116,12 @@ $row = mysqli_fetch_assoc($result);
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Profil <?= $row['nama'] ?></h1>
+        <h1>Peminjaman Modal</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Profil <?= $row['nama'] ?></li>
+          <li class="breadcrumb-item active">Peminjaman Modal</li>
         </ol>
       </div>
     </div>
@@ -145,14 +145,15 @@ $row = mysqli_fetch_assoc($result);
               <table id="example" class="table  table-striped table-bordered ">
                 <thead>
                   <tr>
-                    <th>aksi</th>
-
-                    <th>Username</th>
-
-                    <th>Level</th>
-                    <th>Status Akun</th>
-
-
+                    <th><i class="fa fa-cog"></i></th>
+                    <th>Kode Transaksi</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Nama Investor</th>
+                    <th>Kontak</th>
+                    <th>Jumlah</th>
+                    <th>Dibayar</th>
+                    <th>Sisa</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
               </table>
