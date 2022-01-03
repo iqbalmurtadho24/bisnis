@@ -242,7 +242,7 @@ $url = $url[3];
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="status_order.php" class="nav-link">&emsp;
+                                  <a href="status_order_cs.php" class="nav-link">&emsp;
                                     <i class="fas fa-angle-double-right left"></i>
                                     <p>&emsp;Status Order</p>
                                   </a>

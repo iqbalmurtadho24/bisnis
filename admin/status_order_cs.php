@@ -116,12 +116,12 @@ $row = mysqli_fetch_assoc($result);
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Order Masuk</h1>
+        <h1>Status Order CS</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Order Masuk</li>
+          <li class="breadcrumb-item active">Status Order CS</li>
         </ol>
       </div>
     </div>
@@ -137,51 +137,47 @@ $row = mysqli_fetch_assoc($result);
         <!-- card -->
 
         <div class="card">
-          <!-- <div class="card-header"> -->
-            <!-- <h3 class="card-title">DataTable with default features</h3> -->
-            <!-- </div> -->
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example" class="table  table-striped table-bordered ">
-                <thead>
-                  <tr>
-                    <th><i class="fa fa-cog"></i></th>
-                    <th>Kode Pemesanan</th>
-                    <th>Admin CS</th>
-                    <th>Kategori</th>
-                    <th>Produk</th>
-                    <th>Jumlah</th>
-                    <th>Suplier</th>
-                    <th>Harga Suplier</th>
-                    <th>Pembayaran Suplier</th>
-                  </tr>
-                </thead>
-              </table>
+          <div class="card-body">
+            <table id="example" class="table  table-striped table-bordered ">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-cog"></i></th>
+                  <th>Kode Pemesanan</th>
+                  <th>Admin Order</th>
+                  <th>Kategori</th>
+                  <th>Produk</th>
+                  <th>Jumlah</th>
+                  <th>Status Order Suplier</th>
+                  <th>Resi Pengiriman</th>
+                  <th>Status Pengiriman</th>
+                </tr>
+              </thead>
+            </table>
 
-            </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+          <!-- /.card-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.card -->
       </div>
-      <!-- /.row -->
+      <!-- /.col -->
     </div>
-    <!-- /.container-fluid -->
-  </section>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
 
 
-  <!-- jQuery -->
-  <script src="../assets/dist/js/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="../assets/datatables/jquery.dataTables.min.js"></script>
-  <script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/user.js"></script>
+<!-- jQuery -->
+<script src="../assets/dist/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../assets/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../assets/dist/js/user.js"></script>
 
-  <?php require_once('../config/footer.php') ?>
+<?php require_once('../config/footer.php') ?>
