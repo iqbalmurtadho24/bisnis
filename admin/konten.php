@@ -147,7 +147,7 @@ $row = mysqli_fetch_assoc($result);
                   <tr>
                     <th><i class="fa fa-cog"></i></th>
                     <th>Tanggal Produksi</th>
-                    <th>Jenis</th>
+                    <th>Kategori</th>
                     <th>Produk</th>
                     <th>Tema</th>
                     <th>File</th>

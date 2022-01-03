@@ -146,10 +146,12 @@ $row = mysqli_fetch_assoc($result);
                 <thead>
                   <tr>
                     <th><i class="fa fa-cog"></i></th>
+                    <th>Kategori</th>
                     <th>Produk</th>
                     <th>Jumlah</th>
-                    <th>Real Chat</th>
-                    <th>Closing</th>
+                    <th>@Harga</th>
+                    <th>Pendapatan</th>
+                    <th>Profit</th>
                   </tr>
                 </thead>
               </table>
