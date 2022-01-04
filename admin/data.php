@@ -106,6 +106,53 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
+} elseif (isset($_GET['kategori']) !==  false) {
+
+    if ($_GET['kategori'] === "1") {
+        $query = query('select * from kategori_produk ');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_kategori']."') title='Edit Pegawai'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+
+                'kd' => exist_array($row['kd_kategori']),
+                'kategori' => exist_array($row['kategori'])
+
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+}elseif (isset($_GET['jenis']) !==  false) {
+
+    if ($_GET['jenis'] === "1") {
+        $query = query('select * from jenis_produk p inner join kategori_produk k on p.kd_kategori=k.kd_kategori ');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_jenis']."') title='Edit Pegawai'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+
+                'kd' => exist_array($row['kd_jenis']),
+                'jenis' => exist_array($row['jenis']),
+                'kategori' => exist_array($row['kategori'])
+
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
 }
 
 //add
@@ -198,6 +245,39 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     } else {
         header("location:pegawai.php?success=2");
     }
+} elseif (isset($_GET['tambah_kategori']) !==  false && $_GET['tambah_kategori'] === "1") {
+    if (isset($_POST['kd'],$_POST['kategori']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+      
+        $kd = $_POST['kd'];
+        $kategori = $_POST['kategori'];
+        $sql = "insert into  kategori_produk  values ('$kd','$kategori')  ";
+        $query = query($sql);
+
+        if ($query != 0) {
+            header("location:kategori.php?success=3");
+        } else {
+            header("location:kategori.php?success=4");
+        }
+    } else {
+        header("location:kategori.php?success=2");
+    }
+} elseif (isset($_GET['tambah_jenis']) !==  false && $_GET['tambah_jenis'] === "1") {
+    if (isset($_POST['kd'],$_POST['jenis']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+      
+        $kd = $_POST['kd'];
+        $jenis = $_POST['jenis'];
+        $kategori = $_POST['kategori'];
+        $sql = "insert into  jenis_produk  values ('$kd','$jenis','$kategori')  ";
+        $query = query($sql);
+        var_dump($query) or die;
+        if ($query != 0) {
+            header("location:jenis.php?success=3");
+        } else {
+            header("location:jenis.php?success=4");
+        }
+    } else {
+        header("location:jenis.php?success=2");
+    }
 }
 
 //update
@@ -275,6 +355,23 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     } else {
         header("location:akses.php?success=2");
     }
+} elseif (isset($_GET['edit_kategori']) !==  false && $_GET['edit_kategori'] == "1") {
+    if (isset($_POST['kd'], $_POST['kategori']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $kategori = $_POST['kategori'];
+   
+        $sql = "update kategori_produk set kategori='$kategori'   where kd_kategori = '$kd'";
+        $query = update($sql);
+        // var_dump($query) or die;
+
+        if ($query != 0) {
+            header("location:kategori.php?success=1");
+        } else {
+            header("location:kategori.php?success=4");
+        }
+    } else {
+        header("location:kategori.php?success=2");
+    }
 } elseif (isset($_GET['edit_user'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_user'] == 'data') {
     $query = query('select * from user where id_user= "' . $_GET['kd'] . '"');
 
@@ -290,6 +387,12 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     // var_dump($data) or die;
 } elseif (isset($_GET['edit_akses'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_akses'] == 'data') {
     $query = query('select * from akses where kd_akses= "' . $_GET['kd'] . '"');
+
+    $data = mysqli_fetch_assoc($query);
+    echo json_encode($data);
+    // var_dump($data) or die;
+} elseif (isset($_GET['edit_kategori'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_kategori'] == 'data') {
+    $query = query('select * from kategori_produk where kd_kategori= "' . $_GET['kd'] . '"');
 
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);

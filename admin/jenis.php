@@ -1,48 +1,48 @@
-<?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
+<?php
+require_once('../config/header.php');
+require_once('../config/config.php');
+$query = query("SELECT * FROM kategori_produk");
+// $row = mysqli_fetch_assoc($result);
 ?>
-
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Jenis Produk Baru </h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
+        <form action="data.php?tambah_jenis=1" method="post">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Kode jenis</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
+            <input type="text" class="form-control" name="kd" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
+              <span class="input-group-text" id="basic-addon1">Jenis</span>
             </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
+            <input type="text" class="form-control" name="jenis" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
+              <span class="input-group-text" id="basic-addon1">Kategori</span>
             </div>
-            <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <select name="kategori" class="custom-select" id="kategori">
+              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                <option value="<?= $row['kd_kategori'] ?>"> <?= $row['kategori'] ?></option>
+
+              <?php }  ?>
             </select>
           </div>
-
-
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Tambah user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -60,44 +60,20 @@ $row = mysqli_fetch_assoc($result);
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_user=1" method="post">
-          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+        <form action="data.php?edit_kategori=1" method="post">
+          <input type="text" class="form-control" name="kd" id="kd" hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Kategori</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
+            <input type="text" class="form-control" name="kategori" id="kategori" required>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">status</span>
-            </div>
-            <select name="status" id="status" class="custom-select">
-              <option value="0">NONAKTIF</option>
-              <option value="1">AKTIF</option>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Edit user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Edit Kategori</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -116,12 +92,12 @@ $row = mysqli_fetch_assoc($result);
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Data Produk</h1>
+        <h1>Data Kategori</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Data Produk</li>
+          <li class="breadcrumb-item active">Data Kategori</li>
         </ol>
       </div>
     </div>
@@ -142,10 +118,9 @@ $row = mysqli_fetch_assoc($result);
               <thead>
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
-                  <th>Kategori</th>
+                  <th> Kode</th>
                   <th>Jenis</th>
-                  <th>Merek</th>
-                  <th>Seri</th>
+                  <th>Kategori</th>
                 </tr>
               </thead>
             </table>
@@ -174,6 +149,6 @@ $row = mysqli_fetch_assoc($result);
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/jenis.js"></script>
 
 <?php require_once('../config/footer.php') ?>

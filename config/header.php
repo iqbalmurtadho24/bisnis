@@ -124,8 +124,8 @@ $url = $url[3];
                   </ul>
                 </li>
               <?php } elseif ($row['akses'] == 'logistik') { ?>
-                <li class="nav-item <?= $url == 'produk.php'|| $url == 'suplier.php'  ? 'menu-open' : "" ?>">
-                  <a href="#" class="nav-link <?= $url == 'produk.php'|| $url == 'suplier.php'  ? 'active' : "" ?>">
+                <li class="nav-item <?= $url == 'kategori.php'|| $url == 'jenis.php'||$url == 'merek.php'||$url == 'produk.php'|| $url == 'suplier.php'  ? 'menu-open' : "" ?>">
+                  <a href="#" class="nav-link <?= $url == 'kategori.php'|| $url == 'jenis.php'||$url == 'merek.php'|| $url == 'suplier.php'  ? 'active' : "" ?>">
                     <i class="nav-icon fas fa-box"></i>
                     <p>
                       Logistik Produk
@@ -133,6 +133,22 @@ $url = $url[3];
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                      <a href="kategori.php" class="nav-link <?= $url == 'kategori.php' ? 'active' : "" ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Data Kategori</p>
+                      </a>
+                    </li>   <li class="nav-item">
+                      <a href="jenis.php" class="nav-link <?= $url == 'jenis.php' ? 'active' : "" ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Data Jenis</p>
+                      </a>
+                    </li>   <li class="nav-item">
+                      <a href="merek.php" class="nav-link <?= $url == 'merek.php' ? 'active' : "" ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Data Merek</p>
+                      </a>
+                    </li>
                     <li class="nav-item">
                       <a href="produk.php" class="nav-link <?= $url == 'produk.php' ? 'active' : "" ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
