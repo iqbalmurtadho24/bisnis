@@ -41,7 +41,7 @@ $query = query("SELECT * FROM kategori_produk");
           </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Tambah user</button>
+        <button class="btn btn-primary" type="submit">Tambah Jenis</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
@@ -54,25 +54,25 @@ $query = query("SELECT * FROM kategori_produk");
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Edit Data user </h5>
+        <h5 class="modal-title" id="my-modal-title">Edit Jenis </h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_kategori=1" method="post">
+        <form action="data.php?edit_jenis=1" method="post">
           <input type="text" class="form-control" name="kd" id="kd" hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kategori</span>
+              <span class="input-group-text" id="basic-addon1">Jenis</span>
             </div>
-            <input type="text" class="form-control" name="kategori" id="kategori" required>
+            <input type="text" class="form-control" name="jenis" id="jenis" required>
           </div>
 
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Edit Kategori</button>
+        <button class="btn btn-primary" type="submit">Edit Jenis</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
@@ -92,12 +92,12 @@ $query = query("SELECT * FROM kategori_produk");
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Data Kategori</h1>
+        <h1>Data Jenis</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Data Kategori</li>
+          <li class="breadcrumb-item active">Data Jenis</li>
         </ol>
       </div>
     </div>
@@ -118,7 +118,7 @@ $query = query("SELECT * FROM kategori_produk");
               <thead>
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
-                  <th> Kode</th>
+                  <th>Kode</th>
                   <th>Jenis</th>
                   <th>Kategori</th>
                 </tr>

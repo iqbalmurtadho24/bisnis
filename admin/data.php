@@ -129,7 +129,7 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-}elseif (isset($_GET['jenis']) !==  false) {
+} elseif (isset($_GET['jenis']) !==  false) {
 
     if ($_GET['jenis'] === "1") {
         $query = query('select * from jenis_produk p inner join kategori_produk k on p.kd_kategori=k.kd_kategori ');
@@ -153,6 +153,81 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
+} elseif (isset($_GET['merek']) !==  false) {
+
+    if ($_GET['merek'] === "1") {
+        $query = query('select * from merek m inner join jenis_produk j on m.kd_jenis=j.kd_jenis inner join kategori_produk k on j.kd_kategori=k.kd_kategori');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_merek']."') title='Edit Pegawai'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['kd_merek']),
+                'merek' => exist_array($row['merek']),
+                'jenis' => exist_array($row['jenis']),
+                'kategori' => exist_array($row['kategori']),
+
+
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+} elseif (isset($_GET['produk']) !==  false) {
+
+    if ($_GET['produk'] === "1") {
+        $query = query('select * from produk p inner join merek m on p.kd_merek=m.kd_merek inner join jenis_produk j on m.kd_jenis=j.kd_jenis inner join kategori_produk k on j.kd_kategori=k.kd_kategori');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_produk']."') title='Edit Pegawai'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['kd_produk']),
+                'produk' => exist_array($row['produk']),
+                'merek' => exist_array($row['merek']),
+                'jenis' => exist_array($row['jenis']),
+                'kategori' => exist_array($row['kategori']),
+
+
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+} elseif (isset($_GET['suplier']) !==  false) {
+
+    if ($_GET['suplier'] === "1") {
+        $query = query('select * from suplier s inner join produk p on s.produk=p.kd_produk');
+
+        $data['data'] = [];
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['id_suplier']."') title='Edit Pegawai'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['id_suplier']),
+                'nama' => exist_array($row['nama']),
+                'kategori' => exist_array($row['kategori']),
+                'produk' => exist_array($row['produk']),
+                'kontak' => exist_array($row['kontak'])
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
 }
 
 //add
@@ -165,7 +240,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
 
         $sql = "insert into  user (id_user,username,password,status,level) values (null,'$nama','$password',1,'user')  ";
 
-        $query = query($sql);
+        $query = update($sql);
         // var_dump($query) or die;
 
         if ($query != 0) {
@@ -205,7 +280,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $waktu = date('Y-m-d H:i:s');
 
         $sql = "insert into  gaji (kd_gaji,id_user,akses,status,waktu,gaji) values (null,$id_user,'$akses',1,'$waktu','$gaji')  ";
-        $query = query($sql);
+        $query = update($sql);
         // var_dump($query) or die;
 
         if ($query != 0) {
@@ -218,6 +293,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_pegawai']) !==  false && $_GET['tambah_pegawai'] === "1") {
     if (isset($_POST['nama']) &&  !empty($_POST['nama'])) {
+        $id = $_POST['id_user'];
         $nama = $_POST['nama'];
         $tanggal_lahir = $_POST['tanggal_lahir'];
         $nik = $_POST['nik'];
@@ -232,7 +308,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $bank = $_POST['bank'];
         $nama_rekening = $_POST['nama_rekening'];
         $rekening = $_POST['rekening'];
-        $sql = "insert into  sdm   values (null,'$nama','$tanggal_lahir',$nik,'$jalan',$rt_rw,'$desa','$kecamatan','$kota_kabupaten','$provinsi',$kontak, '$email','$bank','$nama_rekening','$rekening')  ";
+        $sql = "insert into  sdm   values ('$id','$nama','$tanggal_lahir',$nik,'$jalan',$rt_rw,'$desa','$kecamatan','$kota_kabupaten','$provinsi',$kontak, '$email','$bank','$nama_rekening','$rekening')  ";
         $query = update($sql);
         //   var_dump($query) or die;
 
@@ -251,7 +327,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $kd = $_POST['kd'];
         $kategori = $_POST['kategori'];
         $sql = "insert into  kategori_produk  values ('$kd','$kategori')  ";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:kategori.php?success=3");
@@ -267,9 +343,10 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $kd = $_POST['kd'];
         $jenis = $_POST['jenis'];
         $kategori = $_POST['kategori'];
-        $sql = "insert into  jenis_produk  values ('$kd','$jenis','$kategori')  ";
-        $query = query($sql);
-        var_dump($query) or die;
+        $kd_jenis = "$kategori$kd";
+        $sql = "insert into  jenis_produk  values ('$kd_jenis','$jenis','$kategori')  ";
+        $query = update($sql);
+        // var_dump($query) or die;
         if ($query != 0) {
             header("location:jenis.php?success=3");
         } else {
@@ -277,6 +354,67 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         }
     } else {
         header("location:jenis.php?success=2");
+    }
+} elseif (isset($_GET['tambah_merek']) !==  false && $_GET['tambah_merek'] === "1") {
+    if (isset($_POST['kd'],$_POST['merek']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+      
+        $kd = $_POST['kd'];
+        $merek = $_POST['merek'];
+        $jenis = $_POST['kd_jenis'];
+        $kd_merek = "$jenis$kd";
+
+        
+        $sql = "insert into  merek  values ('$kd_merek','$merek','$jenis')  ";
+        $query = update($sql);
+        // var_dump($query) or die;
+        if ($query != 0) {
+            header("location:merek.php?success=3");
+        } else {
+            header("location:merek.php?success=4");
+        }
+    } else {
+        header("location:merek.php?success=2");
+    }
+} elseif (isset($_GET['tambah_produk']) !==  false && $_GET['tambah_produk'] === "1") {
+    if (isset($_POST['kd'],$_POST['produk']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+      
+        $kd = $_POST['kd'];
+        $produk = $_POST['produk'];
+        $merek = $_POST['kd_merek'];
+        $kd_produk = "$merek$kd";
+
+        
+        $sql = "insert into  produk  values ('$kd_produk','$produk','$merek')  ";
+        $query = update($sql);
+        // var_dump($query) or die;
+        if ($query != 0) {
+            header("location:produk.php?success=3");
+        } else {
+            header("location:produk.php?success=4");
+        }
+    } else {
+        header("location:produk.php?success=2");
+    }
+} elseif (isset($_GET['tambah_suplier']) !==  false && $_GET['tambah_suplier'] === "1") {
+    if (isset($_POST['nama'])  &&  !empty($_POST['nama'])) {
+        
+        // $kd = $_POST['kd'];
+        $nama = $_POST['nama'];
+        $produk = $_POST['produk'];
+        $kategori = $_POST['kategori'];
+        $kontak = $_POST['kontak'];
+        
+        
+        $sql = "insert into  suplier  values (null,'$nama','$kategori','$produk',$kontak)  ";
+        $query = update($sql);
+        // var_dump($query) or die;
+        if ($query != 0) {
+            header("location:suplier.php?success=3");
+        } else {
+            header("location:suplier.php?success=4");
+        }
+    } else {
+        header("location:suplier.php?success=2");
     }
 }
 
@@ -291,7 +429,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
 
 
         $sql = "update user set   username= '$nama', password = '$password' ,status= $status,level='$level'  where id_user = $kd";
-        $query = query($sql);
+        $query = update($sql);
 
 
 

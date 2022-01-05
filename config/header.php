@@ -125,7 +125,7 @@ $url = $url[3];
                 </li>
               <?php } elseif ($row['akses'] == 'logistik') { ?>
                 <li class="nav-item <?= $url == 'kategori.php'|| $url == 'jenis.php'||$url == 'merek.php'||$url == 'produk.php'|| $url == 'suplier.php'  ? 'menu-open' : "" ?>">
-                  <a href="#" class="nav-link <?= $url == 'kategori.php'|| $url == 'jenis.php'||$url == 'merek.php'|| $url == 'suplier.php'  ? 'active' : "" ?>">
+                  <a href="#" class="nav-link <?= $url == 'kategori.php'|| $url == 'jenis.php'||$url == 'merek.php'||$url == 'produk.php'|| $url == 'suplier.php'  ? 'active' : "" ?>">
                     <i class="nav-icon fas fa-box"></i>
                     <p>
                       Logistik Produk

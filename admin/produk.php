@@ -1,57 +1,48 @@
-<?php require_once('../config/header.php');
-$query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_merek");
+<?php
+require_once('../config/header.php');
+require_once('../config/config.php');
+$query = query("SELECT * FROM merek");
+// $row = mysqli_fetch_assoc($result);
 ?>
-
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah Suplier</h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Produk Baru </h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_suplier=1" method="post">
-     
+        <form action="data.php?tambah_produk=1" method="post">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Nama Suplier</span>
+              <span class="input-group-text" id="basic-addon1">Kode Produk</span>
             </div>
-            <input type="text" class="form-control" placeholder="Nama Suplier" name="nama" required>
+            <input type="text" class="form-control" name="kd" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kategori</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <select name="kategori" class="custom-select" >
-              <option value="Online">Online</option>
-              <option value="Offline">Offline</option>
-            </select>
+            <input type="text" class="form-control" name="produk" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kategori Produk</span>
+              <span class="input-group-text" id="basic-addon1">Merek</span>
             </div>
-            <select name="produk" class="custom-select" >
+            <select name="kd_merek" class="custom-select" >
               <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_produk'] ?>"><?= $row['produk'] ?> - <?= $row['merek'] ?></option>
+                <option value="<?= $row['kd_merek'] ?>"> <?= $row['merek'] ?></option>
 
               <?php }  ?>
             </select>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kontak</span>
-            </div>
-            <input type="number" class="form-control" placeholder="ex : 0852" name="kontak" required>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah Suplier</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Tambah Produk</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -63,50 +54,26 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Edit Suplier</h5>
+        <h5 class="modal-title" id="my-modal-title">Edit Produk</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_user=1" method="post">
-          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+        <form action="data.php?edit_merek=1" method="post">
+          <input type="text" class="form-control" name="kd" id="kd" hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kode Suplier</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <input type="text" class="form-control" placeholder="kd" name="username" id="username" required>
+            <input type="text" class="form-control" name="merek" id="merek" required>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">status</span>
-            </div>
-            <select name="status" id="status" class="custom-select">
-              <option value="0">NONAKTIF</option>
-              <option value="1">AKTIF</option>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Edit Suplier</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Edit Produk</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -125,12 +92,12 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Data Suplier</h1>
+        <h1>Data Produk</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Data Suplier</li>
+          <li class="breadcrumb-item active">Data Produk</li>
         </ol>
       </div>
     </div>
@@ -151,11 +118,11 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
               <thead>
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
-                  <th>Kode Suplier</th>
-                  <th>Nama Suplier</th>
-                  <th>Kategori</th>
+                  <th>Kode</th>
                   <th>Produk</th>
-                  <th>Kontak</th>
+                  <th>Merek</th>
+                  <th>Jenis</th>
+                  <th>Kategori</th>
                 </tr>
               </thead>
             </table>
@@ -184,6 +151,6 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/suplier.js"></script>
+<script src="../assets/dist/js/produk.js"></script>
 
 <?php require_once('../config/footer.php') ?>
