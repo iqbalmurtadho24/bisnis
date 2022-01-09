@@ -24,22 +24,22 @@
               </div>
               <p class="login-card-description">Sign into your account</p>
               <form action="config/login.php" method="POST">
-                  <div class="form-group">
-                    <label  class="sr-only">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                  </div>
-                  <div class="form-group mb-4">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
-                  </div>
-                  <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
-                </form>
-    
-                </nav>
-            </div>
+                <div class="form-group">
+                  <label  class="sr-only">Username</label>
+                  <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="password" class="sr-only">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                </div>
+                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+              </form>
+              
+            </nav>
           </div>
         </div>
       </div>
+    </div>
       <!-- <div class="card login-card">
         <img src="assets/images/login.jpg" alt="login" class="login-card-img">
         <div class="card-body">

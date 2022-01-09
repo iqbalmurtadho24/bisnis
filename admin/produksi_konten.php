@@ -1,6 +1,5 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
+$query = query("SELECT * FROM produk");
 ?>
 
 <!-- modal -->
@@ -8,37 +7,48 @@ $row = mysqli_fetch_assoc($result);
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Produksi Konten</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
+        <form action="data.php?tambah_konten=1" method="post">
+          <input type="hidden" class="form-control" name="id_user" value="<?= $_SESSION['id_user'] ?>">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Jenis Konten</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <select name="jenis" class="custom-select" required>
+              <option >- Pilih -</option>
+              <option value="Gambar">Gambar</option>
+              <option value="Video">Video</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="System Website">System Website</option>
             </select>
           </div>
-
-
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Produk</span>
+            </div>
+            <select name="produk" class="custom-select" >
+              <option >- Pilih -</option>
+              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                <option value="<?= $row['kd_produk'] ?>"> <?= $row['produk'] ?></option>
+              <?php }  ?>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Jenis Konten</span>
+            </div>
+            <select name="status" class="custom-select" required>
+              <option >- Pilih -</option>
+              <option value="Planning">Planning</option>
+              <option value="Proses">Proses</option>
+              <option value="Finish">Finish</option>
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" type="submit">Tambah user</button>
@@ -150,7 +160,6 @@ $row = mysqli_fetch_assoc($result);
                     <th>Tanggal Produksi</th>
                     <th>Jenis Konten</th>
                     <th>Produk</th>
-                    <!-- <th>Tema</th> -->
                     <th>Status</th>
                   </tr>
                 </thead>

@@ -228,7 +228,7 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-}elseif (isset($_GET['konten']) !==  false) {
+} elseif (isset($_GET['konten']) !==  false) {
 
     if ($_GET['konten'] === "1") {
         $query = query('select * from konten ');
@@ -348,7 +348,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_kategori']) !==  false && $_GET['tambah_kategori'] === "1") {
     if (isset($_POST['kd'],$_POST['kategori']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
-      
+
         $kd = $_POST['kd'];
         $kategori = $_POST['kategori'];
         $sql = "insert into  kategori_produk  values ('$kd','$kategori')  ";
@@ -364,7 +364,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_jenis']) !==  false && $_GET['tambah_jenis'] === "1") {
     if (isset($_POST['kd'],$_POST['jenis']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
-      
+
         $kd = $_POST['kd'];
         $jenis = $_POST['jenis'];
         $kategori = $_POST['kategori'];
@@ -382,7 +382,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_merek']) !==  false && $_GET['tambah_merek'] === "1") {
     if (isset($_POST['kd'],$_POST['merek']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
-      
+
         $kd = $_POST['kd'];
         $merek = $_POST['merek'];
         $jenis = $_POST['kd_jenis'];
@@ -402,7 +402,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_produk']) !==  false && $_GET['tambah_produk'] === "1") {
     if (isset($_POST['kd'],$_POST['produk']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
-      
+
         $kd = $_POST['kd'];
         $produk = $_POST['produk'];
         $merek = $_POST['kd_merek'];
@@ -422,7 +422,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     }
 } elseif (isset($_GET['tambah_suplier']) !==  false && $_GET['tambah_suplier'] === "1") {
     if (isset($_POST['nama'])  &&  !empty($_POST['nama'])) {
-        
+
         // $kd = $_POST['kd'];
         $nama = $_POST['nama'];
         $produk = $_POST['produk'];
@@ -440,6 +440,27 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         }
     } else {
         header("location:suplier.php?success=2");
+    }
+} elseif (isset($_GET['tambah_konten']) !==  false && $_GET['tambah_konten'] === "1") {
+    if (isset($_POST['id_user'])  &&  !empty($_POST['id_user'])) {
+
+        $id_user = $_POST['id_user'];
+        $waktu = date('Y-m-d H:i:s');
+        $jenis = $_POST['jenis'];
+        $produk = $_POST['produk'];
+        $status = $_POST['status'];
+        
+        
+        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',null)  ";
+        $query = update($sql);
+        // var_dump($query) or die;
+        if ($query != 0) {
+            header("location:produksi_kontenphp?success=3");
+        } else {
+            header("location:produksi_konten.php?success=4");
+        }
+    } else {
+        header("location:produksi_konten.php?success=2");
     }
 }
 
@@ -522,7 +543,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     if (isset($_POST['kd'], $_POST['kategori']) &&  !empty($_POST['kd'])) {
         $kd = $_POST['kd'];
         $kategori = $_POST['kategori'];
-   
+
         $sql = "update kategori_produk set kategori='$kategori'   where kd_kategori = '$kd'";
         $query = update($sql);
         // var_dump($query) or die;
@@ -541,7 +562,6 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);
     // var_dump($data) or die;
-
 } elseif (isset($_GET['edit_pegawai'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_pegawai'] == 'data') {
     $query = query('select * from sdm where id_user= "' . $_GET['kd'] . '"');
 
