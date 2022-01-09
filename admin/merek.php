@@ -1,8 +1,6 @@
 <?php
 require_once('../config/header.php');
-require_once('../config/config.php');
-$query = query("SELECT * FROM jenis_produk");
-// $row = mysqli_fetch_assoc($result);
+
 ?>
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -32,11 +30,8 @@ $query = query("SELECT * FROM jenis_produk");
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Jenis</span>
             </div>
-            <select name="kd_jenis" class="custom-select" >
-              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_jenis'] ?>"> <?= $row['jenis'] ?></option>
+            <select name="kd_jenis" class="custom-select"  id="jenis">
 
-              <?php }  ?>
             </select>
           </div>
       </div>

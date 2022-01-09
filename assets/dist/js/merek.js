@@ -20,6 +20,22 @@ function edit(i) {
 
 
 $(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: "data.php?jenis=1",
+
+        success: function (text) {
+            response = JSON.parse(text);
+  
+            select = "";
+            for (let i = 0; i < response.data.length; i++) {
+                select += "<option value='" + response.data[i].kd + "'>" + response.data[i].jenis + " </option>"
+
+            }
+            $('#jenis').html(select);
+
+        }
+    })
     var tableX = $("#example")
         .DataTable({
             ajax: "data.php?merek=1",
@@ -40,7 +56,7 @@ $(document).ready(function () {
                 {
                     data: "kategori",
                 },
-        
+
 
             ],
             paging: false,

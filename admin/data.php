@@ -114,7 +114,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_kategori']."') title='Edit Pegawai'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_kategori'] . "') title='Edit Kategori'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
@@ -137,7 +137,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_jenis']."') title='Edit Pegawai'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_jenis'] . "') title='Edit Pegawai'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
@@ -161,7 +161,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_merek']."') title='Edit Pegawai'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_merek'] . "') title='Edit Pegawai'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
@@ -186,7 +186,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_produk']."') title='Edit Pegawai'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_produk'] . "') title='Edit Pegawai'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
@@ -212,7 +212,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['id_suplier']."') title='Edit Pegawai'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['id_suplier'] . "') title='Edit Pegawai'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
@@ -231,20 +231,20 @@ if (isset($_GET['user']) !==  false) {
 } elseif (isset($_GET['konten']) !==  false) {
 
     if ($_GET['konten'] === "1") {
-        $query = query('select * from konten ');
+        $query = query('select * from konten k inner join produk p on k.kd_produk = p.kd_produk ');
 
         $data['data'] = [];
         $no = 0;
         while ($row = mysqli_fetch_assoc($query)) {
-            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_konten']."') title='Edit Konten'>
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_konten'] . "') title='Edit Konten'>
             <i class='far fa-edit'></i>  </button> ";
 
             array_push($data['data'], [
                 'btn' => exist_array($modal),
                 'no' => $no++,
                 'waktu' => exist_array($row['waktu']),
-                'jenis' => exist_array($row['jenis_konten']),
-                'produk' => exist_array($row['produk_konten']),
+                'jenis' => exist_array($row['kd_konten']),
+                'produk' => exist_array($row['produk']),
                 'status' => exist_array($row['status_proses'])
             ]);
         }
@@ -252,7 +252,34 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
+} elseif (isset($_GET['publikasi']) !==  false) {
+
+    if ($_GET['publikasi'] === "1") {
+        $query = query('select * from publikasi p inner join konten k on p.kd_konten = k.kd_produk inner join produk pr on k.kd_produk = pr.kd_produk; ');
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_publikasi'] . "') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'no' => $no++,
+                'waktu' => exist_array($row['waktu']),
+                'konten' => exist_array($row['jenis_konten']),
+                'produk' => exist_array($row['produk']),
+                'facebook' => exist_array($row['facebook']),
+                'instagram' => exist_array($row['instagram']),
+                'website' => exist_array($row['website']),
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
 }
+
 
 
 //add
@@ -347,7 +374,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         header("location:pegawai.php?success=2");
     }
 } elseif (isset($_GET['tambah_kategori']) !==  false && $_GET['tambah_kategori'] === "1") {
-    if (isset($_POST['kd'],$_POST['kategori']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+    if (isset($_POST['kd'], $_POST['kategori']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
 
         $kd = $_POST['kd'];
         $kategori = $_POST['kategori'];
@@ -363,7 +390,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         header("location:kategori.php?success=2");
     }
 } elseif (isset($_GET['tambah_jenis']) !==  false && $_GET['tambah_jenis'] === "1") {
-    if (isset($_POST['kd'],$_POST['jenis']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+    if (isset($_POST['kd'], $_POST['jenis']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
 
         $kd = $_POST['kd'];
         $jenis = $_POST['jenis'];
@@ -381,14 +408,14 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         header("location:jenis.php?success=2");
     }
 } elseif (isset($_GET['tambah_merek']) !==  false && $_GET['tambah_merek'] === "1") {
-    if (isset($_POST['kd'],$_POST['merek']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+    if (isset($_POST['kd'], $_POST['merek']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
 
         $kd = $_POST['kd'];
         $merek = $_POST['merek'];
         $jenis = $_POST['kd_jenis'];
         $kd_merek = "$jenis$kd";
 
-        
+
         $sql = "insert into  merek  values ('$kd_merek','$merek','$jenis')  ";
         $query = update($sql);
         // var_dump($query) or die;
@@ -401,14 +428,14 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         header("location:merek.php?success=2");
     }
 } elseif (isset($_GET['tambah_produk']) !==  false && $_GET['tambah_produk'] === "1") {
-    if (isset($_POST['kd'],$_POST['produk']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
+    if (isset($_POST['kd'], $_POST['produk']) &&  !empty($_POST['kd']) &&  !empty($_POST['kd'])) {
 
         $kd = $_POST['kd'];
         $produk = $_POST['produk'];
         $merek = $_POST['kd_merek'];
         $kd_produk = "$merek$kd";
 
-        
+
         $sql = "insert into  produk  values ('$kd_produk','$produk','$merek')  ";
         $query = update($sql);
         // var_dump($query) or die;
@@ -428,8 +455,8 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $produk = $_POST['produk'];
         $kategori = $_POST['kategori'];
         $kontak = $_POST['kontak'];
-        
-        
+
+
         $sql = "insert into  suplier  values (null,'$nama','$kategori','$produk',$kontak)  ";
         $query = update($sql);
         // var_dump($query) or die;
@@ -449,13 +476,13 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $jenis = $_POST['jenis'];
         $produk = $_POST['produk'];
         $status = $_POST['status'];
-        
-        
-        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',null)  ";
+
+
+        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',0)  ";
         $query = update($sql);
         // var_dump($query) or die;
         if ($query != 0) {
-            header("location:produksi_kontenphp?success=3");
+            header("location:produksi_konten.php?success=3");
         } else {
             header("location:produksi_konten.php?success=4");
         }

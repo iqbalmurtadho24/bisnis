@@ -1,6 +1,5 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
+$result = query("SELECT * from konten k inner join produk p on k.kd_produk=p.kd_produk ");
 ?>
 
 <!-- modal -->
@@ -14,31 +13,19 @@ $row = mysqli_fetch_assoc($result);
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
+        <form action="data.php?tambah_publikasi=1" method="post">
+        <input type="hidden" class="form-control" name="id_user" value="<?= $_SESSION['id_user'] ?>">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Konten</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <select name="produk" class="custom-select" >
+              <option >- Pilih -</option>
+              <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <option value="<?= $row['kd_konten'] ?>"> <?= $row['jenis_konten'] ?> - <?= $row['produk'] ?></option>
+              <?php }  ?>
             </select>
           </div>
-
-
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" type="submit">Tambah user</button>
@@ -149,10 +136,9 @@ $row = mysqli_fetch_assoc($result);
                   <th colspan="4">Publikasi</th>
                 </tr>
                 <tr>
-                  <th>Facebook</th>
+                  <th>Facebook</th>   
                   <th>Instagram</th>
                   <th>Website</th>
-                  <th>Iklan</th>
                 </tr>
               </thead>
             </table>
@@ -182,6 +168,6 @@ $row = mysqli_fetch_assoc($result);
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/publikasi.js"></script>
 
 <?php require_once('../config/footer.php') ?>

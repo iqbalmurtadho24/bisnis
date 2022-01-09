@@ -32,10 +32,7 @@ require_once('../config/header.php');
               <span class="input-group-text" id="basic-addon1">Kategori</span>
             </div>
             <select name="kategori" class="custom-select" id="kategori">
-              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_kategori'] ?>"> <?= $row['kategori'] ?></option>
 
-              <?php }  ?>
             </select>
           </div>
       </div>
