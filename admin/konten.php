@@ -1,7 +1,4 @@
-<?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
-?>
+<?php require_once('../config/header.php');?>
 
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -146,10 +143,11 @@ $row = mysqli_fetch_assoc($result);
                 <thead>
                   <tr>
                     <th><i class="fa fa-cog"></i></th>
+                    <th>No</th>
                     <th>Tanggal Produksi</th>
-                    <th>Kategori</th>
+                    <th>Jenis Konten</th>
                     <th>Produk</th>
-                    <th>Tema</th>
+                    <!-- <th>Tema</th> -->
                     <th>File</th>
                   </tr>
                 </thead>
@@ -179,6 +177,6 @@ $row = mysqli_fetch_assoc($result);
   <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
   <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/user.js"></script>
+  <script src="../assets/dist/js/konten.js"></script>
 
   <?php require_once('../config/footer.php') ?>

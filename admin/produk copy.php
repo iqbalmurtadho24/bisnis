@@ -1,46 +1,47 @@
 <?php
 require_once('../config/header.php');
-
-
+require_once('../config/config.php');
+$query = query("SELECT * FROM merek");
+// $row = mysqli_fetch_assoc($result);
 ?>
 <!-- modal -->
 <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah Jenis Produk Baru </h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Produk Baru </h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_jenis=1" method="post">
+        <form action="data.php?tambah_produk=1" method="post">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kode jenis</span>
+              <span class="input-group-text" id="basic-addon1">Kode Produk</span>
             </div>
             <input type="text" class="form-control" name="kd" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Jenis</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <input type="text" class="form-control" name="jenis" required>
+            <input type="text" class="form-control" name="produk" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kategori</span>
+              <span class="input-group-text" id="basic-addon1">Merek</span>
             </div>
-            <select name="kategori" class="custom-select" id="kategori">
+            <select name="kd_merek" class="custom-select" >
               <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_kategori'] ?>"> <?= $row['kategori'] ?></option>
+                <option value="<?= $row['kd_merek'] ?>"> <?= $row['merek'] ?></option>
 
               <?php }  ?>
             </select>
           </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Tambah Jenis</button>
+        <button class="btn btn-primary" type="submit">Tambah Produk</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
@@ -53,25 +54,25 @@ require_once('../config/header.php');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Edit Jenis </h5>
+        <h5 class="modal-title" id="my-modal-title">Edit Produk</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_jenis=1" method="post">
+        <form action="data.php?edit_merek=1" method="post">
           <input type="text" class="form-control" name="kd" id="kd" hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Jenis</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <input type="text" class="form-control" name="jenis" id="jenis" required>
+            <input type="text" class="form-control" name="merek" id="merek" required>
           </div>
 
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Edit Jenis</button>
+        <button class="btn btn-primary" type="submit">Edit Produk</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
@@ -91,12 +92,12 @@ require_once('../config/header.php');
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Data Jenis</h1>
+        <h1>Data Produk</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Data Jenis</li>
+          <li class="breadcrumb-item active">Data Produk</li>
         </ol>
       </div>
     </div>
@@ -118,6 +119,8 @@ require_once('../config/header.php');
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
                   <th>Kode</th>
+                  <th>Produk</th>
+                  <th>Merek</th>
                   <th>Jenis</th>
                   <th>Kategori</th>
                 </tr>
@@ -148,6 +151,6 @@ require_once('../config/header.php');
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/jenis.js"></script>
+<script src="../assets/dist/js/produk.js"></script>
 
 <?php require_once('../config/footer.php') ?>

@@ -150,7 +150,7 @@ $row = mysqli_fetch_assoc($result);
                     <th>Tanggal Produksi</th>
                     <th>Jenis Konten</th>
                     <th>Produk</th>
-                    <th>Tema</th>
+                    <!-- <th>Tema</th> -->
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -180,6 +180,6 @@ $row = mysqli_fetch_assoc($result);
   <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
   <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/user.js"></script>
+  <script src="../assets/dist/js/konten.js"></script>
 
   <?php require_once('../config/footer.php') ?>

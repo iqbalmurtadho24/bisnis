@@ -228,7 +228,32 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
+}elseif (isset($_GET['konten']) !==  false) {
+
+    if ($_GET['konten'] === "1") {
+        $query = query('select * from konten ');
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+            $modal = " <button class='btn btn-warning' onclick=edit('".$row['kd_konten']."') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'no' => $no++,
+                'waktu' => exist_array($row['waktu']),
+                'jenis' => exist_array($row['jenis_konten']),
+                'produk' => exist_array($row['produk_konten']),
+                'status' => exist_array($row['status_proses'])
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
 }
+
 
 //add
 elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {
