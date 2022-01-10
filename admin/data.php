@@ -243,6 +243,7 @@ if (isset($_GET['user']) !==  false) {
                 'btn' => exist_array($modal),
                 'no' => $no++,
                 'waktu' => exist_array($row['waktu']),
+                'file' => "<a href='{$row['gdrive']}' class='btn btn-info' target='_blank' title='buka link'><i class='fa fa-external-link-alt'></i></a>",
                 'jenis' => exist_array($row['kd_konten']),
                 'produk' => exist_array($row['produk']),
                 'status' => exist_array($row['status_proses'])

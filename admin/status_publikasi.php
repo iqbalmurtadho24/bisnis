@@ -1,5 +1,6 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * from konten k inner join produk p on k.kd_produk=p.kd_produk ");
+$result = query("select * from konten k where (k.kd_konten) not in (SELECT p.kd_konten from publikasi p inner join konten k on p.kd_konten = k.kd_konten ); ");
+
 ?>
 
 <!-- modal -->
@@ -28,7 +29,7 @@ $result = query("SELECT * from konten k inner join produk p on k.kd_produk=p.kd_
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah user</button>
+          <button class="btn btn-primary" type="submit">Tambah Publikasi</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
