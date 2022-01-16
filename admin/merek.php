@@ -145,6 +145,7 @@ require_once('../config/header.php');
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+
 <script src="../assets/dist/js/merek.js"></script>
 
 <?php require_once('../config/footer.php') ?>

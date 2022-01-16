@@ -279,6 +279,14 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
+}elseif(isset($_GET['table'])){
+    $inner = $_GET['inner'] ? 
+    $query = query("select * from {$_GET['table']}");
+    $data = [];
+    while ($row = mysqli_fetch_assoc($query) ) {
+        array_push($data,$row);
+    }
+    echo json_encode($data);
 }
 
 
@@ -584,6 +592,39 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     } else {
         header("location:kategori.php?success=2");
     }
+} elseif (isset($_GET['edit_jenis']) !==  false && $_GET['edit_jenis'] == "1") {
+    if (isset($_POST['kd'], $_POST['jenis']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $jenis = $_POST['jenis'];
+
+        $sql = "update jenis_produk set jenis='$jenis'   where kd_jenis = '$kd'";
+        $query = update($sql);
+        // var_dump($query) or die;
+
+        if ($query != 0) {
+            header("location:jenis.php?success=1");
+        } else {
+            header("location:jenis.php?success=4");
+        }
+    } else {
+        header("location:jenis.php?success=2");
+    }
+} elseif (isset($_GET['edit_merek']) !==  false && $_GET['edit_merek'] == "1") {
+    if (isset($_POST['kd'], $_POST['merek']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $merek = $_POST['merek'];
+
+        $sql = "update merek set merek='$merek'   where kd_merek = '$kd'";
+        $query = query($sql);
+
+        if ($query != 0) {
+            header("location:merek.php?success=1");
+        } else {
+            header("location:merek.php?success=4");
+        }
+    } else {
+        header("location:merek.php?success=2");
+    }
 } elseif (isset($_GET['edit_user'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_user'] == 'data') {
     $query = query('select * from user where id_user= "' . $_GET['kd'] . '"');
 
@@ -608,6 +649,17 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);
     // var_dump($data) or die;
+} elseif (isset($_GET['edit_jenis'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_jenis'] == 'data') {
+    $query = query('select * from jenis_produk where kd_jenis= "' . $_GET['kd'] . '"');
+
+    $data = mysqli_fetch_assoc($query);
+    echo json_encode($data);
+    // var_dump($data) or die;
+} elseif (isset($_GET['edit'], $_GET['kd'],$_GET['where']) !== false && !empty($_GET['kd']) ) {
+    $query = query('select * from '.$_GET['edit'].' where '.$_GET['where'].'= "' . $_GET['kd'] . '"');
+
+    $data = mysqli_fetch_assoc($query);
+    echo json_encode($data);
 } else {
     header("location:index.php");
 }

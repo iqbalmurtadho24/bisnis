@@ -7,13 +7,13 @@ function edit(i) {
 
     $.ajax({
         type: "GET",
-        url: "data.php?kd=" + kd + "&&edit_merek=data",
+        url: "data.php?kd=" + kd + "&edit=merek&where=kd_merek",
         async: false,
         success: function (text) {
             response = JSON.parse(text);
             $("#modal_edit").modal("show");
-            $("#kd").val(response.kd_kategori);
-            $("#merek").val(response.kategori);
+            $("#kd").val(response.kd_merek);
+            $("#merek").val(response.merek);
         },
     });
 }
@@ -22,17 +22,17 @@ function edit(i) {
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "data.php?jenis=1",
+        url: "data.php?merek=1",
 
         success: function (text) {
             response = JSON.parse(text);
   
             select = "";
             for (let i = 0; i < response.data.length; i++) {
-                select += "<option value='" + response.data[i].kd + "'>" + response.data[i].jenis + " </option>"
+                select += "<option value='" + response.data[i].kd + "'>" + response.data[i].merek + " </option>"
 
             }
-            $('#jenis').html(select);
+            $('#merek').html(select);
 
         }
     })

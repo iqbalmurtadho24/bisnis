@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 03:02 PM
+-- Generation Time: Jan 16, 2022 at 10:16 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -121,8 +121,8 @@ CREATE TABLE `jenis_produk` (
 --
 
 INSERT INTO `jenis_produk` (`kd_jenis`, `jenis`, `kd_kategori`) VALUES
-('KLACC', 'Aksesoris', 'KL'),
-('KLwq', 'wqw', 'KL'),
+('KLACC', 'aas', 'KL'),
+('KLwq', 'w', 'KL'),
 ('PP', 'Plastik', 'P');
 
 -- --------------------------------------------------------
@@ -141,7 +141,7 @@ CREATE TABLE `kategori_produk` (
 --
 
 INSERT INTO `kategori_produk` (`kd_kategori`, `kategori`) VALUES
-('KL', 'Komputer & '),
+('KL', 'Kompu'),
 ('P', 'Perabotan rumah tangga');
 
 -- --------------------------------------------------------
@@ -205,8 +205,8 @@ CREATE TABLE `merek` (
 --
 
 INSERT INTO `merek` (`kd_merek`, `merek`, `kd_jenis`) VALUES
-('KLACCSM', 'SAMSUNG', 'KLACC'),
-('PPC', 'Cemara', 'PP');
+('KLACCSM', 'ss', 'KLACC'),
+('PPC', 'kn', 'PP');
 
 -- --------------------------------------------------------
 

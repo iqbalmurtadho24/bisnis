@@ -7,13 +7,13 @@ function edit(i) {
 
     $.ajax({
         type: "GET",
-        url: "data.php?kd=" + kd + "&&edit_kategori=data",
+        url: "data.php?kd=" + kd + "&&edit_jenis=data",
         async: false,
         success: function (text) {
             response = JSON.parse(text);
             $("#modal_edit").modal("show");
-            $("#kd").val(response.kd_kategori);
-            $("#kategori").val(response.kategori);
+            $("#kd").val(response.kd_jenis);
+            $("#jenis").val(response.jenis);
         },
     });
 }
