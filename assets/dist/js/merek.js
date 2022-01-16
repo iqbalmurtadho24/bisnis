@@ -22,17 +22,17 @@ function edit(i) {
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "data.php?merek=1",
+        url: "data.php?table=jenis_produk",
 
         success: function (text) {
             response = JSON.parse(text);
-  
+
             select = "";
-            for (let i = 0; i < response.data.length; i++) {
-                select += "<option value='" + response.data[i].kd + "'>" + response.data[i].merek + " </option>"
+            for (let i = 0; i < response.length; i++) {
+                select += "<option value='" + response[i].kd_jenis + "'>" + response[i].jenis + " </option>"
 
             }
-            $('#merek').html(select);
+            $('#jenis').html(select);
 
         }
     })

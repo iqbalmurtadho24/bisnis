@@ -7,13 +7,13 @@ function edit(i) {
 
     $.ajax({
         type: "GET",
-        url: "data.php?kd=" + kd + "&&edit_produk=data",
+        url: "data.php?kd=" + kd + "&edit=produk&where=kd_produk",
         async: false,
         success: function (text) {
             response = JSON.parse(text);
             $("#modal_edit").modal("show");
-            $("#kd").val(response.kd_kategori);
-            $("#produk").val(response.kategori);
+            $("#kd").val(response.kd_produk);
+            $("#produk").val(response.produk);
         },
     });
 }
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
         success: function (text) {
             response = JSON.parse(text);
-  
+
             select = "";
             for (let i = 0; i < response.data.length; i++) {
                 select += "<option value='" + response.data[i].kd + "'>" + response.data[i].merek + " </option>"
@@ -59,7 +59,7 @@ $(document).ready(function () {
                 {
                     data: "kategori",
                 },
-        
+
 
             ],
             paging: false,

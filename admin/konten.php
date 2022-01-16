@@ -1,7 +1,4 @@
 <?php require_once('../config/header.php'); ?>
-
-
-
 <!-- DataTables -->
 <link rel="stylesheet" href="../assets/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../assets/datatables-responsive/css/responsive.bootstrap4.min.css">

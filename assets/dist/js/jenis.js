@@ -7,7 +7,7 @@ function edit(i) {
 
     $.ajax({
         type: "GET",
-        url: "data.php?kd=" + kd + "&&edit_jenis=data",
+        url: "data.php?kd=" + kd + "&edit=jenis_produk&where=kd_jenis",
         async: false,
         success: function (text) {
             response = JSON.parse(text);

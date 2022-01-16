@@ -7,7 +7,7 @@ function edit(i) {
 
   $.ajax({
     type: "GET",
-    url: "data.php?kd=" + kd + "&&edit_akses=data",
+    url: "data.php?kd=" + kd + "&edit=akses&where=kd_akses",
     async: false,
     success: function (text) {
 

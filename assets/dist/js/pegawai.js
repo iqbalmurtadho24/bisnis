@@ -1,20 +1,19 @@
 function edit(i) {
     let   kd = i;
-      
-          $("select option[selected]").removeAttr("selected");    
-          $("input").removeAttr("value");    
-          $("textarea").removeAttr("value");  
-    
+
+          $("select option[selected]").removeAttr("selected");
+          $("input").removeAttr("value");
+          $("textarea").removeAttr("value");
+
           $.ajax({
             type: "GET",
-            url: "data.php?kd=" + kd + "&&edit_pegawai=data",
+            url: "data.php?kd=" + kd + "&edit=sdm&where=id_user",
             async: false,
             success: function (text) {
-         
+
               response = JSON.parse(text);
               $("#modal_edit").modal("show");
               $("#id_user").val(response.id_user);
-              console.log($("#id_user").attr('class'));
               $("#nama").val(response.nama);
               $("#tanggal_lahir").val(response.tanggal_lahir);
               $("#nik").val(response.nik);
@@ -29,15 +28,15 @@ function edit(i) {
               $("#bank").val(response.bank);
               $("#nama_rekening").val(response.nama_rekening  );
               $("#rekening").val(response.rekening  );
-         
 
-        
-     
+
+
+
             },
           });
         }
-  
-  
+
+
   $(document).ready(function () {
     var tableX = $("#example")
       .DataTable({
@@ -46,11 +45,11 @@ function edit(i) {
           {
             data: "btn",
           },
-      
+
           {
             data: "nama",
           },
-      
+
           {
             data: "kontak",
           },
@@ -63,14 +62,14 @@ function edit(i) {
           {
             data: "rekening",
           },
-        
+
         ],
         paging: false,
-  
+
         scrollY: 620,
         scrollCollapse: true,
         responsive: true,
-  
+
         // dom: 'Bfrtip', ikilo nggonmu maeng
         dom: "<'row'<'col-sm-12 col-md-6'Bl><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [
@@ -87,4 +86,3 @@ function edit(i) {
       .container()
       .appendTo("#example_wrapper .col-md-6:eq(0)");
   });
-  

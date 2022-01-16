@@ -7,7 +7,7 @@ function edit(i) {
 
   $.ajax({
     type: "GET",
-    url: "data.php?kd=" + kd + "&&edit_user=data",
+    url: "data.php?kd=" + kd + "&edit=user&where=id_user",
     async: false,
     success: function (text) {
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
         {
           data: "password",
         },
-     
+
         {
           data: "status",
         },

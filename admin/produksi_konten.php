@@ -189,6 +189,9 @@ $query = query("SELECT * FROM produk");
   <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
   <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <Script>
+    id = "<?= $_SESSION['id_user'] ?>"
+  </Script>
   <script src="../assets/dist/js/konten.js"></script>
 
   <?php require_once('../config/footer.php') ?>

@@ -142,7 +142,6 @@ if (isset($_GET['user']) !==  false) {
 
             array_push($data['data'], [
                 'btn' => exist_array($modal),
-
                 'kd' => exist_array($row['kd_jenis']),
                 'jenis' => exist_array($row['jenis']),
                 'kategori' => exist_array($row['kategori'])
@@ -219,6 +218,8 @@ if (isset($_GET['user']) !==  false) {
                 'btn' => exist_array($modal),
                 'kd' => exist_array($row['id_suplier']),
                 'nama' => exist_array($row['nama']),
+                'toko' => exist_array($row['toko']),
+                'alamat' => exist_array($row['alamat']),
                 'kategori' => exist_array($row['kategori']),
                 'produk' => exist_array($row['produk']),
                 'kontak' => exist_array($row['kontak'])
@@ -231,7 +232,8 @@ if (isset($_GET['user']) !==  false) {
 } elseif (isset($_GET['konten']) !==  false) {
 
     if ($_GET['konten'] === "1") {
-        $query = query('select * from konten k inner join produk p on k.kd_produk = p.kd_produk ');
+        $id = isset($_GET['id']) ? "where k.id_user = '{$_GET['id']}'" : "";
+        $query = query("select * from konten k inner join produk p on k.kd_produk = p.kd_produk $id");
 
         $data['data'] = [];
         $no = 0;
@@ -279,15 +281,17 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-}elseif(isset($_GET['table'])){
-    $inner = $_GET['inner'] ? 
-    $query = query("select * from {$_GET['table']}");
+} elseif (isset($_GET['table'])) {
+
+
+    $query = query("select * from {$_GET['table']}  ");
     $data = [];
-    while ($row = mysqli_fetch_assoc($query) ) {
-        array_push($data,$row);
+    while ($row = mysqli_fetch_assoc($query)) {
+        array_push($data, $row);
     }
     echo json_encode($data);
 }
+
 
 
 
@@ -461,12 +465,14 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
 
         // $kd = $_POST['kd'];
         $nama = $_POST['nama'];
+        $alamat = $_POST['alamat'];
+        $toko = $_POST['toko'];
         $produk = $_POST['produk'];
         $kategori = $_POST['kategori'];
         $kontak = $_POST['kontak'];
 
 
-        $sql = "insert into  suplier  values (null,'$nama','$kategori','$produk',$kontak)  ";
+        $sql = "insert into  suplier  values (null,'$nama','$toko','$alamat','$kategori','$produk',$kontak)  ";
         $query = update($sql);
         // var_dump($query) or die;
         if ($query != 0) {
@@ -625,38 +631,45 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     } else {
         header("location:merek.php?success=2");
     }
-} elseif (isset($_GET['edit_user'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_user'] == 'data') {
-    $query = query('select * from user where id_user= "' . $_GET['kd'] . '"');
+} elseif (isset($_GET['edit_produk']) !==  false && $_GET['edit_produk'] == "1") {
+    if (isset($_POST['kd'], $_POST['produk']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $produk = $_POST['produk'];
 
-    $data = mysqli_fetch_assoc($query);
-    echo json_encode($data);
-    // var_dump($data) or die;
-} elseif (isset($_GET['edit_pegawai'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_pegawai'] == 'data') {
-    $query = query('select * from sdm where id_user= "' . $_GET['kd'] . '"');
+        $sql = "update produk set produk='$produk'   where kd_produk = '$kd'";
+        $query = query($sql);
 
-    $data = mysqli_fetch_assoc($query);
-    echo json_encode($data);
-    // var_dump($data) or die;
-} elseif (isset($_GET['edit_akses'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_akses'] == 'data') {
-    $query = query('select * from akses where kd_akses= "' . $_GET['kd'] . '"');
+        if ($query != 0) {
+            header("location:produk.php?success=1");
+        } else {
+            header("location:produk.php?success=4");
+        }
+    } else {
+        header("location:produk.php?success=2");
+    }
+}elseif (isset($_GET['edit_suplier']) !==  false && $_GET['edit_suplier'] == "1") {
+    if (isset($_POST['kd'], $_POST['nama']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $produk = $_POST['produk'];
+        $nama = $_POST['nama'];
+        $toko = $_POST['toko'];
+        $alamat = $_POST['alamat'];
+        $kategori = $_POST['kategori'];
+        $kontak = $_POST['kontak'];
 
-    $data = mysqli_fetch_assoc($query);
-    echo json_encode($data);
-    // var_dump($data) or die;
-} elseif (isset($_GET['edit_kategori'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_kategori'] == 'data') {
-    $query = query('select * from kategori_produk where kd_kategori= "' . $_GET['kd'] . '"');
+        $sql = "update suplier set nama = '$nama',toko='$toko',alamat='$alamat',kategori ='$kategori', produk='$produk' , kontak =$kontak   where id_suplier = $kd";
+        $query = query($sql);
 
-    $data = mysqli_fetch_assoc($query);
-    echo json_encode($data);
-    // var_dump($data) or die;
-} elseif (isset($_GET['edit_jenis'], $_GET['kd']) !== false && !empty($_GET['kd']) && $_GET['edit_jenis'] == 'data') {
-    $query = query('select * from jenis_produk where kd_jenis= "' . $_GET['kd'] . '"');
-
-    $data = mysqli_fetch_assoc($query);
-    echo json_encode($data);
-    // var_dump($data) or die;
-} elseif (isset($_GET['edit'], $_GET['kd'],$_GET['where']) !== false && !empty($_GET['kd']) ) {
-    $query = query('select * from '.$_GET['edit'].' where '.$_GET['where'].'= "' . $_GET['kd'] . '"');
+        if ($query != 0) {
+            header("location:suplier.php?success=1");
+        } else {
+            header("location:suplier.php?success=4");
+        }
+    } else {
+        header("location:suplier.php?success=2");
+    }
+} elseif (isset($_GET['edit'], $_GET['kd'], $_GET['where']) !== false && !empty($_GET['kd'])) {
+    $query = query('select * from ' . $_GET['edit'] . ' where ' . $_GET['where'] . '= "' . $_GET['kd'] . '"');
 
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);

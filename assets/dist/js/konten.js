@@ -33,7 +33,7 @@ function edit(i) {
 $(document).ready(function () {
   var tableX = $("#example")
     .DataTable({
-      ajax: "data.php?konten=1",
+      ajax: "data.php?konten=1&id="+id,
       columns: [
         {
           data: "btn",
@@ -45,11 +45,11 @@ $(document).ready(function () {
         {
           data: "waktu",
         },
-     
+
         {
           data: "jenis",
         },
-        
+
         {
           data: "produk",
         },

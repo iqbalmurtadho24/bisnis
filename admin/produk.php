@@ -32,7 +32,7 @@ require_once('../config/config.php');
               <span class="input-group-text" id="basic-addon1">Merek</span>
             </div>
             <select name="kd_merek" class="custom-select" id="merek">
-      
+
             </select>
           </div>
       </div>
@@ -56,14 +56,14 @@ require_once('../config/config.php');
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_merek=1" method="post">
+        <form action="data.php?edit_produk=1" method="post">
           <input type="text" class="form-control" name="kd" id="kd" hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <input type="text" class="form-control" name="merek" id="merek" required>
+            <input type="text" class="form-control" name="produk" id="produk" required>
           </div>
 
       </div>

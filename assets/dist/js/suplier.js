@@ -7,19 +7,47 @@ function edit(i) {
 
     $.ajax({
         type: "GET",
-        url: "data.php?kd=" + kd + "&&edit_suplier=data",
+        url: "data.php?kd=" + kd + "&edit=suplier&where=id_suplier",
         async: false,
         success: function (text) {
             response = JSON.parse(text);
             $("#modal_edit").modal("show");
-            $("#kd").val(response.kd_kategori);
-            $("#suplier").val(response.kategori);
+            $("#kd").val(response.id_suplier);
+            $("#nama").val(response.nama);
+            $("#toko").val(response.toko);
+            $("#alamat").val(response.alamat);
+            if (response.kategori != null && $("#kategori option[value='" + response.kategori + "']").length > 0) {
+                $('#kategori option[value="' + response.kategori + '"]'
+                ).attr("selected", "selected");
+              }
+            $("#kontak").val(response.kontak);
+            if (response.produk != null && $("#produk1 option[value='" + response.produk + "']").length > 0) {
+                $('#produk1 option[value="' + response.produk + '"]'
+                ).attr("selected", "selected");
+              }
+
         },
     });
 }
 
 
 $(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: "data.php?produk=1",
+
+        success: function (text) {
+            response = JSON.parse(text);
+            select = "";
+            for (let i = 0; i < response.data.length; i++) {
+                select += "<option value='" + response.data[i].kd + "'>"+ response.data[i].produk + "---"+ response.data[i].merek + " </option>"
+
+            }
+            $('#produk').html(select);
+            $('#produk1').html(select);
+
+        }
+    })
     var tableX = $("#example")
         .DataTable({
             ajax: "data.php?suplier=1",
@@ -35,6 +63,12 @@ $(document).ready(function () {
                     data: "nama",
                 },
                 {
+                    data: "toko",
+                },
+                {
+                    data: "alamat",
+                },
+                {
                     data: "kategori",
                 },
                 {
@@ -43,7 +77,7 @@ $(document).ready(function () {
                 {
                     data: "kontak",
                 },
-        
+
 
             ],
             paging: false,

@@ -1,5 +1,4 @@
 <?php require_once('../config/header.php');
-$query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_merek");
 ?>
 
 <!-- modal -->
@@ -14,7 +13,7 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
       </div>
       <div class="modal-body">
         <form action="data.php?tambah_suplier=1" method="post">
-     
+
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Nama Suplier</span>
@@ -23,22 +22,33 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Toko Suplier</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Nama Toko " name="toko" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Alamat Toko</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Alamat Suplier" name="alamat" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kategori</span>
             </div>
-            <select name="kategori" class="custom-select" >
-              <option value="Online">Online</option>
-              <option value="Offline">Offline</option>
+            <select name="kategori" class="custom-select">
+              <option value="offline">Offline</option>
+              <option value="tokopedia">Tokopedia</option>
+              <option value="bukalapak">Bukalapak</option>
+              <option value="shopee">Shopee</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kategori Produk</span>
+              <span class="input-group-text" id="basic-addon1"> Produk</span>
             </div>
-            <select name="produk" class="custom-select" >
-              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_produk'] ?>"><?= $row['produk'] ?> - <?= $row['merek'] ?></option>
+            <select name="produk" class="custom-select" id="produk">
 
-              <?php }  ?>
             </select>
           </div>
           <div class="input-group mb-3">
@@ -48,10 +58,10 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
             <input type="number" class="form-control" placeholder="ex : 0852" name="kontak" required>
           </div>
 
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah Suplier</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Tambah Suplier</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -69,44 +79,57 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_user=1" method="post">
-          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+        <form action="data.php?edit_suplier=1" method="post">
+          <input type="text" class="form-control" name='kd' id='kd' hidden>
+
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Kode Suplier</span>
+              <span class="input-group-text" id="basic-addon1">Nama Suplier</span>
             </div>
-            <input type="text" class="form-control" placeholder="kd" name="username" id="username" required>
+            <input type="text" class="form-control" placeholder="Nama Suplier" name="nama" id="nama" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
+              <span class="input-group-text" id="basic-addon1">Toko Suplier</span>
             </div>
-            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
+            <input type="text" class="form-control" placeholder="Nama Toko " name="toko" id="toko" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
+              <span class="input-group-text" id="basic-addon1">Alamat Toko</span>
             </div>
-            <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <input type="text" class="form-control" placeholder="Alamat Suplier" name="alamat" id="alamat" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Kategori</span>
+            </div>
+            <select name="kategori" class="custom-select" id="kategori">
+              <option value="offline">Offline</option>
+              <option value="tokopedia">Tokopedia</option>
+              <option value="bukalapak">Bukalapak</option>
+              <option value="shopee">Shopee</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">status</span>
+              <span class="input-group-text" id="basic-addon1"> Produk</span>
             </div>
-            <select name="status" id="status" class="custom-select">
-              <option value="0">NONAKTIF</option>
-              <option value="1">AKTIF</option>
+            <select name="produk" class="custom-select" id="produk1">
+
             </select>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Edit Suplier</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Kontak</span>
+            </div>
+            <input type="number" class="form-control" placeholder="ex : 0852" name="kontak" id='kontak' required>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Edit Suplier</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -153,6 +176,8 @@ $query = query("SELECT * FROM produk p inner join merek m on p.kd_merek=m.kd_mer
                   <th><i class="fa fa-cog"></i></th>
                   <th>Kode Suplier</th>
                   <th>Nama Suplier</th>
+                  <th>Toko Suplier</th>
+                  <th>Alamat toko</th>
                   <th>Kategori</th>
                   <th>Produk</th>
                   <th>Kontak</th>
