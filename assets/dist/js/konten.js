@@ -13,10 +13,21 @@ function edit(i) {
 
       response = JSON.parse(text);
       $("#modal_edit").modal("show");
-
+      $("#kd").val(response.kd_konten)
+      $("#link").val(response.gdrive)
       // alert(response);
-      if (response.status != null && $("#status option[value='" + response.status + "']").length > 0) {
-        $('#status option[value="' + response.status + '"]'
+      if (response.status_proses != null && $("#status option[value='" + response.status_proses + "']").length > 0) {
+        $('#status option[value="' + response.status_proses + '"]'
+        ).attr("selected", "selected");
+      }
+
+      if (response.kd_produk != null && $("#produk1 option[value='" + response.kd_produk + "']").length > 0) {
+        $('#produk1 option[value="' + response.kd_produk + '"]'
+        ).attr("selected", "selected");
+      }
+
+      if (response.jenis_konten != null && $("#jenis option[value='" + response.jenis_konten + "']").length > 0) {
+        $('#jenis option[value="' + response.jenis_konten + '"]'
         ).attr("selected", "selected");
       }
 
@@ -32,16 +43,17 @@ $(document).ready(function () {
     url: "data.php?table=produk",
 
     success: function (text) {
-        response = JSON.parse(text);
-        select = "<option >- Pilih -</option>";
-        for (let i = 0; i < response.length; i++) {
-            select += "<option value='" + response[i].kd_produk + "'>" + response[i].produk + " </option>"
+      response = JSON.parse(text);
+      select = "<option >- Pilih -</option>";
+      for (let i = 0; i < response.length; i++) {
+        select += "<option value='" + response[i].kd_produk + "'>" + response[i].produk + " </option>"
 
-        }
-        $('#produk').html(select);
+      }
+      $('#produk').html(select);
+      $('#produk1').html(select);
 
     }
-})
+  })
   var tableX = $("#example")
     .DataTable({
       ajax: "data.php?konten=1&id=" + id,
@@ -67,7 +79,7 @@ $(document).ready(function () {
         {
           data: "status",
         },
-         {
+        {
           data: "file",
         },
 

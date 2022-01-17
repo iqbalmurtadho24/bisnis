@@ -280,6 +280,21 @@ if (isset($_GET['user']) !==  false) {
 
 
         echo json_encode($data);
+    } elseif ($_GET['publikasi'] == "2") {
+        $query = query("select * from konten u inner join produk p on u.kd_produk = p.kd_produk where (u.kd_konten)
+         not in (SELECT uu.kd_konten from konten uu inner join publikasi s on uu.kd_konten = s.kd_konten );");
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push(
+                $data,
+                [
+                    'kd' => $row['kd_konten'],
+                    'value' => $row['produk'] . " -- " . $row['jenis_konten'],
+                ]
+            );
+        }
+
+        echo json_encode($data);
     }
 } elseif (isset($_GET['table'])) {
 
@@ -298,7 +313,7 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 0;
         while ($row = mysqli_fetch_assoc($query)) {
-            
+
             $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_cs'] . "') title='Edit Konten'>
             <i class='far fa-edit'></i>  </button> ";
 
@@ -316,7 +331,7 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-} 
+}
 
 //add
 elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {
@@ -690,6 +705,26 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         }
     } else {
         header("location:suplier.php?success=2");
+    }
+} elseif (isset($_GET['edit_konten']) !==  false && $_GET['edit_konten'] == "1") {
+    if (isset($_POST['kd']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $status = $_POST['status'];
+        $produk = $_POST['produk'];
+        $jenis = $_POST['jenis'];
+        $link = $_POST['link'];
+
+
+        $sql = "update konten set status_proses = '$status',gdrive = '$link',kd_produk = '$produk',jenis_konten = '$jenis'    where kd_konten = $kd";
+        $query = query($sql);
+
+        if ($query != 0) {
+            header("location:produksi_konten.php?success=1");
+        } else {
+            header("location:produksi_konten.php?success=4");
+        }
+    } else {
+        header("location:produksi_konten.php?success=2");
     }
 } elseif (isset($_GET['edit'], $_GET['kd'], $_GET['where']) !== false && !empty($_GET['kd'])) {
     $query = query('select * from ' . $_GET['edit'] . ' where ' . $_GET['where'] . '= "' . $_GET['kd'] . '"');

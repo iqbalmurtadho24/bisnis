@@ -31,6 +31,24 @@ function edit(i) {
 
 
 $(document).ready(function () {
+
+  $.ajax({
+    type: "GET",
+    url: "data.php?publikasi=2",
+
+    success: function (text) {
+      response = JSON.parse(text);
+      select = "<option >- Pilih -</option>";
+      for (let i = 0; i < response.length; i++) {
+        select += "<option value='" + response[i].kd + "'>" + response[i].value + " </option>"
+
+      }
+      $('#konten').html(select);
+      $('#konten1').html(select);
+
+    }
+  })
+
   var tableX = $("#example")
     .DataTable({
       ajax: "data.php?publikasi=1",
@@ -45,11 +63,11 @@ $(document).ready(function () {
         {
           data: "waktu",
         },
-     
+
         {
           data: "konten",
         },
-        
+
         {
           data: "produk",
         },

@@ -10,11 +10,11 @@ $(document).ready(function () {
           {
             data: "waktu",
           },
-       
+
           {
             data: "konten",
           },
-          
+
           {
             data: "produk",
           },
@@ -27,14 +27,14 @@ $(document).ready(function () {
           {
             data: "website",
           },
-  
+
         ],
         paging: false,
-  
+
         scrollY: 620,
         scrollCollapse: true,
         responsive: true,
-  
+
         // dom: 'Bfrtip', ikilo nggonmu maeng
         dom: "<'row'<'col-sm-12 col-md-6'Bl><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [
@@ -51,4 +51,3 @@ $(document).ready(function () {
       .container()
       .appendTo("#example_wrapper .col-md-6:eq(0)");
   });
-  

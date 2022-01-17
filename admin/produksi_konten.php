@@ -73,39 +73,45 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_user=1" method="post">
-          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+        <form action="data.php?edit_konten=1" method="post">
+          <input type="text" class="form-control" name='kd' id='kd' hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Jenis Konten</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <select name="jenis" class="custom-select" id="jenis" required>
+              <option >- Pilih -</option>
+              <option value="Gambar">Gambar</option>
+              <option value="Video">Video</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="System Website">System Website</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">status</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <select name="status" id="status" class="custom-select">
-              <option value="0">NONAKTIF</option>
-              <option value="1">AKTIF</option>
+            <select name="produk" class="custom-select" id="produk1">
+
             </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">status Konten</span>
+            </div>
+            <select name="status" id="status" class="custom-select" required >
+              <option >- Pilih -</option>
+              <option value="Planning">Planning</option>
+              <option value="Proses">Proses</option>
+              <option value="Finish">Finish</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Link File</span>
+            </div>
+            <input type="text" name="link" id="link">
           </div>
         </div>
         <div class="modal-footer">
