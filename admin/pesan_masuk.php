@@ -14,7 +14,7 @@ $row = mysqli_fetch_assoc($result);
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
+        <form action="data.php?pesan_masuk=1" method="post">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Username</span>
@@ -146,10 +146,12 @@ $row = mysqli_fetch_assoc($result);
                 <thead>
                   <tr>
                     <th><i class="fa fa-cog"></i></th>
-                    <th>Kode Pelanggan</th>
-                    <th>Kategori</th>
-                    <th>Produk</th>
+                    <th>Kode CS</th>
+                    <th>Waktu</th>
+                    <th>Pelanggan</th>
                     <th>Kontak</th>
+                    <th>Produk</th>
+                    <th>Status Order</th>
                   </tr>
                 </thead>
               </table>
@@ -178,6 +180,6 @@ $row = mysqli_fetch_assoc($result);
   <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
   <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/user.js"></script>
+  <script src="../assets/dist/js/pesan_masuk.js"></script>
 
   <?php require_once('../config/footer.php') ?>

@@ -290,10 +290,33 @@ if (isset($_GET['user']) !==  false) {
         array_push($data, $row);
     }
     echo json_encode($data);
-}
+} elseif (isset($_GET['pesan_masuk']) !==  false) {
+
+    if ($_GET['pesan_masuk'] === "1") {
+        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.id_produk=pr.kd_produk");
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+            
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_cs'] . "') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['kd_cs']),
+                'waktu' => exist_array($row['waktu']),
+                'pelanggan' => exist_array($row['pelanggan']),
+                'kontak' => exist_array($row['kontak']),
+                'produk' => exist_array($row['produk']),
+                'status' => exist_array($row['produk']),
+            ]);
+        }
 
 
-
+        echo json_encode($data);
+    }
+} 
 
 //add
 elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {
@@ -647,7 +670,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     } else {
         header("location:produk.php?success=2");
     }
-}elseif (isset($_GET['edit_suplier']) !==  false && $_GET['edit_suplier'] == "1") {
+} elseif (isset($_GET['edit_suplier']) !==  false && $_GET['edit_suplier'] == "1") {
     if (isset($_POST['kd'], $_POST['nama']) &&  !empty($_POST['kd'])) {
         $kd = $_POST['kd'];
         $produk = $_POST['produk'];
