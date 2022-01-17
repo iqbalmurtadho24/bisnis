@@ -308,23 +308,32 @@ if (isset($_GET['user']) !==  false) {
 } elseif (isset($_GET['pesan_masuk']) !==  false) {
 
     if ($_GET['pesan_masuk'] === "1") {
-        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.id_produk=pr.kd_produk");
+        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk");
 
         $data['data'] = [];
         $no = 0;
         while ($row = mysqli_fetch_assoc($query)) {
+            
+            $pesanan = query("select * from pemesanan where kd_cs='{$row['kd_cs']}'");
+            $row1 = mysqli_num_rows($pesanan);
+            if($row1==0){
+                $status = 'Belum';
+            }if($row1!=0){
+                $status = 'Order';
+            }
+
 
             $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_cs'] . "') title='Edit Konten'>
             <i class='far fa-edit'></i>  </button> ";
 
-            array_push($data['data'], [
+            array_push($data['data'], [ 
                 'btn' => exist_array($modal),
                 'kd' => exist_array($row['kd_cs']),
                 'waktu' => exist_array($row['waktu']),
-                'pelanggan' => exist_array($row['pelanggan']),
+                'pelanggan' => exist_array($row['nama']),
                 'kontak' => exist_array($row['kontak']),
                 'produk' => exist_array($row['produk']),
-                'status' => exist_array($row['produk']),
+                'status' => $status
             ]);
         }
 
