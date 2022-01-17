@@ -236,7 +236,7 @@ if (isset($_GET['user']) !==  false) {
         $query = query("select * from konten k inner join produk p on k.kd_produk = p.kd_produk $id");
 
         $data['data'] = [];
-        $no = 0;
+        $no = 1;
         while ($row = mysqli_fetch_assoc($query)) {
             $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_konten'] . "') title='Edit Konten'>
             <i class='far fa-edit'></i>  </button> ";
@@ -491,11 +491,11 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $jenis = $_POST['jenis'];
         $produk = $_POST['produk'];
         $status = $_POST['status'];
+        $link = $_POST['link'];
 
 
-        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',0)  ";
+        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',0,'$link')  ";
         $query = update($sql);
-        // var_dump($query) or die;
         if ($query != 0) {
             header("location:produksi_konten.php?success=3");
         } else {

@@ -7,16 +7,12 @@ function edit(i) {
 
   $.ajax({
     type: "GET",
-    url: "data.php?kd=" + kd + "&&edit_user=data",
+    url: "data.php?kd=" + kd + "&edit=konten&where=kd_konten",
     async: false,
     success: function (text) {
 
       response = JSON.parse(text);
       $("#modal_edit").modal("show");
-      $("#id_user").val(response.id_user);
-      $("#username").val(response.username);
-      $("#password").val(response.password);
-      $("#level").val(response.level);
 
       // alert(response);
       if (response.status != null && $("#status option[value='" + response.status + "']").length > 0) {
@@ -31,9 +27,24 @@ function edit(i) {
 
 
 $(document).ready(function () {
+  $.ajax({
+    type: "GET",
+    url: "data.php?table=produk",
+
+    success: function (text) {
+        response = JSON.parse(text);
+        select = "<option >- Pilih -</option>";
+        for (let i = 0; i < response.length; i++) {
+            select += "<option value='" + response[i].kd_produk + "'>" + response[i].produk + " </option>"
+
+        }
+        $('#produk').html(select);
+
+    }
+})
   var tableX = $("#example")
     .DataTable({
-      ajax: "data.php?konten=1&id="+id,
+      ajax: "data.php?konten=1&id=" + id,
       columns: [
         {
           data: "btn",
@@ -55,6 +66,9 @@ $(document).ready(function () {
         },
         {
           data: "status",
+        },
+         {
+          data: "file",
         },
 
       ],

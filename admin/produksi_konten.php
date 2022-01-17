@@ -1,5 +1,5 @@
 <?php require_once('../config/header.php');
-$query = query("SELECT * FROM produk");
+
 ?>
 
 <!-- modal -->
@@ -31,16 +31,13 @@ $query = query("SELECT * FROM produk");
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <select name="produk" class="custom-select" >
-              <option >- Pilih -</option>
-              <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <option value="<?= $row['kd_produk'] ?>"> <?= $row['produk'] ?></option>
-              <?php }  ?>
+            <select name="produk" class="custom-select" id="produk">
+
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Jenis Konten</span>
+              <span class="input-group-text" id="basic-addon1">status Konten</span>
             </div>
             <select name="status" class="custom-select" required>
               <option >- Pilih -</option>
@@ -48,6 +45,12 @@ $query = query("SELECT * FROM produk");
               <option value="Proses">Proses</option>
               <option value="Finish">Finish</option>
             </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Link File</span>
+            </div>
+            <input type="text" name="link">
           </div>
         </div>
         <div class="modal-footer">
@@ -161,6 +164,7 @@ $query = query("SELECT * FROM produk");
                     <th>Jenis Konten</th>
                     <th>Produk</th>
                     <th>Status</th>
+                    <th>File</th>
                   </tr>
                 </thead>
               </table>
