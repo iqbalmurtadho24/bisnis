@@ -770,7 +770,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         $merek = $_POST['merek'];
 
         $sql = "update merek set merek='$merek'   where kd_merek = '$kd'";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:merek.php?success=1");
@@ -786,7 +786,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         $produk = $_POST['produk'];
 
         $sql = "update produk set produk='$produk'   where kd_produk = '$kd'";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:produk.php?success=1");
@@ -807,7 +807,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
         $kontak = $_POST['kontak'];
 
         $sql = "update suplier set nama = '$nama',toko='$toko',alamat='$alamat',kategori ='$kategori', produk='$produk' , kontak =$kontak   where id_suplier = $kd";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:suplier.php?success=1");
@@ -827,7 +827,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
 
 
         $sql = "update konten set status_proses = '$status',gdrive = '$link',kd_produk = '$produk',jenis_konten = '$jenis'    where kd_konten = $kd";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:produksi_konten.php?success=1");
@@ -846,7 +846,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
 
 
         $sql = "update publikasi set facebook = '$facebook',instagram = '$instagram',website = '$website'    where kd_publikasi = $kd";
-        $query = query($sql);
+        $query = update($sql);
 
         if ($query != 0) {
             header("location:status_publikasi.php?success=1");
