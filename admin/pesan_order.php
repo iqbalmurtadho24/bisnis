@@ -14,7 +14,7 @@ $row = mysqli_fetch_assoc($result);
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
+        <form action="data.php?tambah_pesan_order=1" method="post">
           <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -45,32 +45,32 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Provinsi</span>
             </div>
-            <select name="provinsi" class="custom-select" required>
-              <option>-- Pilih --</option>
+            <select name="provinsi" class="custom-select">
+              <option value="0">-- Pilih --</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
             </div>
-            <select name="kabupaten" class="custom-select" required>
-              <option>-- Pilih --</option>
+            <select name="kabupaten" class="custom-select">
+              <option value="0">-- Pilih --</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kecamatann</span>
             </div>
-            <select name="kecamatan" class="custom-select" required>
-              <option>-- Pilih --</option>
+            <select name="kecamatan" class="custom-select">
+              <option value="0">-- Pilih --</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Desa</span>
             </div>
-            <select name="desa" class="custom-select" required>
-              <option>-- Pilih --</option>
+            <select name="desa" class="custom-select">
+              <option value="0">-- Pilih --</option>
             </select>
           </div>
           <div class="input-group mb-3">
@@ -78,7 +78,7 @@ $row = mysqli_fetch_assoc($result);
               <span class="input-group-text" id="basic-addon1">Pembayaran</span>
             </div>
             <select name="metode" class="custom-select" required>
-              <option>-- Pilih --</option>
+              <option value="0">-- Pilih --</option>
               <option value="Transfer">Transfer</option>
               <option value="COD">COD</option>
             </select>

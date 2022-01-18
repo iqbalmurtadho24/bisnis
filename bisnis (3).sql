@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 12:11 PM
+-- Generation Time: Jan 18, 2022 at 01:21 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -70,15 +70,9 @@ CREATE TABLE `cs` (
 
 INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALUES
 (1, '2022-01-18 16:34:20', 12, 1, 'PPCG'),
-(2, '2022-01-18 16:34:43', 12, 1, 'PPCG'),
-(3, '2022-01-18 16:35:02', 13, 1, 'PPCG'),
-(4, '2022-01-18 16:39:06', 13, 1, 'KLACCSMM'),
-(5, '2022-01-18 16:39:16', 18, 1, 'KLACCSMM'),
-(6, '2022-01-18 16:39:28', 18, 1, ''),
-(7, '2022-01-18 16:39:34', 18, 1, 'PPCG'),
-(8, '2022-01-18 16:41:42', 18, 1, 'PPCG'),
-(9, '2022-01-18 16:45:39', 12, 1, 'KLACCSMM'),
-(10, '2022-01-18 16:45:44', 19, 1, 'KLACCSMM');
+(11, '2022-01-18 19:14:39', 20, 1, 'PPCG'),
+(12, '2022-01-18 19:17:06', 12, 1, 'PPCG'),
+(13, '2022-01-18 19:17:13', 21, 1, 'PPCG');
 
 -- --------------------------------------------------------
 
@@ -114,12 +108,19 @@ INSERT INTO `gaji` (`kd_gaji`, `id_user`, `akses`, `waktu`, `gaji`, `status`, `t
 
 CREATE TABLE `harga` (
   `kd_harga` bigint(255) NOT NULL,
-  `kd_produk` bigint(255) DEFAULT NULL,
+  `kd_produk` varchar(255) DEFAULT NULL,
   `id_suplier` bigint(255) NOT NULL,
   `harga` bigint(255) DEFAULT NULL,
   `waktu` date DEFAULT NULL,
   `status_harga` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `harga`
+--
+
+INSERT INTO `harga` (`kd_harga`, `kd_produk`, `id_suplier`, `harga`, `waktu`, `status_harga`) VALUES
+(1, 'PPCG', 1, 30000, '2022-01-17', 1);
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,9 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
 (15, 'Pelanggan Baru', '876867'),
 (17, 'Pelanggan Baru', '2222222222'),
 (18, 'Pelanggan Baru', '435345345'),
-(19, 'Pelanggan Baru', '543534');
+(19, 'Pelanggan Baru', '543534'),
+(20, 'Pelanggan Baru', '085131'),
+(21, 'Pelanggan Baru', '021313');
 
 -- --------------------------------------------------------
 
@@ -298,7 +301,7 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
-(1, '2022-01-18', 10, 1, 19, 'KLACCSMM', 2, 30000, 60000, 'Jl. Raya Jambu', 'Sumbersekar', 'Dau', 'Kabupaten Malang', 'Jawa Timur', 'Transfer', 'BRI', 1);
+(11801221917, '2022-01-18', 1, 1, 12, 'PPCG', 5, 30000, 150000, 'fghfh', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
 
 -- --------------------------------------------------------
 
@@ -555,7 +558,7 @@ ALTER TABLE `akses`
 -- AUTO_INCREMENT for table `cs`
 --
 ALTER TABLE `cs`
-  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `gaji`
@@ -567,7 +570,7 @@ ALTER TABLE `gaji`
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `konten`
@@ -591,13 +594,13 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11801221918;
 
 --
 -- AUTO_INCREMENT for table `sdm`

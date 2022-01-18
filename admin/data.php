@@ -653,6 +653,52 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     } else {
         header("location:pesan_masuk.php?success=2");
     }
+} elseif (isset($_GET['tambah_pesan_order']) !==  false && $_GET['tambah_pesan_order'] === "1") {
+    if (isset($_POST['id_user'])  &&  !empty($_POST['id_user'])) {
+
+        $kd_cs = $_POST['kd_cs'];
+        $kdt = date('d');
+        $kdb = date('m');
+        $kdth = date('y');
+        $kdtj = date('H');
+        $kdtm = date('i');
+        $kd_pemesanan = "$kd_cs$kdt$kdb$kdth$kdtj$kdtm";
+        $waktu = date('Y-m-d H:i:s');
+        $id_user = $_POST['id_user'];
+        
+        $barang = query("select * from cs where kd_cs='$kd_cs'");
+        $row2 = mysqli_fetch_assoc($barang);
+        $pelanggan = $row2['id_pelanggan'];
+        $produk = $row2['kd_produk'];
+
+        $jumlah = $_POST['jumlah'];
+
+        $qharga = query("select * from harga where kd_produk='$produk' and status_harga=1");
+        $row3 = mysqli_fetch_assoc($qharga);
+        $harga = $row3['harga'];
+
+        $total = intval($jumlah*$harga);
+        
+        $alamat = $_POST['alamat'];
+        $desa = $_POST['desa'];
+        $kecamatan = $_POST['kecamatan'];
+        $kabupaten = $_POST['kabupaten'];
+        $provinsi = $_POST['provinsi'];
+        $metode = $_POST['metode'];
+        $bank = $_POST['bank'];
+        $status = '0';
+
+        $sql = "insert into pemesanan values ($kd_pemesanan,'$waktu',$kd_cs,$id_user,$pelanggan,'$produk',$jumlah,$harga,'$total','$alamat','$desa','$kecamatan','$kabupaten','$provinsi','$metode','$bank',$status) ";
+        $query = update($sql);
+
+        if ($query != 0) {
+            header("location:pesan_order.php?success=3");
+        } else {
+            header("location:pesan_order.php?success=4");
+        }
+    } else {
+        header("location:pesan_order.php?success=2");
+    }
 }
 
 //update
