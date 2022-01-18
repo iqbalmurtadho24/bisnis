@@ -14,7 +14,6 @@
             </div>
             <div class="modal-body">
                 <form action="data.php?tambah_publikasi=1" method="post">
-                    <input type="hidden" class="form-control" name="id_user" value="<?= $_SESSION['id_user'] ?>">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -23,18 +22,6 @@
                         <select name="konten" id="konten" class="custom-select"> </select>
                     </div>
 
-                    <div class="row input-group mb-3">
-                        <div class="col-md-3">
-                            <span class="input-group-text" id="basic-addon1">Facebook</span>
-                        </div>
-                        <div class="col-md-1">
-
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="facebook" value="1" >Ya
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="facebook" value="0">Tidak
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">facebook</span>
@@ -42,41 +29,20 @@
                         <input class="form-control" type="text" name="facebook">
                     </div>
 
-                    <div class="row input-group mb-3">
-                        <div class="col-md-3">
-                            <span class="input-group-text" id="basic-addon1">Instagram</span>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">instagram</span>
                         </div>
-                        <div class="col-md-1">
                         <input class="form-control" type="text" name="instagram">
 
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="instagram" value="1" >Ya
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="instagram" value="0">Tidak
-                        </div>
                     </div>
-                    <div class="row input-group mb-3">
-                        <div class="col-md-3">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Website</span>
                         </div>
-                        <div class="col-md-1">
                         <input class="form-control" type="text" name="website">
 
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="website" value="1" > Ya
-                        </div>
-                        <div class="col-md-4">
-                            <input type="radio" class="form-check-input" name="website" value="0">Tidak
-                        </div>
                     </div>
             </div>
             <div class="modal-footer">
@@ -99,8 +65,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="data.php?edit_user=1" method="post">
-                    <input type="text" class="form-control" name='id_user' id='id_user' hidden>
                 <form action="data.php?edit_publikasi=1" method="post">
 
                     <input type="hidden" name="kd" id="kd">
@@ -113,13 +77,8 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">status</span>
                             <span class="input-group-text" id="basic-addon1">instagram</span>
                         </div>
-                        <select name="status" id="status" class="custom-select">
-                            <option value="0">NONAKTIF</option>
-                            <option value="1">AKTIF</option>
-                        </select>
                         <input class="form-control" type="text" name="instagram" id="instagram">
 
                     </div>

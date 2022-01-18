@@ -7,23 +7,12 @@ function edit(i) {
 
   $.ajax({
     type: "GET",
-    url: "data.php?kd=" + kd + "&&edit_user=data",
     url: "data.php?kd=" + kd + "&edit=publikasi&where=kd_publikasi",
     async: false,
     success: function (text) {
 
       response = JSON.parse(text);
       $("#modal_edit").modal("show");
-      $("#id_user").val(response.id_user);
-      $("#username").val(response.username);
-      $("#password").val(response.password);
-      $("#level").val(response.level);
-
-      // alert(response);
-      if (response.status != null && $("#status option[value='" + response.status + "']").length > 0) {
-        $('#status option[value="' + response.status + '"]'
-        ).attr("selected", "selected");
-      }
       $("#kd").val(response.kd_publikasi)
       $("#website").val(response.website)
       $("#facebook").val(response.facebook)
@@ -49,7 +38,6 @@ $(document).ready(function () {
 
       }
       $('#konten').html(select);
-      $('#konten1').html(select);
 
     }
   })
