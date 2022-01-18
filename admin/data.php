@@ -847,7 +847,7 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
 
         $sql = "update publikasi set facebook = '$facebook',instagram = '$instagram',website = '$website'    where kd_publikasi = $kd";
         $query = query($sql);
-var_dump($query) or die;
+
         if ($query != 0) {
             header("location:status_publikasi.php?success=1");
         } else {
