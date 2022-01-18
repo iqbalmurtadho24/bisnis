@@ -8,7 +8,7 @@ $row = mysqli_fetch_assoc($result);
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Order</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,7 +20,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Pelanggan</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="kd_cs" class="custom-select" required>
               <option>-- Pilih --</option>
               <?php
               $barang = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk where c.id_user={$_SESSION['id_user']} order by kd_cs asc");
@@ -39,13 +39,13 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Alamat</span>
             </div>
-            <input type="text" class="form-control" placeholder="Contoh : Jl. Tongkol, No. 69, Gang. 11, RT. 01, RW. 04" name="password" required>
+            <input type="text" class="form-control" placeholder="Contoh : Jl. Tongkol, No. 69, Gang. 11, RT. 01, RW. 04" name="alamat" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Provinsi</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="provinsi" class="custom-select" required>
               <option>-- Pilih --</option>
             </select>
           </div>
@@ -53,7 +53,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="kabupaten" class="custom-select" required>
               <option>-- Pilih --</option>
             </select>
           </div>
@@ -61,7 +61,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Kecamatann</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="kecamatan" class="custom-select" required>
               <option>-- Pilih --</option>
             </select>
           </div>
@@ -69,7 +69,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Desa</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="desa" class="custom-select" required>
               <option>-- Pilih --</option>
             </select>
           </div>
@@ -77,7 +77,7 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Pembayaran</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="metode" class="custom-select" required>
               <option>-- Pilih --</option>
               <option value="Transfer">Transfer</option>
               <option value="COD">COD</option>
@@ -87,20 +87,20 @@ $row = mysqli_fetch_assoc($result);
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Bank</span>
             </div>
-            <select name="level" class="custom-select" required>
+            <select name="bank" class="custom-select" required>
               <option>-- Pilih --</option>
               <option value="BRI">BRI</option>
               <option value="Mandiri">Mandiri</option>
               <option value="BCA">BCA</option>
               <option value="BNI">BNI</option>
               <option value="Muamalat">Muamalat</option>
+              <option value="COD">COD</option>
             </select>
           </div>
 
-
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Tambah user</button>
+        <button class="btn btn-primary" type="submit">Tambah Order</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
@@ -193,13 +193,8 @@ $row = mysqli_fetch_assoc($result);
     <div class="row">
       <div class="col-12">
 
-        <!-- card -->
 
         <div class="card">
-          <!-- <div class="card-header"> -->
-          <!-- <h3 class="card-title">DataTable with default features</h3> -->
-          <!-- </div> -->
-          <!-- /.card-header -->
           <div class="card-body">
             <table id="example" class="table  table-striped table-bordered ">
               <thead>
@@ -207,7 +202,6 @@ $row = mysqli_fetch_assoc($result);
                   <th rowspan="2"><i class="fa fa-cog"></i></th>
                   <th rowspan="2">Kode Pemesanan</th>
                   <th rowspan="2">Nama Pelanggan</th>
-                  <th rowspan="2">Kategori</th>
                   <th rowspan="2">Produk</th>
                   <th rowspan="2">Jumlah</th>
                   <th rowspan="2">Harga</th>
@@ -251,6 +245,6 @@ $row = mysqli_fetch_assoc($result);
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/pesan_order.js"></script>
 
 <?php require_once('../config/footer.php') ?>
