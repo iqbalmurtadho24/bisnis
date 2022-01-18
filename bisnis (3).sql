@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 01:21 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Jan 18, 2022 at 05:03 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,7 +72,10 @@ INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALU
 (1, '2022-01-18 16:34:20', 12, 1, 'PPCG'),
 (11, '2022-01-18 19:14:39', 20, 1, 'PPCG'),
 (12, '2022-01-18 19:17:06', 12, 1, 'PPCG'),
-(13, '2022-01-18 19:17:13', 21, 1, 'PPCG');
+(13, '2022-01-18 19:17:13', 21, 1, 'PPCG'),
+(14, '2022-01-18 21:51:48', 22, 1, ''),
+(15, '2022-01-18 21:52:02', 22, 1, 'PPCG'),
+(16, '2022-01-18 22:37:59', 23, 1, 'PPCG');
 
 -- --------------------------------------------------------
 
@@ -243,6 +246,13 @@ CREATE TABLE `order` (
   `status_pengiriman` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`kd_order`, `kd_pemesanan`, `id_user`, `id_suplier`, `status_order_suplier`, `resi_pengiriman`, `status_pengiriman`) VALUES
+(1, 151801222156, 1, 9, 1, 'y54y6bfghn53', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -268,7 +278,9 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
 (18, 'Pelanggan Baru', '435345345'),
 (19, 'Pelanggan Baru', '543534'),
 (20, 'Pelanggan Baru', '085131'),
-(21, 'Pelanggan Baru', '021313');
+(21, 'Pelanggan Baru', '021313'),
+(22, 'Pelanggan Baru', '085234038214'),
+(23, 'Pelanggan Baru', '9879789');
 
 -- --------------------------------------------------------
 
@@ -301,7 +313,8 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
-(11801221917, '2022-01-18', 1, 1, 12, 'PPCG', 5, 30000, 150000, 'fghfh', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
+(11801221917, '2022-01-18', 1, 1, 12, 'PPCG', 5, 30000, 150000, 'fghfh', '0', '0', '0', '0', 'Transfer', 'BRI', 0),
+(151801222156, '2022-01-18', 15, 1, 22, 'PPCG', 9, 30000, 270000, 'jhkhk', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
 
 -- --------------------------------------------------------
 
@@ -381,7 +394,7 @@ INSERT INTO `sdm` (`id_user`, `nama`, `tanggal_lahir`, `nik`, `jalan`, `rt_rw`, 
 
 CREATE TABLE `suplier` (
   `id_suplier` bigint(255) NOT NULL,
-  `nama` varchar(255) DEFAULT NULL,
+  `suplier` varchar(255) DEFAULT NULL,
   `toko` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `kategori` varchar(255) DEFAULT NULL,
@@ -393,8 +406,8 @@ CREATE TABLE `suplier` (
 -- Dumping data for table `suplier`
 --
 
-INSERT INTO `suplier` (`id_suplier`, `nama`, `toko`, `alamat`, `kategori`, `produk`, `kontak`) VALUES
-(7, '2', '2', '2', 'offline', 'PPCG', 2);
+INSERT INTO `suplier` (`id_suplier`, `suplier`, `toko`, `alamat`, `kategori`, `produk`, `kontak`) VALUES
+(9, 'Iqbal', 'AMR Store', 'Malang', 'tokopedia', 'PPCG', 852);
 
 -- --------------------------------------------------------
 
@@ -445,104 +458,104 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `status`) VALUES
 -- Indexes for table `akses`
 --
 ALTER TABLE `akses`
-  ADD PRIMARY KEY (`kd_akses`),
-  ADD KEY `id_user` (`id_user`);
+ADD PRIMARY KEY (`kd_akses`),
+ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `cs`
 --
 ALTER TABLE `cs`
-  ADD PRIMARY KEY (`kd_cs`);
+ADD PRIMARY KEY (`kd_cs`);
 
 --
 -- Indexes for table `gaji`
 --
 ALTER TABLE `gaji`
-  ADD PRIMARY KEY (`kd_gaji`);
+ADD PRIMARY KEY (`kd_gaji`);
 
 --
 -- Indexes for table `harga`
 --
 ALTER TABLE `harga`
-  ADD PRIMARY KEY (`kd_harga`);
+ADD PRIMARY KEY (`kd_harga`);
 
 --
 -- Indexes for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
-  ADD PRIMARY KEY (`kd_jenis`);
+ADD PRIMARY KEY (`kd_jenis`);
 
 --
 -- Indexes for table `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
-  ADD PRIMARY KEY (`kd_kategori`);
+ADD PRIMARY KEY (`kd_kategori`);
 
 --
 -- Indexes for table `konten`
 --
 ALTER TABLE `konten`
-  ADD PRIMARY KEY (`kd_konten`);
+ADD PRIMARY KEY (`kd_konten`);
 
 --
 -- Indexes for table `marketing`
 --
 ALTER TABLE `marketing`
-  ADD PRIMARY KEY (`kd_marketing`);
+ADD PRIMARY KEY (`kd_marketing`);
 
 --
 -- Indexes for table `merek`
 --
 ALTER TABLE `merek`
-  ADD PRIMARY KEY (`kd_merek`);
+ADD PRIMARY KEY (`kd_merek`);
 
 --
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
-  ADD PRIMARY KEY (`kd_order`);
+ADD PRIMARY KEY (`kd_order`);
 
 --
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`id_pelanggan`);
+ADD PRIMARY KEY (`id_pelanggan`);
 
 --
 -- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  ADD PRIMARY KEY (`kd_pemesanan`);
+ADD PRIMARY KEY (`kd_pemesanan`);
 
 --
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`kd_produk`);
+ADD PRIMARY KEY (`kd_produk`);
 
 --
 -- Indexes for table `sdm`
 --
 ALTER TABLE `sdm`
-  ADD PRIMARY KEY (`id_user`);
+ADD PRIMARY KEY (`id_user`);
 
 --
 -- Indexes for table `suplier`
 --
 ALTER TABLE `suplier`
-  ADD PRIMARY KEY (`id_suplier`);
+ADD PRIMARY KEY (`id_suplier`);
 
 --
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`kd_transaksi`);
+ADD PRIMARY KEY (`kd_transaksi`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -552,79 +565,79 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `akses`
 --
 ALTER TABLE `akses`
-  MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `cs`
 --
 ALTER TABLE `cs`
-  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `gaji`
 --
 ALTER TABLE `gaji`
-  MODIFY `kd_gaji` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `kd_gaji` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `konten`
 --
 ALTER TABLE `konten`
-  MODIFY `kd_konten` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+MODIFY `kd_konten` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `marketing`
 --
 ALTER TABLE `marketing`
-  MODIFY `kd_marketing` bigint(255) NOT NULL AUTO_INCREMENT;
+MODIFY `kd_marketing` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11801221918;
+MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151801222157;
 
 --
 -- AUTO_INCREMENT for table `sdm`
 --
 ALTER TABLE `sdm`
-  MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `suplier`
 --
 ALTER TABLE `suplier`
-  MODIFY `id_suplier` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id_suplier` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `kd_transaksi` bigint(255) NOT NULL AUTO_INCREMENT;
+MODIFY `kd_transaksi` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -634,7 +647,7 @@ ALTER TABLE `user`
 -- Constraints for table `akses`
 --
 ALTER TABLE `akses`
-  ADD CONSTRAINT `akses_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `akses_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

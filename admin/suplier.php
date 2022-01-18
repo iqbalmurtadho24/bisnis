@@ -18,7 +18,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Nama Suplier</span>
             </div>
-            <input type="text" class="form-control" placeholder="Nama Suplier" name="nama" required>
+            <input type="text" class="form-control" placeholder="Nama Suplier" name="suplier" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -58,10 +58,10 @@
             <input type="number" class="form-control" placeholder="ex : 0852" name="kontak" required>
           </div>
 
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Tambah Suplier</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Tambah Suplier</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -80,14 +80,13 @@
       </div>
       <div class="modal-body">
         <form action="data.php?edit_suplier=1" method="post">
-          <input type="text" class="form-control" name='kd' id='kd' hidden>
-
+          <input type="text" class="form-control" name='id' id='id' hidden>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Nama Suplier</span>
             </div>
-            <input type="text" class="form-control" placeholder="Nama Suplier" name="nama" id="nama" required>
+            <input type="text" class="form-control" placeholder="Nama Suplier" name="suplier" id="suplier" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -126,10 +125,10 @@
             </div>
             <input type="number" class="form-control" placeholder="ex : 0852" name="kontak" id='kontak' required>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Edit Suplier</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Edit Suplier</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
