@@ -8,40 +8,38 @@ $row = mysqli_fetch_assoc($result);
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
+        <h5 class="modal-title" id="my-modal-title">Tambah Kontak Baru</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?pesan_masuk=1" method="post">
+        <form action="data.php?tambah_pesan_masuk=1" method="post">
+          <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
+              <span class="input-group-text" id="basic-addon1">Kontak</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
+            <input type="number" class="form-control" placeholder="Contoh: 08521321331" name="kontak" required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
+              <span class="input-group-text" id="basic-addon1">Produk</span>
             </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+            <select name="produk" class="custom-select">
+              <option value="">-- Pilih --</option>
+              <?php
+              $barang = query("select * from produk order by produk asc");
+              while($data = mysqli_fetch_assoc($barang)){ ?>
+              <option value="<?= $data['kd_produk'] ?>"><?= $data['produk'] ?></option>
+              <?php } ?>
             </select>
           </div>
 
 
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah user</button>
+          <button class="btn btn-primary" type="submit">Tambah Kontak</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>

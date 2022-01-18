@@ -313,12 +313,13 @@ if (isset($_GET['user']) !==  false) {
         $data['data'] = [];
         $no = 0;
         while ($row = mysqli_fetch_assoc($query)) {
-            
+
             $pesanan = query("select * from pemesanan where kd_cs='{$row['kd_cs']}'");
             $row1 = mysqli_num_rows($pesanan);
-            if($row1==0){
+            if ($row1 == 0) {
                 $status = 'Belum';
-            }if($row1!=0){
+            }
+            if ($row1 != 0) {
                 $status = 'Order';
             }
 
@@ -326,7 +327,7 @@ if (isset($_GET['user']) !==  false) {
             $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_cs'] . "') title='Edit Konten'>
             <i class='far fa-edit'></i>  </button> ";
 
-            array_push($data['data'], [ 
+            array_push($data['data'], [
                 'btn' => exist_array($modal),
                 'kd' => exist_array($row['kd_cs']),
                 'waktu' => exist_array($row['waktu']),
@@ -550,6 +551,40 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         }
     } else {
         header("location:produksi_konten.php?success=2");
+    }
+} elseif (isset($_GET['tambah_pesan_masuk']) !==  false && $_GET['tambah_pesan_masuk'] === "1") {
+    if (isset($_POST['id_user'])  &&  !empty($_POST['id_user'])) {
+
+        $id_user = $_POST['id_user'];
+        $waktu = date('Y-m-d H:i:s');
+        $kontak = $_POST['kontak'];
+        $produk = $_POST['produk'];
+
+        $qpelanggan = query("select * from pelanggan where kontak='$kontak'");
+        $row0 = mysqli_fetch_assoc($qpelanggan);
+        $row1 = mysqli_num_rows($qpelanggan);
+
+        $pelanggan = $row0['id_pelanggan'];
+
+        if ($row1 == 0) {
+            $sql0 = "insert into pelanggan values (null,'Pelanggan Baru','$kontak')  ";
+            $query0 = update($sql0);
+            
+            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk','$id_user','$produk')  ";
+            $query = update($sql);
+        }
+        if ($row1 != 0) {
+            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk','$id_user','$produk')  ";
+            $query = update($sql);
+        }
+
+        if ($query != 0) {
+            header("location:pesan_masuk.php?success=3");
+        } else {
+            header("location:pesan_masuk.php?success=4");
+        }
+    } else {
+        header("location:pesan_masuk.php?success=2");
     }
 }
 
