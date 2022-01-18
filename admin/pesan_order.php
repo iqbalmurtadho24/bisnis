@@ -15,34 +15,93 @@ $row = mysqli_fetch_assoc($result);
       </div>
       <div class="modal-body">
         <form action="data.php?tambah_user=1" method="post">
+          <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
+              <span class="input-group-text" id="basic-addon1">Pelanggan</span>
             </div>
             <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
+              <option>-- Pilih --</option>
+              <?php
+              $barang = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk where c.id_user={$_SESSION['id_user']} order by kd_cs asc");
+              while ($data = mysqli_fetch_assoc($barang)) { ?>
+                <option value="<?= $data['kd_cs'] ?>"><?= $data['nama'] ?> - <?= $data['produk'] ?> - <?= $data['kontak'] ?></option>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Jumlah Barang</span>
+            </div>
+            <input type="number" class="form-control" placeholder="Contoh : 3" name="jumlah" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Alamat</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Contoh : Jl. Tongkol, No. 69, Gang. 11, RT. 01, RW. 04" name="password" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Provinsi</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Kota / Kabupaten</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Kecamatann</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Desa</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Pembayaran</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+              <option value="Transfer">Transfer</option>
+              <option value="COD">COD</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Bank</span>
+            </div>
+            <select name="level" class="custom-select" required>
+              <option>-- Pilih --</option>
+              <option value="BRI">BRI</option>
+              <option value="Mandiri">Mandiri</option>
+              <option value="BCA">BCA</option>
+              <option value="BNI">BNI</option>
+              <option value="Muamalat">Muamalat</option>
             </select>
           </div>
 
 
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Tambah user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -80,7 +139,7 @@ $row = mysqli_fetch_assoc($result);
               <span class="input-group-text" id="basic-addon1">Level</span>
             </div>
             <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
+              <option>--</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
             </select>
@@ -94,10 +153,10 @@ $row = mysqli_fetch_assoc($result);
               <option value="1">AKTIF</option>
             </select>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Edit user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Edit user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -138,60 +197,60 @@ $row = mysqli_fetch_assoc($result);
 
         <div class="card">
           <!-- <div class="card-header"> -->
-            <!-- <h3 class="card-title">DataTable with default features</h3> -->
-            <!-- </div> -->
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example" class="table  table-striped table-bordered ">
-                <thead>
-                  <tr>
-                    <th rowspan="2"><i class="fa fa-cog"></i></th>
-                    <th rowspan="2">Kode Pemesanan</th>
-                    <th rowspan="2">Nama Pelanggan</th>
-                    <th rowspan="2">Kategori</th>
-                    <th rowspan="2">Produk</th>
-                    <th rowspan="2">Jumlah</th>
-                    <th rowspan="2">Harga</th>
-                    <th rowspan="2">Total</th>
-                    <th colspan="5">Alamat</th>
-                    <th rowspan="2">Metode Pembayaran</th>
-                    <th rowspan="2">Bank</th>
-                    <th rowspan="2">Status Pembayaran</th>
-                  </tr>
-                  <tr>
-                    <th>Alamat</th>
-                    <th>Desa / Kelurahan</th>
-                    <th>Kecamatan</th>
-                    <th>Kota / Kabupan</th>
-                    <th>Provinsi</th>
-                  </tr>
-                </thead>
-              </table>
+          <!-- <h3 class="card-title">DataTable with default features</h3> -->
+          <!-- </div> -->
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example" class="table  table-striped table-bordered ">
+              <thead>
+                <tr>
+                  <th rowspan="2"><i class="fa fa-cog"></i></th>
+                  <th rowspan="2">Kode Pemesanan</th>
+                  <th rowspan="2">Nama Pelanggan</th>
+                  <th rowspan="2">Kategori</th>
+                  <th rowspan="2">Produk</th>
+                  <th rowspan="2">Jumlah</th>
+                  <th rowspan="2">Harga</th>
+                  <th rowspan="2">Total</th>
+                  <th colspan="5">Alamat</th>
+                  <th rowspan="2">Metode Pembayaran</th>
+                  <th rowspan="2">Bank</th>
+                  <th rowspan="2">Status Pembayaran</th>
+                </tr>
+                <tr>
+                  <th>Alamat</th>
+                  <th>Desa / Kelurahan</th>
+                  <th>Kecamatan</th>
+                  <th>Kota / Kabupan</th>
+                  <th>Provinsi</th>
+                </tr>
+              </thead>
+            </table>
 
-            </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+          <!-- /.card-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.card -->
       </div>
-      <!-- /.row -->
+      <!-- /.col -->
     </div>
-    <!-- /.container-fluid -->
-  </section>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
 
 
-  <!-- jQuery -->
-  <script src="../assets/dist/js/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="../assets/datatables/jquery.dataTables.min.js"></script>
-  <script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/user.js"></script>
+<!-- jQuery -->
+<script src="../assets/dist/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../assets/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../assets/dist/js/user.js"></script>
 
-  <?php require_once('../config/footer.php') ?>
+<?php require_once('../config/footer.php') ?>

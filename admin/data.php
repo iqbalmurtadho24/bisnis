@@ -1,5 +1,7 @@
 <?php
 require_once('../config/config.php');
+session_start();
+$id_user = $_SESSION['id_user'];
 function exist_array($data)
 {
     if ($data) {
@@ -308,7 +310,45 @@ if (isset($_GET['user']) !==  false) {
 } elseif (isset($_GET['pesan_masuk']) !==  false) {
 
     if ($_GET['pesan_masuk'] === "1") {
-        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk");
+
+        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk where id_user='$id_user' order by kd_cs desc");
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+
+            $pesanan = query("select * from pemesanan where kd_cs='{$row['kd_cs']}'");
+            $row1 = mysqli_num_rows($pesanan);
+            if ($row1 == 0) {
+                $status = 'Belum';
+            }
+            if ($row1 != 0) {
+                $status = 'Order';
+            }
+
+
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_cs'] . "') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['kd_cs']),
+                'waktu' => exist_array($row['waktu']),
+                'pelanggan' => exist_array($row['nama']),
+                'kontak' => exist_array($row['kontak']),
+                'produk' => exist_array($row['produk']),
+                'status' => $status
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+} elseif (isset($_GET['pesan_order']) !==  false) {
+
+    if ($_GET['pesan_order'] === "1") {
+
+        $query = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk where id_user='$id_user' order by kd_cs desc");
 
         $data['data'] = [];
         $no = 0;
@@ -567,14 +607,19 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $pelanggan = $row0['id_pelanggan'];
 
         if ($row1 == 0) {
-            $sql0 = "insert into pelanggan values (null,'Pelanggan Baru','$kontak')  ";
-            $query0 = update($sql0);
+            $sql = "insert into pelanggan values (null,'Pelanggan Baru','$kontak')  ";
+            $query = update($sql);
 
-            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk',$id_user,'$produk')  ";
+            $qpelanggan = query("select * from pelanggan where kontak='$kontak'");
+            $row0 = mysqli_fetch_assoc($qpelanggan);
+
+            $pelanggan = $row0['id_pelanggan'];
+
+            $sql = "insert into cs values (null,'$waktu',$pelanggan,$id_user,'$produk')  ";
             $query = update($sql);
         }
-        if ($row1 != 0) {
-            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk',$id_user,'$produk')  ";
+        if ($row1 > 0) {
+            $sql = "insert into cs values (null,'$waktu',$pelanggan,$id_user,'$produk')  ";
             $query = update($sql);
         }
 
