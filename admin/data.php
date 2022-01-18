@@ -1,7 +1,9 @@
 <?php
 require_once('../config/config.php');
 session_start();
+
 $id_user = $_SESSION['id_user'];
+
 function exist_array($data)
 {
     if ($data) {
@@ -260,7 +262,7 @@ if (isset($_GET['user']) !==  false) {
 } elseif (isset($_GET['publikasi']) !==  false) {
 
     if ($_GET['publikasi'] === "1") {
-        $query = query('select * from publikasi p inner join konten k on p.kd_konten = k.kd_produk inner join produk pr on k.kd_produk = pr.kd_produk; ');
+        $query = query('select * from publikasi p inner join konten k on p.kd_konten = k.kd_konten inner join produk pr on k.kd_produk = pr.kd_produk; ');
 
         $data['data'] = [];
         $no = 0;
@@ -274,9 +276,12 @@ if (isset($_GET['user']) !==  false) {
                 'waktu' => exist_array($row['waktu']),
                 'konten' => exist_array($row['jenis_konten']),
                 'produk' => exist_array($row['produk']),
-                'facebook' => exist_array($row['facebook']),
-                'instagram' => exist_array($row['instagram']),
-                'website' => exist_array($row['website']),
+                'facebook' => "<a href='{$row['facebook']}' class='btn btn-info'>
+                <i class='fa fa-external-link-alt'></i></a>",
+                'instagram' => "<a href='{$row['instagram']}' class='btn btn-info'>
+                <i class='fa fa-external-link-alt'></i></a>",
+                'website' => "<a href='{$row['website']}' class='btn btn-info'>
+                <i class='fa fa-external-link-alt'></i></a>",
             ]);
         }
 
@@ -572,25 +577,38 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         header("location:suplier.php?success=2");
     }
 } elseif (isset($_GET['tambah_konten']) !==  false && $_GET['tambah_konten'] === "1") {
-    if (isset($_POST['id_user'])  &&  !empty($_POST['id_user'])) {
-
-        $id_user = $_POST['id_user'];
-        $waktu = date('Y-m-d H:i:s');
-        $jenis = $_POST['jenis'];
-        $produk = $_POST['produk'];
-        $status = $_POST['status'];
-        $link = $_POST['link'];
 
 
-        $sql = "insert into konten values (null,$id_user,'$waktu','$jenis','$produk','$status',0,'$link')  ";
-        $query = update($sql);
-        if ($query != 0) {
-            header("location:produksi_konten.php?success=3");
-        } else {
-            header("location:produksi_konten.php?success=4");
-        }
+    $id_user = $_SESSION['id_user'];
+    $waktu = date('Y-m-d H:i:s');
+    $jenis = $_POST['jenis'];
+    $produk = $_POST['produk'];
+    $status = $_POST['status'];
+    $link = $_POST['link'];
+
+
+    $sql = "insert into konten values (null,$id_user,'$waktu','$jenis','$produk','$status',0,'$link')  ";
+    $query = update($sql);
+    if ($query != 0) {
+        header("location:produksi_konten.php?success=3");
     } else {
-        header("location:produksi_konten.php?success=2");
+        header("location:produksi_konten.php?success=4");
+    }
+} elseif (isset($_GET['tambah_publikasi']) !==  false && $_GET['tambah_publikasi'] === "1") {
+
+    $waktu = date('Y-m-d H:i:s');
+    $konten = $_POST['konten'];
+    $facebook = $_POST['facebook'];
+    $instagram = $_POST['instagram'];
+
+    $link = $_POST['website'];
+
+    $sql = "insert into publikasi values (null,$id_user,'$waktu','$konten','$facebook','$instagram','$link')  ";
+    $query = update($sql);
+    if ($query != 0) {
+        header("location:status_publikasi.php?success=3");
+    } else {
+        header("location:status_publikasi.php?success=4");
     }
 } elseif (isset($_GET['tambah_pesan_masuk']) !==  false && $_GET['tambah_pesan_masuk'] === "1") {
     if (isset($_POST['id_user'])  &&  !empty($_POST['id_user'])) {
@@ -815,7 +833,26 @@ elseif (isset($_GET['edit_user']) !==  false && $_GET['edit_user'] == "1") {
     } else {
         header("location:produksi_konten.php?success=2");
     }
-} elseif (isset($_GET['edit'], $_GET['kd'], $_GET['where']) !== false && !empty($_GET['kd'])) {
+} elseif (isset($_GET['edit_publikasi']) !==  false && $_GET['edit_publikasi'] == "1") {
+    if (isset($_POST['kd']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $facebook = $_POST['facebook'];
+        $instagram = $_POST['instagram'];
+        $website = $_POST['website'];
+
+
+        $sql = "update publikasi set facebook = '$facebook',instagram = '$instagram',website = '$website'    where kd_publikasi = $kd";
+        $query = query($sql);
+var_dump($query) or die;
+        if ($query != 0) {
+            header("location:status_publikasi.php?success=1");
+        } else {
+            header("location:status_publikasi.php?success=4");
+        }
+    } else {
+        header("location:status_publikasi.php?success=2");
+    }
+}elseif (isset($_GET['edit'], $_GET['kd'], $_GET['where']) !== false && !empty($_GET['kd'])) {
     $query = query('select * from ' . $_GET['edit'] . ' where ' . $_GET['where'] . '= "' . $_GET['kd'] . '"');
 
     $data = mysqli_fetch_assoc($query);

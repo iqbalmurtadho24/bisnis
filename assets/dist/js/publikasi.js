@@ -8,6 +8,7 @@ function edit(i) {
   $.ajax({
     type: "GET",
     url: "data.php?kd=" + kd + "&&edit_user=data",
+    url: "data.php?kd=" + kd + "&edit=publikasi&where=kd_publikasi",
     async: false,
     success: function (text) {
 
@@ -23,6 +24,10 @@ function edit(i) {
         $('#status option[value="' + response.status + '"]'
         ).attr("selected", "selected");
       }
+      $("#kd").val(response.kd_publikasi)
+      $("#website").val(response.website)
+      $("#facebook").val(response.facebook)
+      $("#instagram").val(response.instagram)
 
 
     },
