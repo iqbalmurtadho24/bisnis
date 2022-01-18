@@ -542,7 +542,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $link = $_POST['link'];
 
 
-        $sql = "insert into konten values (null,'$id_user','$waktu','$jenis','$produk','$status',0,'$link')  ";
+        $sql = "insert into konten values (null,$id_user,'$waktu','$jenis','$produk','$status',0,'$link')  ";
         $query = update($sql);
         if ($query != 0) {
             header("location:produksi_konten.php?success=3");
@@ -569,12 +569,12 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         if ($row1 == 0) {
             $sql0 = "insert into pelanggan values (null,'Pelanggan Baru','$kontak')  ";
             $query0 = update($sql0);
-            
-            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk','$id_user','$produk')  ";
+
+            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk',$id_user,'$produk')  ";
             $query = update($sql);
         }
         if ($row1 != 0) {
-            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk','$id_user','$produk')  ";
+            $sql = "insert into cs values (null,'$waktu','$pelanggan','$produk',$id_user,'$produk')  ";
             $query = update($sql);
         }
 
