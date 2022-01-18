@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 03:48 PM
+-- Generation Time: Jan 18, 2022 at 12:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -69,7 +69,16 @@ CREATE TABLE `cs` (
 --
 
 INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALUES
-(1, '2022-01-17 15:34:15', 12, 1, 'PPCG');
+(1, '2022-01-18 16:34:20', 12, 1, 'PPCG'),
+(2, '2022-01-18 16:34:43', 12, 1, 'PPCG'),
+(3, '2022-01-18 16:35:02', 13, 1, 'PPCG'),
+(4, '2022-01-18 16:39:06', 13, 1, 'KLACCSMM'),
+(5, '2022-01-18 16:39:16', 18, 1, 'KLACCSMM'),
+(6, '2022-01-18 16:39:28', 18, 1, ''),
+(7, '2022-01-18 16:39:34', 18, 1, 'PPCG'),
+(8, '2022-01-18 16:41:42', 18, 1, 'PPCG'),
+(9, '2022-01-18 16:45:39', 12, 1, 'KLACCSMM'),
+(10, '2022-01-18 16:45:44', 19, 1, 'KLACCSMM');
 
 -- --------------------------------------------------------
 
@@ -106,6 +115,7 @@ INSERT INTO `gaji` (`kd_gaji`, `id_user`, `akses`, `waktu`, `gaji`, `status`, `t
 CREATE TABLE `harga` (
   `kd_harga` bigint(255) NOT NULL,
   `kd_produk` bigint(255) DEFAULT NULL,
+  `id_suplier` bigint(255) NOT NULL,
   `harga` bigint(255) DEFAULT NULL,
   `waktu` date DEFAULT NULL,
   `status_harga` int(4) DEFAULT NULL
@@ -224,12 +234,11 @@ INSERT INTO `merek` (`kd_merek`, `merek`, `kd_jenis`) VALUES
 
 CREATE TABLE `order` (
   `kd_order` bigint(255) NOT NULL,
+  `kd_pemesanan` bigint(255) NOT NULL,
   `id_user` bigint(255) DEFAULT NULL,
   `id_suplier` bigint(255) DEFAULT NULL,
-  `harga_suplier` bigint(255) DEFAULT NULL,
-  `status_pembayaran` int(4) DEFAULT NULL,
   `status_order_suplier` int(4) DEFAULT NULL,
-  `resi_pengiriman` bigint(255) DEFAULT NULL,
+  `resi_pengiriman` varchar(255) DEFAULT NULL,
   `status_pengiriman` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -250,7 +259,13 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
-(12, 'Ubaid', '0852154646545');
+(12, 'Ubaid', '0852154646545'),
+(13, 'Pelanggan Baru', '0854564'),
+(14, 'Pelanggan Baru', '52424'),
+(15, 'Pelanggan Baru', '876867'),
+(17, 'Pelanggan Baru', '2222222222'),
+(18, 'Pelanggan Baru', '435345345'),
+(19, 'Pelanggan Baru', '543534');
 
 -- --------------------------------------------------------
 
@@ -260,21 +275,30 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
 
 CREATE TABLE `pemesanan` (
   `kd_pemesanan` bigint(255) NOT NULL,
+  `waktu_pemesanan` date DEFAULT NULL,
   `kd_cs` bigint(255) NOT NULL,
   `id_user` bigint(255) DEFAULT NULL,
   `id_pelanggan` bigint(255) DEFAULT NULL,
-  `kd_produk` bigint(255) DEFAULT NULL,
+  `kd_produk` varchar(255) DEFAULT NULL,
   `jumlah` bigint(255) DEFAULT NULL,
-  `waktu_pemesanan` date DEFAULT NULL,
+  `harga_penjualan` bigint(255) DEFAULT NULL,
+  `total_pembayaran` bigint(255) NOT NULL,
   `alamat` varchar(255) DEFAULT NULL,
   `desa` varchar(255) NOT NULL,
   `kecamatan` varchar(255) NOT NULL,
   `kabupaten` varchar(255) NOT NULL,
   `provinsi` varchar(255) NOT NULL,
-  `harga_penjualan` bigint(255) DEFAULT NULL,
   `metode_pembayaran` varchar(255) DEFAULT NULL,
+  `bank` varchar(255) NOT NULL,
   `status_pembayaran` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
+(1, '2022-01-18', 10, 1, 19, 'KLACCSMM', 2, 30000, 60000, 'Jl. Raya Jambu', 'Sumbersekar', 'Dau', 'Kabupaten Malang', 'Jawa Timur', 'Transfer', 'BRI', 1);
 
 -- --------------------------------------------------------
 
@@ -305,12 +329,12 @@ INSERT INTO `produk` (`kd_produk`, `produk`, `kd_merek`) VALUES
 
 CREATE TABLE `publikasi` (
   `kd_publikasi` int(255) NOT NULL,
-  `id_user` varchar(255) NOT NULL,
+  `id_user` bigint(255) NOT NULL,
   `waktu` datetime NOT NULL,
-  `kd_konten` int(255) NOT NULL,
-  `facebook` int(255) NOT NULL,
-  `instagram` int(255) NOT NULL,
-  `website` int(255) NOT NULL
+  `kd_konten` bigint(255) NOT NULL,
+  `facebook` varchar(255) NOT NULL,
+  `instagram` varchar(255) NOT NULL,
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -528,6 +552,12 @@ ALTER TABLE `akses`
   MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `cs`
+--
+ALTER TABLE `cs`
+  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `gaji`
 --
 ALTER TABLE `gaji`
@@ -555,19 +585,19 @@ ALTER TABLE `marketing`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sdm`
