@@ -133,7 +133,7 @@ $url = $url[3];
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                    <li class="nav-item">
                       <a href="kategori.php" class="nav-link <?= $url == 'kategori.php' ? 'active' : "" ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
                         <p>&emsp;Data Kategori</p>
@@ -264,8 +264,8 @@ $url = $url[3];
                 </li>
               <?php } elseif ($row['akses'] == 'penjualan') { ?>
 
-                <li class="nav-item <?= $url == 'pemesanan.php'||$url == 'order_masuk.php'||$url == 'status_order.php' ? 'menu-open' : ""  ?>">
-                  <a href="#" class="nav-link <?= $url == 'pemesanan.php'||$url == 'order_masuk.php'||$url == 'status_order.php' ? 'active' : "" ?>">
+                <li class="nav-item <?= $url == 'pemesanan.php'||$url == 'proses_order.php' ? 'menu-open' : ""  ?>">
+                  <a href="#" class="nav-link <?= $url == 'pemesanan.php'||$url == 'proses_order.php' ? 'active' : "" ?>">
                     <i class="nav-icon fas fa-shopping-cart"></i>
                     <p>
                       Penjualan
@@ -280,15 +280,9 @@ $url = $url[3];
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="order_masuk.php" class="nav-link <?= $url == 'order_masuk.php' ? 'active' : ""  ?>">&emsp;
+                      <a href="proses_order.php" class="nav-link <?= $url == 'proses_order.php' ? 'active' : ""  ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Order Masuk</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="status_order.php" class="nav-link <?= $url == 'status_order.php' ? 'active' : ""  ?>">&emsp;
-                        <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Status Order</p>
+                        <p>&emsp;Proses Order</p>
                       </a>
                     </li>
                   </ul>

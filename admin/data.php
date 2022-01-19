@@ -415,7 +415,89 @@ if (isset($_GET['user']) !==  false) {
 
         echo json_encode($data);
     }
-}
+} elseif (isset($_GET['pemesanan']) !==  false) {
+
+    if ($_GET['pemesanan'] === "1") {
+
+        $query = query("select * from pemesanan ps inner join cs c on ps.kd_cs=c.kd_cs inner join pelanggan pl on c.id_pelanggan=pl.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk order by ps.kd_pemesanan desc");
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+
+            if($row['status_pembayaran']=='1'){
+                $status = 'Lunas';
+            }else{
+                $status = 'Belum';
+            }
+
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_pemesanan'] . "') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'kd' => exist_array($row['kd_pemesanan']),
+                'pelanggan' => exist_array($row['nama']),
+                'produk' => exist_array($row['produk']),
+                'jumlah' => exist_array($row['jumlah']),
+                'harga' => exist_array($row['harga_penjualan']),
+                'total' => exist_array($row['total_pembayaran']),
+                'alamat' => exist_array($row['alamat']),
+                'desa' => exist_array($row['desa']),
+                'kecamatan' => exist_array($row['kecamatan']),
+                'kabupaten' => exist_array($row['kabupaten']),
+                'provinsi' => exist_array($row['provinsi']),
+                'metode' => exist_array($row['metode_pembayaran']),
+                'bank' => exist_array($row['bank']),
+                'status' => $status,
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+} elseif (isset($_GET['proses_order']) !==  false) {
+
+    if ($_GET['proses_order'] === '1') {
+
+        $query = query("select * from  `order` o inner join `pemesanan` p on o.kd_pemesanan=p.kd_pemesanan inner join `suplier` s on o.id_suplier=s.id_suplier inner join `produk` pr on p.kd_produk=pr.kd_produk inner join `pelanggan` pl on p.id_pelanggan=pl.id_pelanggan where p.id_user='$id_user' order by o.kd_order desc");
+
+        $data['data'] = [];
+        $no = 0;
+        while ($row = mysqli_fetch_assoc($query)) {
+
+            if($row['status_order_suplier'] == 1){
+                $status_order = 'Sudah';
+            }else{
+                $status_order = 'Belum';
+            }
+            if($row['status_pengiriman'] == 1){
+                $status_pengiriman = 'Sudah';
+            }elseif($row['status_pengiriman'] == 2){
+                $status_pengiriman = 'Proses';
+            }elseif($row['status_pengiriman'] == 0){
+                $status_pengiriman = 'Belum';
+            }
+
+            $modal = " <button class='btn btn-warning' onclick=edit('" . $row['kd_order'] . "') title='Edit Konten'>
+            <i class='far fa-edit'></i>  </button> ";
+
+            array_push($data['data'], [
+                'btn' => exist_array($modal),
+                'kd' => exist_array($row['kd_pemesanan']),
+                'pelanggan' => exist_array($row['nama']),
+                'produk' => exist_array($row['produk']),
+                'jumlah' => exist_array($row['jumlah']),
+                'suplier' => exist_array($row['toko']),
+                'order' => $status_order,
+                'resi' => exist_array($row['resi_pengiriman']),
+                'status' => $status_pengiriman,
+            ]);
+        }
+
+
+        echo json_encode($data);
+    }
+} 
 
 //add
 elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") {

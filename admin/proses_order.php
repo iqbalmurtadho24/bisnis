@@ -1,60 +1,12 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
 ?>
 
-<!-- modal -->
-<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content bg-dark">
-      <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Tambah user Baru</h5>
-        <button class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="data.php?tambah_user=1" method="post">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </div>
-
-
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Tambah user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="my-modal-title">Edit Data user </h5>
+        <h5 class="modal-title" id="my-modal-title">Proses Order</h5>
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -116,12 +68,12 @@ $row = mysqli_fetch_assoc($result);
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Status Order</h1>
+        <h1>Proses Order</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Status Order</li>
+          <li class="breadcrumb-item active">Proses Order</li>
         </ol>
       </div>
     </div>
@@ -134,8 +86,6 @@ $row = mysqli_fetch_assoc($result);
     <div class="row">
       <div class="col-12">
 
-        <!-- card -->
-
         <div class="card">
           <div class="card-body">
             <table id="example" class="table  table-striped table-bordered ">
@@ -143,9 +93,7 @@ $row = mysqli_fetch_assoc($result);
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
                   <th>Kode Pemesanan</th>
-                  <th>Admin CS</th>
                   <th>Nama Pelanggan</th>
-                  <th>Kategori</th>
                   <th>Produk</th>
                   <th>Jumlah</th>
                   <th>Suplier</th>
@@ -180,6 +128,6 @@ $row = mysqli_fetch_assoc($result);
 <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/dist/js/user.js"></script>
+<script src="../assets/dist/js/proses_order.js"></script>
 
 <?php require_once('../config/footer.php') ?>
