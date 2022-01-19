@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2022 pada 10.42
+-- Waktu pembuatan: 19 Jan 2022 pada 14.22
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.11
 
@@ -69,13 +69,8 @@ CREATE TABLE `cs` (
 --
 
 INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALUES
-(1, '2022-01-18 16:34:20', 12, 1, 'PPCG'),
-(11, '2022-01-18 19:14:39', 20, 1, 'PPCG'),
-(12, '2022-01-18 19:17:06', 12, 1, 'PPCG'),
-(13, '2022-01-18 19:17:13', 21, 1, 'PPCG'),
-(14, '2022-01-18 21:51:48', 22, 1, ''),
-(15, '2022-01-18 21:52:02', 22, 1, 'PPCG'),
-(16, '2022-01-18 22:37:59', 23, 1, 'PPCG');
+(17, '2022-01-19 18:11:37', 24, 1, 'PPCG'),
+(18, '2022-01-19 18:11:49', 25, 1, 'PPCG');
 
 -- --------------------------------------------------------
 
@@ -271,17 +266,8 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
-(12, 'Ubaid', '0852154646545'),
-(13, 'Pelanggan Baru', '0854564'),
-(14, 'Pelanggan Baru', '52424'),
-(15, 'Pelanggan Baru', '876867'),
-(17, 'Pelanggan Baru', '2222222222'),
-(18, 'Pelanggan Baru', '435345345'),
-(19, 'Pelanggan Baru', '543534'),
-(20, 'Pelanggan Baru', '085131'),
-(21, 'Pelanggan Baru', '021313'),
-(22, 'Pelanggan Baru', '085234038214'),
-(23, 'Pelanggan Baru', '9879789');
+(24, 'tuyul', '12'),
+(25, 'bengek', '13');
 
 -- --------------------------------------------------------
 
@@ -314,8 +300,7 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
-(11801221917, '2022-01-18', 1, 1, 12, 'PPCG', 5, 30000, 150000, 'fghfh', '0', '0', '0', '0', 'Transfer', 'BRI', 0),
-(151801222156, '2022-01-18', 15, 1, 22, 'PPCG', 9, 30000, 270000, 'jhkhk', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
+(171901221852, '2022-01-19', 17, 1, 24, 'PPCG', 20, 30000, 600000, 'Jl. Raya Jambu No. 1', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
 
 -- --------------------------------------------------------
 
@@ -585,7 +570,7 @@ ALTER TABLE `akses`
 -- AUTO_INCREMENT untuk tabel `cs`
 --
 ALTER TABLE `cs`
-  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `gaji`
@@ -621,13 +606,13 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151801222157;
+  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171901221853;
 
 --
 -- AUTO_INCREMENT untuk tabel `publikasi`
