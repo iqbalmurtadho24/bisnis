@@ -4,14 +4,14 @@ session_start();
 
 $id_user = $_SESSION['id_user'];
 
-function exist_array($data)
-{
+function exist_array($data){
     if ($data) {
         return $data;
     } else {
         return [];
     }
 }
+
 //show data
 if (isset($_GET['user']) !==  false) {
 
