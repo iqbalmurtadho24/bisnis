@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 05:03 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Waktu pembuatan: 19 Jan 2022 pada 10.42
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akses`
+-- Struktur dari tabel `akses`
 --
 
 CREATE TABLE `akses` (
@@ -37,7 +37,7 @@ CREATE TABLE `akses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `akses`
+-- Dumping data untuk tabel `akses`
 --
 
 INSERT INTO `akses` (`kd_akses`, `id_user`, `akses`, `status`, `waktu`, `kontak_akses`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `akses` (`kd_akses`, `id_user`, `akses`, `status`, `waktu`, `kontak_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cs`
+-- Struktur dari tabel `cs`
 --
 
 CREATE TABLE `cs` (
@@ -65,7 +65,7 @@ CREATE TABLE `cs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cs`
+-- Dumping data untuk tabel `cs`
 --
 
 INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `cs` (`kd_cs`, `waktu`, `id_pelanggan`, `id_user`, `kd_produk`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gaji`
+-- Struktur dari tabel `gaji`
 --
 
 CREATE TABLE `gaji` (
@@ -95,7 +95,7 @@ CREATE TABLE `gaji` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `gaji`
+-- Dumping data untuk tabel `gaji`
 --
 
 INSERT INTO `gaji` (`kd_gaji`, `id_user`, `akses`, `waktu`, `gaji`, `status`, `target_bonus`, `bonus`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `gaji` (`kd_gaji`, `id_user`, `akses`, `waktu`, `gaji`, `status`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `harga`
+-- Struktur dari tabel `harga`
 --
 
 CREATE TABLE `harga` (
@@ -119,7 +119,7 @@ CREATE TABLE `harga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `harga`
+-- Dumping data untuk tabel `harga`
 --
 
 INSERT INTO `harga` (`kd_harga`, `kd_produk`, `id_suplier`, `harga`, `waktu`, `status_harga`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `harga` (`kd_harga`, `kd_produk`, `id_suplier`, `harga`, `waktu`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_produk`
+-- Struktur dari tabel `jenis_produk`
 --
 
 CREATE TABLE `jenis_produk` (
@@ -138,7 +138,7 @@ CREATE TABLE `jenis_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jenis_produk`
+-- Dumping data untuk tabel `jenis_produk`
 --
 
 INSERT INTO `jenis_produk` (`kd_jenis`, `jenis`, `kd_kategori`) VALUES
@@ -149,7 +149,7 @@ INSERT INTO `jenis_produk` (`kd_jenis`, `jenis`, `kd_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_produk`
+-- Struktur dari tabel `kategori_produk`
 --
 
 CREATE TABLE `kategori_produk` (
@@ -158,7 +158,7 @@ CREATE TABLE `kategori_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kategori_produk`
+-- Dumping data untuk tabel `kategori_produk`
 --
 
 INSERT INTO `kategori_produk` (`kd_kategori`, `kategori`) VALUES
@@ -168,7 +168,7 @@ INSERT INTO `kategori_produk` (`kd_kategori`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konten`
+-- Struktur dari tabel `konten`
 --
 
 CREATE TABLE `konten` (
@@ -183,7 +183,7 @@ CREATE TABLE `konten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `konten`
+-- Dumping data untuk tabel `konten`
 --
 
 INSERT INTO `konten` (`kd_konten`, `id_user`, `waktu`, `jenis_konten`, `kd_produk`, `status_proses`, `biaya`, `gdrive`) VALUES
@@ -191,12 +191,13 @@ INSERT INTO `konten` (`kd_konten`, `id_user`, `waktu`, `jenis_konten`, `kd_produ
 (5, 1, '2022-01-10 19:06:01', 'Gambar', 'KLACCSMM', 'Planning', 0, ''),
 (6, 1, '2022-01-10 19:06:06', 'System Website', 'KLACCSMM', 'Planning', 0, ''),
 (7, 2, '2022-01-10 19:06:11', 'Gambar', 'KLACCSMM', 'Planning', 0, ''),
-(8, 1, '2022-01-17 19:53:37', 'Gambar', 'PPCG', 'Finish', 0, 'https://www.google.com/');
+(8, 1, '2022-01-17 19:53:37', 'Gambar', 'PPCG', 'Finish', 0, 'https://www.google.com/'),
+(9, 1, '2022-01-19 16:42:17', 'Gambar', 'KLACCSMa', 'Finish', 0, 'fsfsfs');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marketing`
+-- Struktur dari tabel `marketing`
 --
 
 CREATE TABLE `marketing` (
@@ -213,7 +214,7 @@ CREATE TABLE `marketing` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `merek`
+-- Struktur dari tabel `merek`
 --
 
 CREATE TABLE `merek` (
@@ -223,7 +224,7 @@ CREATE TABLE `merek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `merek`
+-- Dumping data untuk tabel `merek`
 --
 
 INSERT INTO `merek` (`kd_merek`, `merek`, `kd_jenis`) VALUES
@@ -233,7 +234,7 @@ INSERT INTO `merek` (`kd_merek`, `merek`, `kd_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Struktur dari tabel `order`
 --
 
 CREATE TABLE `order` (
@@ -247,7 +248,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order`
+-- Dumping data untuk tabel `order`
 --
 
 INSERT INTO `order` (`kd_order`, `kd_pemesanan`, `id_user`, `id_suplier`, `status_order_suplier`, `resi_pengiriman`, `status_pengiriman`) VALUES
@@ -256,7 +257,7 @@ INSERT INTO `order` (`kd_order`, `kd_pemesanan`, `id_user`, `id_suplier`, `statu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -266,7 +267,7 @@ CREATE TABLE `pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pelanggan`
+-- Dumping data untuk tabel `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
@@ -285,7 +286,7 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemesanan`
+-- Struktur dari tabel `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
@@ -309,7 +310,7 @@ CREATE TABLE `pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pemesanan`
+-- Dumping data untuk tabel `pemesanan`
 --
 
 INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
@@ -319,7 +320,7 @@ INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
@@ -329,7 +330,7 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `produk`
+-- Dumping data untuk tabel `produk`
 --
 
 INSERT INTO `produk` (`kd_produk`, `produk`, `kd_merek`) VALUES
@@ -340,11 +341,11 @@ INSERT INTO `produk` (`kd_produk`, `produk`, `kd_merek`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publikasi`
+-- Struktur dari tabel `publikasi`
 --
 
 CREATE TABLE `publikasi` (
-  `kd_publikasi` int(255) NOT NULL,
+  `kd_publikasi` bigint(255) NOT NULL,
   `id_user` bigint(255) NOT NULL,
   `waktu` datetime NOT NULL,
   `kd_konten` bigint(255) NOT NULL,
@@ -353,10 +354,17 @@ CREATE TABLE `publikasi` (
   `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `publikasi`
+--
+
+INSERT INTO `publikasi` (`kd_publikasi`, `id_user`, `waktu`, `kd_konten`, `facebook`, `instagram`, `website`) VALUES
+(1, 1, '2022-01-19 16:33:00', 5, 'sd', 'ss', 's');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sdm`
+-- Struktur dari tabel `sdm`
 --
 
 CREATE TABLE `sdm` (
@@ -378,7 +386,7 @@ CREATE TABLE `sdm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sdm`
+-- Dumping data untuk tabel `sdm`
 --
 
 INSERT INTO `sdm` (`id_user`, `nama`, `tanggal_lahir`, `nik`, `jalan`, `rt_rw`, `desa`, `kecamatan`, `kota_kabupaten`, `provinsi`, `kontak`, `email`, `bank`, `nama_rekening`, `rekening`) VALUES
@@ -389,7 +397,7 @@ INSERT INTO `sdm` (`id_user`, `nama`, `tanggal_lahir`, `nik`, `jalan`, `rt_rw`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suplier`
+-- Struktur dari tabel `suplier`
 --
 
 CREATE TABLE `suplier` (
@@ -403,7 +411,7 @@ CREATE TABLE `suplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `suplier`
+-- Dumping data untuk tabel `suplier`
 --
 
 INSERT INTO `suplier` (`id_suplier`, `suplier`, `toko`, `alamat`, `kategori`, `produk`, `kontak`) VALUES
@@ -412,7 +420,7 @@ INSERT INTO `suplier` (`id_suplier`, `suplier`, `toko`, `alamat`, `kategori`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -430,7 +438,7 @@ CREATE TABLE `transaksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -442,7 +450,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `status`) VALUES
@@ -455,199 +463,211 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `status`) VALUES
 --
 
 --
--- Indexes for table `akses`
+-- Indeks untuk tabel `akses`
 --
 ALTER TABLE `akses`
-ADD PRIMARY KEY (`kd_akses`),
-ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`kd_akses`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `cs`
+-- Indeks untuk tabel `cs`
 --
 ALTER TABLE `cs`
-ADD PRIMARY KEY (`kd_cs`);
+  ADD PRIMARY KEY (`kd_cs`);
 
 --
--- Indexes for table `gaji`
+-- Indeks untuk tabel `gaji`
 --
 ALTER TABLE `gaji`
-ADD PRIMARY KEY (`kd_gaji`);
+  ADD PRIMARY KEY (`kd_gaji`);
 
 --
--- Indexes for table `harga`
+-- Indeks untuk tabel `harga`
 --
 ALTER TABLE `harga`
-ADD PRIMARY KEY (`kd_harga`);
+  ADD PRIMARY KEY (`kd_harga`);
 
 --
--- Indexes for table `jenis_produk`
+-- Indeks untuk tabel `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
-ADD PRIMARY KEY (`kd_jenis`);
+  ADD PRIMARY KEY (`kd_jenis`);
 
 --
--- Indexes for table `kategori_produk`
+-- Indeks untuk tabel `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
-ADD PRIMARY KEY (`kd_kategori`);
+  ADD PRIMARY KEY (`kd_kategori`);
 
 --
--- Indexes for table `konten`
+-- Indeks untuk tabel `konten`
 --
 ALTER TABLE `konten`
-ADD PRIMARY KEY (`kd_konten`);
+  ADD PRIMARY KEY (`kd_konten`);
 
 --
--- Indexes for table `marketing`
+-- Indeks untuk tabel `marketing`
 --
 ALTER TABLE `marketing`
-ADD PRIMARY KEY (`kd_marketing`);
+  ADD PRIMARY KEY (`kd_marketing`);
 
 --
--- Indexes for table `merek`
+-- Indeks untuk tabel `merek`
 --
 ALTER TABLE `merek`
-ADD PRIMARY KEY (`kd_merek`);
+  ADD PRIMARY KEY (`kd_merek`);
 
 --
--- Indexes for table `order`
+-- Indeks untuk tabel `order`
 --
 ALTER TABLE `order`
-ADD PRIMARY KEY (`kd_order`);
+  ADD PRIMARY KEY (`kd_order`);
 
 --
--- Indexes for table `pelanggan`
+-- Indeks untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-ADD PRIMARY KEY (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indexes for table `pemesanan`
+-- Indeks untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-ADD PRIMARY KEY (`kd_pemesanan`);
+  ADD PRIMARY KEY (`kd_pemesanan`);
 
 --
--- Indexes for table `produk`
+-- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
-ADD PRIMARY KEY (`kd_produk`);
+  ADD PRIMARY KEY (`kd_produk`);
 
 --
--- Indexes for table `sdm`
+-- Indeks untuk tabel `publikasi`
+--
+ALTER TABLE `publikasi`
+  ADD PRIMARY KEY (`kd_publikasi`);
+
+--
+-- Indeks untuk tabel `sdm`
 --
 ALTER TABLE `sdm`
-ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `suplier`
+-- Indeks untuk tabel `suplier`
 --
 ALTER TABLE `suplier`
-ADD PRIMARY KEY (`id_suplier`);
+  ADD PRIMARY KEY (`id_suplier`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-ADD PRIMARY KEY (`kd_transaksi`);
+  ADD PRIMARY KEY (`kd_transaksi`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `akses`
+-- AUTO_INCREMENT untuk tabel `akses`
 --
 ALTER TABLE `akses`
-MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `cs`
+-- AUTO_INCREMENT untuk tabel `cs`
 --
 ALTER TABLE `cs`
-MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kd_cs` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `gaji`
+-- AUTO_INCREMENT untuk tabel `gaji`
 --
 ALTER TABLE `gaji`
-MODIFY `kd_gaji` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_gaji` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `harga`
+-- AUTO_INCREMENT untuk tabel `harga`
 --
 ALTER TABLE `harga`
-MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kd_harga` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `konten`
+-- AUTO_INCREMENT untuk tabel `konten`
 --
 ALTER TABLE `konten`
-MODIFY `kd_konten` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `kd_konten` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `marketing`
+-- AUTO_INCREMENT untuk tabel `marketing`
 --
 ALTER TABLE `marketing`
-MODIFY `kd_marketing` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_marketing` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT untuk tabel `order`
 --
 ALTER TABLE `order`
-MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `kd_order` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `pelanggan`
+-- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pelanggan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `pemesanan`
+-- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151801222157;
+  MODIFY `kd_pemesanan` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151801222157;
 
 --
--- AUTO_INCREMENT for table `sdm`
+-- AUTO_INCREMENT untuk tabel `publikasi`
+--
+ALTER TABLE `publikasi`
+  MODIFY `kd_publikasi` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `sdm`
 --
 ALTER TABLE `sdm`
-MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `suplier`
+-- AUTO_INCREMENT untuk tabel `suplier`
 --
 ALTER TABLE `suplier`
-MODIFY `id_suplier` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_suplier` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-MODIFY `kd_transaksi` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_transaksi` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `akses`
+-- Ketidakleluasaan untuk tabel `akses`
 --
 ALTER TABLE `akses`
-ADD CONSTRAINT `akses_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `akses_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

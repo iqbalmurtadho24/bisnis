@@ -632,7 +632,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
 
     $link = $_POST['website'];
 
-    $sql = "insert into publikasi values (null,$id_user,'$waktu','$konten','$facebook','$instagram','$link')  ";
+    $sql = "insert into publikasi values (null,$id_user,'$waktu',$konten,'$facebook','$instagram','$link')  ";
     $query = update($sql);
     if ($query != 0) {
         header("location:status_publikasi.php?success=3");
@@ -690,7 +690,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $kd_pemesanan = "$kd_cs$kdt$kdb$kdth$kdtj$kdtm";
         $waktu = date('Y-m-d H:i:s');
         $id_user = $_POST['id_user'];
-        
+
         $barang = query("select * from cs where kd_cs='$kd_cs'");
         $row2 = mysqli_fetch_assoc($barang);
         $pelanggan = $row2['id_pelanggan'];
@@ -703,7 +703,7 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
         $harga = $row3['harga'];
 
         $total = intval($jumlah*$harga);
-        
+
         $alamat = $_POST['alamat'];
         $desa = $_POST['desa'];
         $kecamatan = $_POST['kecamatan'];
