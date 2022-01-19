@@ -41,7 +41,9 @@
                 <thead>
                   <tr>
                     <th rowspan="2">Kode Pemesanan</th>
+                    <th rowspan="2">Waktu</th>
                     <th rowspan="2">Nama Pelanggan</th>
+                    <th rowspan="2">Kontak</th>
                     <th rowspan="2">Produk</th>
                     <th rowspan="2">Jumlah</th>
                     <th rowspan="2">Harga</th>

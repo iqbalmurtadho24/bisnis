@@ -43,7 +43,13 @@ $(document).ready(function () {
       data: "kd",
     },
     {
+      data: "waktu",
+    },
+    {
       data: "pelanggan",
+    },
+    {
+      data: "kontak",
     },
     {
       data: "produk",

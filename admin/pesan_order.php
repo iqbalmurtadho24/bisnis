@@ -1,6 +1,5 @@
 <?php require_once('../config/header.php');
-$result = query("SELECT * FROM sdm WHERE id_user = {$_SESSION['id_user']}");
-$row = mysqli_fetch_assoc($result);
+
 ?>
 
 <!-- modal -->
@@ -15,18 +14,13 @@ $row = mysqli_fetch_assoc($result);
       </div>
       <div class="modal-body">
         <form action="data.php?tambah_pesan_order=1" method="post">
-          <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
-          <div class="input-group mb-3">
+             <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Pelanggan</span>
             </div>
-            <select name="kd_cs" class="custom-select" required>
-              <option>-- Pilih --</option>
-              <?php
-              $barang = query("select * from cs c inner join pelanggan p on c.id_pelanggan=p.id_pelanggan inner join produk pr on c.kd_produk=pr.kd_produk where c.id_user={$_SESSION['id_user']} order by kd_cs asc");
-              while ($data = mysqli_fetch_assoc($barang)) { ?>
-                <option value="<?= $data['kd_cs'] ?>"><?= $data['nama'] ?> - <?= $data['produk'] ?> - <?= $data['kontak'] ?></option>
-              <?php } ?>
+            <select name="kd_cs" class="custom-select" id="kd_cs" required>
+
+
             </select>
           </div>
           <div class="input-group mb-3">
@@ -201,7 +195,9 @@ $row = mysqli_fetch_assoc($result);
                 <tr>
                   <th rowspan="2"><i class="fa fa-cog"></i></th>
                   <th rowspan="2">Kode Pemesanan</th>
+                  <th rowspan="2">Waktu</th>
                   <th rowspan="2">Nama Pelanggan</th>
+                  <th rowspan="2">Kontak</th>
                   <th rowspan="2">Produk</th>
                   <th rowspan="2">Jumlah</th>
                   <th rowspan="2">Harga</th>

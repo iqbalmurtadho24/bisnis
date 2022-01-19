@@ -37,7 +37,9 @@
               <thead>
                 <tr>
                   <th>Kode Pemesanan</th>
+                  <th>Waktu</th>
                   <th>Nama Pelanggan</th>
+                  <th>Kontak</th>
                   <th>Produk</th>
                   <th>Jumlah</th>
                   <th>Suplier</th>
