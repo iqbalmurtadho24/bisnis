@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="assets/login/css/login.css">
 </head>
+
 <body>
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
@@ -25,7 +27,7 @@
               <p class="login-card-description">Sign into your account</p>
               <form action="config/login.php" method="POST">
                 <div class="form-group">
-                  <label  class="sr-only">Username</label>
+                  <label class="sr-only">Username</label>
                   <input type="text" name="username" id="username" class="form-control" placeholder="Username">
                 </div>
                 <div class="form-group mb-4">
@@ -34,12 +36,12 @@
                 </div>
                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
               </form>
-              
-            </nav>
+
+              </nav>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <!-- <div class="card login-card">
         <img src="assets/images/login.jpg" alt="login" class="login-card-img">
         <div class="card-body">
@@ -72,4 +74,5 @@
   <script src="assets/dist/js/adminlte.min.js"></script>
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
