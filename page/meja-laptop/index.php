@@ -268,8 +268,8 @@
                 </div>
             </section>
 
-            <section class="gallery p-5 " id="harga">
-                <div class="row bg-info">
+            <section class="gallery p-5 pb-0 " id="harga">
+                <div class="row bg-info pb-5 mb-4">
                     <div class="col-md-6 col-12 text-center pt-5">
 
 
@@ -288,29 +288,30 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="text-center mb-lg-5 mb-4 "><strong>Pembayaran Via</strong></h3>
+         
+                  
+                </div>
+                <div class="row">
+                <h3 class="text-center mb-lg-5 mb-4 "><strong>Pembayaran Via</strong></h3>
                     <div class=" col-lg-2 col-md-6  bg-light p-5 text-center   ">
                         <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
 
                     </div>
-                    <div class=" col-lg-2 col-md-6  bg-light p-5    text-center">
-                        <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
+            
+                    <div class=" col-lg-2 col-md-6  bg-light p-5   ">
+                        <img src="images/mandiri.png" width="100%" alt="wear a mask" title="wear a mask to protect yourself">
 
                     </div>
-                    <div class=" col-lg-2 col-md-6  bg-light p-5 text-center   ">
-                        <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
+                    <div class=" col-lg-2 col-md-6  bg-light p-5 pt-2   ">
+                        <img src="images/bca.png" width="100%" alt="wear a mask" title="wear a mask to protect yourself">
 
                     </div>
-                    <div class=" col-lg-2 col-md-6  bg-light p-5    text-center">
-                        <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
+                    <div class=" col-lg-3 col-md-6  bg-light p-5 pt-2   ">
+                        <img src="images/bni.png" width="70%" alt="wear a mask" title="wear a mask to protect yourself">
 
                     </div>
-                    <div class=" col-lg-2 col-md-6  bg-light p-5 text-center   ">
-                        <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
-
-                    </div>
-                    <div class=" col-lg-2 col-md-6  bg-light p-5    text-center">
-                        <img src="images/bri.png" width="50%" alt="wear a mask" title="wear a mask to protect yourself">
+                    <div class=" col-lg-3 col-md-12  bg-light p-5    ">
+                        <img src="images/muamalat.png" width="100%" alt="wear a mask" title="wear a mask to protect yourself">
 
                     </div>
                 </div>
