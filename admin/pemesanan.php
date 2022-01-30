@@ -33,60 +33,60 @@
 
         <div class="card">
           <!-- <div class="card-header"> -->
-            <!-- <h3 class="card-title">DataTable with default features</h3> -->
-            <!-- </div> -->
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example" class="table  table-striped table-bordered ">
-                <thead>
-                  <tr>
-                    <th rowspan="2">Kode Pemesanan</th>
-                    <th rowspan="2">Waktu</th>
-                    <th rowspan="2">Nama Pelanggan</th>
-                    <th rowspan="2">Kontak</th>
-                    <th rowspan="2">Produk</th>
-                    <th rowspan="2">Jumlah</th>
-                    <th rowspan="2">Harga</th>
-                    <th rowspan="2">Total</th>
-                    <th colspan="5">Alamat</th>
-                    <th rowspan="2">Metode Pembayaran</th>
-                    <th rowspan="2">Bank</th>
-                    <th rowspan="2">Status Pembayaran</th>
-                  </tr>
-                  <tr>
-                    <th>Alamat</th>
-                    <th>Desa / Kelurahan</th>
-                    <th>Kecamatan</th>
-                    <th>Kota / Kabupan</th>
-                    <th>Provinsi</th>
-                  </tr>
-                </thead>
-              </table>
+          <!-- <h3 class="card-title">DataTable with default features</h3> -->
+          <!-- </div> -->
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example" class="table  table-striped table-bordered ">
+              <thead>
+                <tr>
+                  <th rowspan="2">Kode Pemesanan</th>
+                  <th rowspan="2">Waktu</th>
+                  <th rowspan="2">Nama Pelanggan</th>
+                  <th rowspan="2">Kontak</th>
+                  <th rowspan="2">Produk</th>
+                  <th rowspan="2">Jumlah</th>
+                  <th rowspan="2">Harga</th>
+                  <th rowspan="2">Total</th>
+                  <th colspan="5">Alamat</th>
+                  <th rowspan="2">Metode Pembayaran</th>
+                  <th rowspan="2">Bank</th>
+                  <th rowspan="2">Status Pembayaran</th>
+                </tr>
+                <tr>
+                  <th>Alamat</th>
+                  <th>Desa / Kelurahan</th>
+                  <th>Kecamatan</th>
+                  <th>Kota / Kabupan</th>
+                  <th>Provinsi</th>
+                </tr>
+              </thead>
+            </table>
 
-            </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+          <!-- /.card-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.card -->
       </div>
-      <!-- /.row -->
+      <!-- /.col -->
     </div>
-    <!-- /.container-fluid -->
-  </section>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
 
 
-  <!-- jQuery -->
-  <script src="../assets/dist/js/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="../assets/datatables/jquery.dataTables.min.js"></script>
-  <script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../assets/dist/js/pemesanan.js"></script>
+<!-- jQuery -->
+<script src="../assets/dist/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../assets/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../assets/dist/js/pemesanan.js"></script>
 
-  <?php require_once('../config/footer.php') ?>
+<?php require_once('../config/footer.php') ?>

@@ -10,6 +10,7 @@ function edit(i) {
         url: "data.php?kd=" + kd + "&edit=kategori_produk&where=kd_kategori",
         async: false,
         success: function (text) {
+            console.log(text);
             response = JSON.parse(text);
             $("#modal_edit").modal("show");
             $("#kd").val(response.kd_kategori);

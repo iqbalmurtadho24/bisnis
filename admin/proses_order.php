@@ -12,44 +12,49 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="data.php?edit_user=1" method="post">
-          <input type="text" class="form-control" name='id_user' id='id_user' hidden>
+        <form action="data.php?edit_proses_order=1" method="post">
+          <input type="hidden" id="kd" name="kd">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Suplier</span>
+            </div>
+            <select name="id_suplier" id="id_suplier" class="custom-select">
 
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Username</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Password</span>
-            </div>
-            <input type="text" class="form-control" placeholder="password" name="password" id="password" required>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Level</span>
-            </div>
-            <select name="level" class="custom-select" id="level" required>
-              <option >--</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">status</span>
+              <span class="input-group-text" id="basic-addon1">Status Order</span>
             </div>
-            <select name="status" id="status" class="custom-select">
-              <option value="0">NONAKTIF</option>
-              <option value="1">AKTIF</option>
+            <select name="status_order" id="status_order" class="custom-select">
+              <option> --Pilih ---</option>
+
+              <option value="1">DIPESAN</option>
+              <option value="2">DIPROSES</option>
             </select>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" type="submit">Edit user</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Resi Pengiriman</span>
+            </div>
+            <input type="text" class="form-control" name="resi" id="resi" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Status Pengiriman</span>
+            </div>
+            <select name="status_pengiriman" id="status_pengiriman" class="custom-select">
+              <option> --Pilih ---</option>
+              <option value="4">DIBAYAR</option>
+              <option value="3">DIKEMAS</option>
+              <option value="2">DIKIRIM</option>
+              <option value="1">SELESAI</option>
+            </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Edit Proses</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 
         </form>
       </div>
@@ -93,7 +98,9 @@
                 <tr>
                   <th><i class="fa fa-cog"></i></th>
                   <th>Kode Pemesanan</th>
+                  <th>Waktu</th>
                   <th>Nama Pelanggan</th>
+                  <th>Kontak</th>
                   <th>Produk</th>
                   <th>Jumlah</th>
                   <th>Suplier</th>

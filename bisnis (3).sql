@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2022 pada 14.22
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.11
+-- Waktu pembuatan: 30 Jan 2022 pada 14.25
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,12 +43,13 @@ CREATE TABLE `akses` (
 INSERT INTO `akses` (`kd_akses`, `id_user`, `akses`, `status`, `waktu`, `kontak_akses`) VALUES
 (1, 1, 'konten', 1, '2022-01-01 00:00:00', 2022),
 (2, 1, 'sdm', 1, '2022-01-05 17:56:25', 8596),
-(18, 2, 'keuangan', 1, '2022-01-05 17:56:54', 856),
+(18, 1, 'keuangan', 1, '2022-01-05 17:56:54', 856),
 (19, 2, 'logistik', 1, '2022-01-05 17:58:12', 856),
 (20, 1, 'logistik', 1, '2022-01-05 17:58:50', 88),
 (21, 1, 'marketing', 1, '2022-01-10 19:27:53', 1),
 (22, 1, 'cs', 1, '2022-01-10 19:33:00', 1),
-(23, 1, 'penjualan', 1, '2022-01-10 20:26:46', 1);
+(23, 1, 'penjualan', 1, '2022-01-10 20:26:46', 1),
+(24, 1, 'keuangan', 0, '2022-01-30 14:24:58', 0);
 
 -- --------------------------------------------------------
 
@@ -235,6 +236,7 @@ INSERT INTO `merek` (`kd_merek`, `merek`, `kd_jenis`) VALUES
 CREATE TABLE `order` (
   `kd_order` bigint(255) NOT NULL,
   `kd_pemesanan` bigint(255) NOT NULL,
+  `waktu_order` datetime DEFAULT NULL,
   `id_user` bigint(255) DEFAULT NULL,
   `id_suplier` bigint(255) DEFAULT NULL,
   `status_order_suplier` int(4) DEFAULT NULL,
@@ -246,8 +248,8 @@ CREATE TABLE `order` (
 -- Dumping data untuk tabel `order`
 --
 
-INSERT INTO `order` (`kd_order`, `kd_pemesanan`, `id_user`, `id_suplier`, `status_order_suplier`, `resi_pengiriman`, `status_pengiriman`) VALUES
-(1, 151801222156, 1, 9, 1, 'y54y6bfghn53', 1);
+INSERT INTO `order` (`kd_order`, `kd_pemesanan`, `waktu_order`, `id_user`, `id_suplier`, `status_order_suplier`, `resi_pengiriman`, `status_pengiriman`) VALUES
+(1, 171901221852, '2022-01-30 11:52:10', 1, 9, 2, '1', 3);
 
 -- --------------------------------------------------------
 
@@ -277,7 +279,7 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `kontak`) VALUES
 
 CREATE TABLE `pemesanan` (
   `kd_pemesanan` bigint(255) NOT NULL,
-  `waktu_pemesanan` date DEFAULT NULL,
+  `waktu_pemesanan` datetime DEFAULT NULL,
   `kd_cs` bigint(255) NOT NULL,
   `id_user` bigint(255) DEFAULT NULL,
   `id_pelanggan` bigint(255) DEFAULT NULL,
@@ -300,7 +302,7 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`kd_pemesanan`, `waktu_pemesanan`, `kd_cs`, `id_user`, `id_pelanggan`, `kd_produk`, `jumlah`, `harga_penjualan`, `total_pembayaran`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `metode_pembayaran`, `bank`, `status_pembayaran`) VALUES
-(171901221852, '2022-01-19', 17, 1, 24, 'PPCG', 20, 30000, 600000, 'Jl. Raya Jambu No. 1', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
+(171901221852, '2022-01-19 00:00:00', 17, 1, 24, 'PPCG', 20, 30000, 600000, 'Jl. Raya Jambu No. 1', '0', '0', '0', '0', 'Transfer', 'BRI', 0);
 
 -- --------------------------------------------------------
 
@@ -564,7 +566,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `akses`
 --
 ALTER TABLE `akses`
-  MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `kd_akses` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `cs`

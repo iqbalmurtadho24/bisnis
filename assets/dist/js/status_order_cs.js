@@ -1,5 +1,5 @@
 function edit(i) {
-  let   kd = i;
+  let kd = i;
 
   $("select option[selected]").removeAttr("selected");
   $("input").removeAttr("value");
@@ -26,8 +26,8 @@ function edit(i) {
       $("#kontak").val(response.kontak);
       $("#email").val(response.email);
       $("#bank").val(response.bank);
-      $("#nama_rekening").val(response.nama_rekening  );
-      $("#rekening").val(response.rekening  );
+      $("#nama_rekening").val(response.nama_rekening);
+      $("#rekening").val(response.rekening);
 
     },
   });
@@ -36,49 +36,49 @@ function edit(i) {
 
 $(document).ready(function () {
   var tableX = $("#example")
-  .DataTable({
-    ajax: "data.php?status_order_cs=1",
-    columns: [
-    {
-      data: "kd",
-    },
-    {
-      data: "waktu",
-    },
-    {
-      data: "pelanggan",
-    },
-    {
-      data: "kontak",
-    },
-    {
-      data: "produk",
-    },
-    {
-      data: "jumlah",
-    },
-    {
-      data: "suplier",
-    },
-    {
-      data: "order",
-    },
-    {
-      data: "resi",
-    },
-    {
-      data: "status",
-    },
+    .DataTable({
+      ajax: "data.php?status_order_cs=1",
+      columns: [
+        {
+          data: "kd",
+        },
+        {
+          data: "waktu",
+        },
+        {
+          data: "pelanggan",
+        },
+        {
+          data: "kontak",
+        },
+        {
+          data: "produk",
+        },
+        {
+          data: "jumlah",
+        },
+        {
+          data: "suplier",
+        },
+        {
+          data: "order",
+        },
+        {
+          data: "resi",
+        },
+        {
+          data: "status",
+        },
 
-    ],
+      ],
 
-    paging: false,
+      paging: false,
 
-    scrollY: 620,
-    scrollCollapse: true,
-    responsive: true,
-  })
-  .buttons()
-  .container()
-  .appendTo("#example_wrapper .col-md-6:eq(0)");
+      scrollY: 620,
+      scrollCollapse: true,
+      responsive: true,
+    })
+    .buttons()
+    .container()
+    .appendTo("#example_wrapper .col-md-6:eq(0)");
 });

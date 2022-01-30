@@ -251,7 +251,7 @@ if (isset($_GET['user']) !==  false) {
                 'no' => $no++,
                 'waktu' => exist_array($row['waktu']),
                 'file' => "<a href='{$row['gdrive']}' class='btn btn-info' target='_blank' title='buka link'><i class='fa fa-external-link-alt'></i></a>",
-                'jenis' => exist_array($row['kd_konten']),
+                'jenis' => exist_array($row['jenis_konten']),
                 'produk' => exist_array($row['produk']),
                 'status' => exist_array($row['status_proses'])
             ]);
@@ -419,11 +419,20 @@ if (isset($_GET['user']) !==  false) {
 
         $data['data'] = [];
         $no = 0;
+        $modal = '0';
         while ($row = mysqli_fetch_assoc($query)) {
+            if (isset($_GET['edit'])) {
+                # code...
+                $modal = " <button class='btn btn-warning' onclick=edit(" . $row['kd_order'] . ") title='Edit Konten'>
+                <i class='far fa-edit'></i>  </button> ";
+            }
 
             array_push($data['data'], [
+                'btn' => $modal,
                 'kd' => exist_array($row['kd_pemesanan']),
                 'pelanggan' => exist_array($row['nama']),
+                'waktu' => exist_array($row['waktu_order']),
+                'kontak' => exist_array($row['kontak']),
                 'produk' => exist_array($row['produk']),
                 'jumlah' => exist_array($row['jumlah']),
                 'suplier' => exist_array($row['toko']),
@@ -966,8 +975,31 @@ elseif (isset($_GET['tambah_user']) !==  false && $_GET['tambah_user'] === "1") 
     } else {
         header("location:status_publikasi.php?success=2");
     }
+} elseif (isset($_GET['edit_proses_order']) !==  false && $_GET['edit_proses_order'] == "1") {
+    if (isset($_POST['kd']) &&  !empty($_POST['kd'])) {
+        $kd = $_POST['kd'];
+        $id_suplier = $_POST['id_suplier'];
+        $status_order = $_POST['status_order'];
+        $status_pengiriman = $_POST['status_pengiriman'];
+        $resi = $_POST['resi'];
+        $sql = "update bisnis.order set resi_pengiriman='$resi' , status_order_suplier= $status_order ,  status_pengiriman = $status_pengiriman , id_suplier=$id_suplier    where kd_order = $kd";
+
+        $query = update($sql);
+
+        if ($query != 0) {
+            header("location:proses_order.php?success=1");
+        } else {
+            header("location:proses_order.php?success=4");
+        }
+    } else {
+        header("location:proses_order.php?success=2");
+    }
 } elseif (isset($_GET['edit'], $_GET['kd'], $_GET['where']) !== false && !empty($_GET['kd'])) {
-    $query = query('select * from ' . $_GET['edit'] . ' where ' . $_GET['where'] . '= "' . $_GET['kd'] . '"');
+    $kd = "'{$_GET['kd']}'";
+    if (preg_match('~[0-9]+~', $_GET['kd'])) {
+        $kd = $_GET['kd'];
+    }
+    $query = query('select * from bisnis.' . $_GET['edit'] . ' where ' . $_GET['where'] . ' = ' . $kd);
 
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);
