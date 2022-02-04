@@ -299,39 +299,35 @@ $url = $url[3];
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="pendapatan_keuangan.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
+                      <a href="neraca_saldo.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Pendapatan</p>
+                        <p>&emsp;Neraca Saldo</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="pengeluaran.php" class="nav-link <?= $url == 'pengeluaran.php' ? 'active' : ""  ?>">&emsp;
+                      <a href="pemasukan.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Pemasukan</p>
+                      </a>
+                    </li>    <li class="nav-item">
+                      <a href="pengeluaran.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
                         <p>&emsp;Pengeluaran</p>
                       </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pembayaran.php" class="nav-link <?= $url == 'pembayaran.php' ? 'active' : ""  ?>">&emsp;
+                    </li>    <li class="nav-item">
+                      <a href="konfirmasi_pembayaran.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Konfirmasi Pembayaran</p>
+                      </a>
+                    </li>    <li class="nav-item">
+                      <a href="tagihan.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
+                        <i class="fas fa-angle-double-right left"></i>
+                        <p>&emsp;Tagihan</p>
+                      </a>
+                    </li>    <li class="nav-item">
+                      <a href="pembayaran_gaji.php" class="nav-link <?= $url == 'pendapatan_keuangan.php' ? 'active' : ""  ?>">&emsp;
                         <i class="fas fa-angle-double-right left"></i>
                         <p>&emsp;Pembayaran Gaji</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pinjam.php" class="nav-link <?= $url == 'pinjam.php' ? 'active' : ""  ?>">&emsp;
-                        <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Data Pinjaman</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="piutang.php" class="nav-link <?= $url == 'piutang.php' ? 'active' : ""  ?>">&emsp;
-                        <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Data Piutang</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="aset.php" class="nav-link <?= $url == 'aset.php' ? 'active' : ""  ?>">&emsp;
-                        <i class="fas fa-angle-double-right left"></i>
-                        <p>&emsp;Data Aset</p>
                       </a>
                     </li>
                   </ul>

@@ -1,11 +1,12 @@
 $(document).ready(function () {
+
     var tableX = $("#example")
       .DataTable({
-        ajax: "data.php?publikasi=1",
+        ajax: "data.php?publikasi=3",
         columns: [
 
           {
-            data: "no",
+            data: "kd",
           },
           {
             data: "waktu",
@@ -19,13 +20,10 @@ $(document).ready(function () {
             data: "produk",
           },
           {
-            data: "facebook",
+            data: "media_iklan",
           },
           {
-            data: "instagram",
-          },
-          {
-            data: "website",
+            data: "status_iklan",
           },
 
         ],

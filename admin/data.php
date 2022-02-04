@@ -124,7 +124,6 @@ if (isset($_GET['user']) !==  false) {
 
             array_push($data['data'], [
                 'btn' => exist_array($modal),
-
                 'kd' => exist_array($row['kd_kategori']),
                 'kategori' => exist_array($row['kategori'])
 
@@ -286,7 +285,6 @@ if (isset($_GET['user']) !==  false) {
             ]);
         }
 
-
         echo json_encode($data);
     } elseif ($_GET['publikasi'] == "2") {
         $query = query("select * from konten u inner join produk p on u.kd_produk = p.kd_produk where (u.kd_konten)
@@ -298,6 +296,28 @@ if (isset($_GET['user']) !==  false) {
                 [
                     'kd' => $row['kd_konten'],
                     'value' => $row['produk'] . " -- " . $row['jenis_konten'],
+                ]
+            );
+        }
+
+        echo json_encode($data);
+    } elseif ($_GET['publikasi'] == "3") {
+        $query = query("select * from marketing m
+        inner join konten k on m.kd_konten = k.kd_konten
+        inner join produk p on k.kd_produk = p.kd_produk;");
+        $data['data'] = [];
+        $no =0;
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push(
+                $data['data'],
+                [
+                    'kd' => "".$no++,
+                    'waktu' => $row['waktu_iklan'],
+                    'konten' =>  $row['jenis_konten'] ,
+                    'produk' => $row['produk'],
+                    'media_iklan' => $row['media_iklan'],
+                    'status_iklan' => $row['status_iklan'],
+
                 ]
             );
         }
