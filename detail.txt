@@ -1,0 +1,74 @@
+--app   
+    __cons // parse url and check controller and method 
+    parseURL  // split url to array
+--config
+    BASEURL
+--controller
+    view($view, $data = []) // check view is_array $data and retuen view
+    model($model) // check file_exist model 
+--database
+    $host, $user, $pass, $db_name
+    ,$dbh,$stmt
+
+    __cons // check conection database
+    query($query) //  prepare query
+    bind($param,$value,$type = null) //  set params to the true of datatype (bindvalue)
+    execute // stmt->execute()
+    resultSet() // show all result
+    single() // show single result
+    rowCount() // count row
+--flasher
+    setFlash($pesan,$tipe) // $session flash
+    flash() // set div 
+--security extends sessionManager
+    $max_time_token
+    
+    __cons // set xss_protection() and same_origin()
+    same_origin // set header same_origin to BASEURL
+    xss_protection // set header xxss xss_protection
+    csrf_time () // check csrf_time session
+    csrf_token() // check csrf token session == post and method post
+    xss_input($value) // htmlspecialchars "ENT_IGNORE | ENT_HTML401 | ENT_QUOTES | ENT_SUBSTITUTE" and strip_tags "<a><b><i>"
+    token_validasi($value) // check session == params
+    pass_hash($value) // set password_hash to PASSWORD_BCRYPT
+    pass_verify($value,$hash) // verify $value and $hash
+--session 
+session
+    __cons($name,$last)
+sessionManager extends controller 
+    private $secret_key,$cookie_name, $cookie_expire
+    login() // call user_model->login()  check is_array; set session id, name; jwt set session cookies, db; return bool   
+
+    GetCurrentuser // isset cookie_name try if time < last change cookie last else logout
+
+    logout // set cookie expire 1 milisecond
+    set_cookie ($value) // secure, httponly, samesite strict , path '/'
+
+    url() // explode BASEURL
+    jwt_encode($hasil [], $id) // payload  -> id, nama, last ; jwt_encode($paload, secret_key,'hHS256');
+
+    jwt_decode()
+
+    start() // if session_status() == PHP_SESSION_ACTIVE -> session_start
+
+    token_form() //binhex(random_byte(35)) set $_SESSION['token'],$_SESSION['token_time'];
+
+--------------------------------------------model--------------------------------------------
+--user_model 
+    $table,$db
+
+    __cons // new database
+    login // if($_POST['username'],$_POST['password']) -> search username 
+    set_session($data[]) // set_session and datetime  database using id
+    delete_session($data[]) // set empty session  using  nama
+    all // 
+    single //
+    tambah //
+    hapus($id) // 
+    ubah($data) // 
+    cari // 
+
+--------------------------------------------Controller--------------------------------------------
+--home
+    login() // call session_manager token_form
+    do_login // Security::csrf_token, SessionManager::login
