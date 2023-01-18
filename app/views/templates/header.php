@@ -284,25 +284,20 @@
                     </p>
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                      <a href="<?= BASEURL ?>penjualan/penjualan" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Data Penjualan</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
+                  <li class="nav-item">
                       <a href="<?= BASEURL ?>penjualan/pemesanan" class="nav-link">
                         <i class="far fa-dot-circle nav-icon"></i>
                         <p>Data Pemesanan</p>
                       </a>
                     </li>
-                    <li class="nav-item">
-                      <a href="<?= BASEURL ?>penjualan/suplier" class="nav-link">
+                        
+                  <li class="nav-item">
+                      <a href="<?= BASEURL ?>penjualan/penjualan" class="nav-link">
                         <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Data Suplier</p>
+                        <p>Data Penjualan</p>
                       </a>
                     </li>
-
+                    
                   </ul>
                 </li>
             <?php }

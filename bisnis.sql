@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 01:27 PM
+-- Generation Time: Jan 18, 2023 at 02:43 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -90583,6 +90583,7 @@ CREATE TABLE `pemesanan` (
   `bank` varchar(255) NOT NULL,
   `status_pembayaran` enum('belum','lunas') DEFAULT 'belum',
   `id_admin_penjualan` bigint(255) DEFAULT NULL,
+  `id_suplier` bigint(255) NOT NULL,
   `harga_suplier` bigint(255) NOT NULL,
   `status_pembayaran_suplier` enum('belum','lunas') NOT NULL DEFAULT 'belum',
   `status_order_suplier` enum('diproses','dikirim','dikemas') NOT NULL DEFAULT 'diproses',
@@ -90595,15 +90596,15 @@ CREATE TABLE `pemesanan` (
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`kd_pemesanan`, `kd_produk`, `jumlah`, `waktu_pemesanan`, `nama_penerima`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `harga_penjualan`, `harga_ongkir`, `jumlah_harga`, `metode_pembayaran`, `bank`, `status_pembayaran`, `id_admin_penjualan`, `harga_suplier`, `status_pembayaran_suplier`, `status_order_suplier`, `resi_pengiriman`, `jasa_pengiriman`, `status_pengiriman`) VALUES
-(3, 5, 1, '2022-12-18 23:07:29', '', '5', '5', '5', '5', '5', 0, 0, 0, 'transfer', '1', '', NULL, 0, '', '', '', '', ''),
-(4, 4, 2, '2022-12-20 21:40:33', 'pelanggan', 'weqwe', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(5, 4, 2, '2022-12-20 21:51:38', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(6, 4, 2, '2022-12-20 21:52:46', 'misbah', 'Jl. Raya Jambu, Perum Amarylis no. 10', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(7, 4, 2, '2022-12-20 21:56:12', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(8, 4, 2, '2022-12-20 21:56:44', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(9, 4, 2, '2022-12-20 21:57:10', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', ''),
-(10, 4, 2, '2022-12-20 21:58:08', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 16000, '', '', '', '', '');
+INSERT INTO `pemesanan` (`kd_pemesanan`, `kd_produk`, `jumlah`, `waktu_pemesanan`, `nama_penerima`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `harga_penjualan`, `harga_ongkir`, `jumlah_harga`, `metode_pembayaran`, `bank`, `status_pembayaran`, `id_admin_penjualan`, `id_suplier`, `harga_suplier`, `status_pembayaran_suplier`, `status_order_suplier`, `resi_pengiriman`, `jasa_pengiriman`, `status_pengiriman`) VALUES
+(3, 5, 1, '2022-12-18 23:07:29', '', '5', '5', '5', '5', '5', 0, 0, 0, 'transfer', '1', '', NULL, 2, 0, '', '', '', '', ''),
+(4, 4, 2, '2022-12-20 21:40:33', 'pelanggan', 'weqwe', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(5, 4, 2, '2022-12-20 21:51:38', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(6, 4, 2, '2022-12-20 21:52:46', 'misbah', 'Jl. Raya Jambu, Perum Amarylis no. 10', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(7, 4, 2, '2022-12-20 21:56:12', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(8, 4, 2, '2022-12-20 21:56:44', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(9, 4, 2, '2022-12-20 21:57:10', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', '', NULL, 2, 16000, '', '', '', '', ''),
+(10, 4, 2, '2022-12-20 21:58:08', 'misbah', 'Jl. Raya Jambu No. 01', 'bri', 'bri', 'bri', 'bri', 200000, 0, 0, 'transfer', 'bri', 'lunas', NULL, 2, 16000, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -90714,7 +90715,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `status_akun`, `session`, `ip_address`, `last_access`) VALUES
-(8, '1', '$2y$10$SOX65kMmCRkQOQlmMyNZTuQNXwcmcL1j0/wXVFwc1h0TDVNJ4CMFG', '1', '$2y$10$qoKoA9aRKMyQuskjjiXXUerXMvckCIWmPWBo55ATdAD/fQGxWeg4W', '::1', '2023-01-18 16:48:25'),
+(8, '1', '$2y$10$SOX65kMmCRkQOQlmMyNZTuQNXwcmcL1j0/wXVFwc1h0TDVNJ4CMFG', '1', '$2y$10$qoKoA9aRKMyQuskjjiXXUerXMvckCIWmPWBo55ATdAD/fQGxWeg4W', '::1', '2023-01-18 20:43:14'),
 (9, '3', '$2y$10$2612DRKpPMKwoZHhJOFlPOLLBFilKpulMRM.pyxvz5RB8zgQq8WV2', '1', '', '', '0000-00-00 00:00:00'),
 (11, 'minuq', '$2y$10$6haFNM3YHoksh0okEYP5G.bOyas2ia9flPkoD8fT/f.vgsvQHDvWS', '1', '', '', '0000-00-00 00:00:00'),
 (12, '8', '$2y$10$M.Z1U2ars7DhmC/2bzyBQu4HrE956S4zOXCLeJV698FFaa4z/bacu', '1', '', '', '0000-00-00 00:00:00'),
@@ -90836,7 +90837,8 @@ ALTER TABLE `pelanggan`
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`kd_pemesanan`),
   ADD KEY `kd_produk` (`kd_produk`),
-  ADD KEY `id_admin_penjualan` (`id_admin_penjualan`);
+  ADD KEY `id_admin_penjualan` (`id_admin_penjualan`),
+  ADD KEY `id_suplier` (`id_suplier`);
 
 --
 -- Indexes for table `sdm`
@@ -91041,7 +91043,8 @@ ALTER TABLE `merek`
 --
 ALTER TABLE `pemesanan`
   ADD CONSTRAINT `pemesanan_ibfk_1` FOREIGN KEY (`kd_produk`) REFERENCES `series` (`kd_series`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pemesanan_ibfk_3` FOREIGN KEY (`id_admin_penjualan`) REFERENCES `sdm` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pemesanan_ibfk_3` FOREIGN KEY (`id_admin_penjualan`) REFERENCES `sdm` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pemesanan_ibfk_4` FOREIGN KEY (`id_suplier`) REFERENCES `suplier` (`id_suplier`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sdm`

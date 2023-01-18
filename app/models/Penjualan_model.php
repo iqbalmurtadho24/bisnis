@@ -3,13 +3,11 @@
 class Penjualan_model
 {
     private  $table = 'chat';
-    private  $table1 = 'pemesanan';
-    private  $table2 = 'pelanggan';
-    private  $table3 = 'user';
-    private  $table4 = 'merek';
-    private  $table5 = 'series';
-    private  $table6 = 'harga';
-    private  $table7 = 'suplier';
+    private  $table1 = 'pemesanan';    
+    private  $table2 = 'user';
+    private  $table3 = 'merek';
+    private  $table4 = 'series';
+    private  $table5 = 'suplier';
 
     private $db;
 
@@ -21,18 +19,19 @@ class Penjualan_model
     // penggunaan biasa model 
     public function get()
     {
-        $user = SessionManager::getCurrentUser();
-        $this->db->query("SELECT a.kd,a.kd_pemesanan,a.status_pembelian,f.nama,a.kontak,b.username,
-        concat(d.series,'-',e.merek)  produk ,
-        a.kontak,a.waktu          
-        FROM {$this->table} a 
-        left join {$this->table1} c on a.kd_pemesanan = c.kd_pemesanan 
-        left join {$this->table2} f on a.kontak = f.kontak 
-        inner join {$this->table3} b on a.id_user = b.id
-        inner join {$this->table5} d on a.kd_produk = d.kd_series 
-        inner join {$this->table4} e on d.kd_merek = e.kd_merek where a.id_user = :user order by a.waktu desc 
+        $this->db->query("SELECT c.kd_pemesanan,c.status_pembayaran,
+        c.waktu_pemesanan,concat(d.series,'-',e.merek)  produk ,
+        c.jumlah,c.nama_penerima,   a.kontak,
+        concat(c.alamat,'  ',c.desa,'  ',c.kecamatan,'  ',c.kabupaten,'  ',c.provinsi) ,
+        c.jumlah_harga,c.bank
+        FROM {$this->table1} c 
+        left join {$this->table} a on c.kd_pemesanan = a.kd_pemesanan 
+        left join {$this->table5} f on c.id_suplier = f.id_suplier 
+        inner join {$this->table4} d on a.kd_produk = d.kd_series 
+        inner join {$this->table3} e on d.kd_merek = e.kd_merek
+        where c.status_pembayaran =  'lunas'
+        order by c.waktu_pemesanan desc 
         ");
-        $this->db->bind("user", $user['id']);
         // var_dump($this->db->resultSet()) or die;
         return $this->db->resultSet();
     }

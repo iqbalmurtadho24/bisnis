@@ -118,17 +118,7 @@ class Cs_model
         return $this->db->single();
     }
 
-    // public function pelanggan()
-    // {
-    //     $this->db->query('SELECT id, nama FROM ' . $this->table2);
 
-    //     $data = $this->db->resultSet();
-    //     $final = [];
-    //     foreach ($data as  $value) {
-    //         $final[$value['nama']] = $value['id'];
-    //     }
-    //     return $final;
-    // }
 
     public function series()
     {
