@@ -235,14 +235,16 @@ class Cs extends Controller
             // } 
             else {
                 $produk = $this->model("Cs_model")->series();
+                $provinsi = $this->model("Alamat_model")->provinsi();
                 $bank = ["BRI" => "bri"];
                 $output .= flasher::input($pelanggan['nama'], 'nama_pelanggan', 'text', "", "required", "readonly");
                 $output .= flasher::input($pelanggan['nama'], 'nama_penerima', 'text');
                 $output .= flasher::input("", 'produk', 'select', "", "required", "", $produk);
-                $output .= flasher::input("", 'provinsi', 'select', "", "required", "", $bank);
-                $output .= flasher::input("", 'kabupaten', 'select', "", "required", "", $bank);
-                $output .= flasher::input("", 'kecamatan', 'select', "", "required", "", $bank);
-                $output .= flasher::input("", 'desa', 'select', "", "required", "", $bank);
+                
+                $output .= flasher::input("", 'provinsi', 'select', "", "required", "", $provinsi,"",'provinsi');
+                $output .= flasher::input("", 'kabupaten', 'select', "", "required", "");
+                $output .= flasher::input("", 'kecamatan', 'select', "", "required", "");
+                $output .= flasher::input("", 'desa', 'select', "", "required", "");
                 $output .= flasher::input("", 'alamat');
                 $output .= flasher::input("transfer", 'metode', 'text', "", "required", "readonly");
 
@@ -261,6 +263,27 @@ class Cs extends Controller
         $output .= flasher::input($pelanggan['kontak'], 'kontak', 'number');
         echo $output;
     }
+    public function kabupaten()
+    {
+
+         echo    $this->model('Alamat_model')->kabupaten();
+    
+    }
+    
+    public function kecamatan()
+    {
+
+         echo    $this->model('Alamat_model')->kecamatan();
+    
+    }
+    
+    public function kelurahan()
+    {
+
+         echo    $this->model('Alamat_model')->kelurahan();
+    
+    }
+    
 
     public function tambah_chat()
     {

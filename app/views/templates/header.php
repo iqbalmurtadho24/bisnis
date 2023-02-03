@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?= BASEURL ?>css/datatable-bs4/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= BASEURL ?>css/datatable-buttons/buttons.bootstrap4.min.css">
     <!-- <link rel="stylesheet" href="<?= BASEURL ?>css/datatable-responsive/responsive.bootstrap.min.css"> -->
-    <link rel="stylesheet" href="<?= BASEURL ?>css/bs-select/bootstrap-select.min.css">
+
     <style>
       div.dataTables_wrapper {
         width: 100%;
@@ -21,6 +21,9 @@
     </style>
   <?php }
   $session = SessionManager::getCurrentUser() ?>
+    
+<link href='<?= BASEURL ?>css/select2/select2.min.css' rel='stylesheet' type='text/css'>
+<link href='<?= BASEURL ?>css/select2/select2.bootstrap.min.css' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="<?= BASEURL ?>css/notyf/notyf.min.css">
   <style>
@@ -277,30 +280,68 @@
                     if (in_array('penjualan', $session['akses'])) { ?>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                  <i class="fas fas fa-sharp  fa-solid fa-cart-plus  btn-outline-info "></i>                    
-                  <p>
+                    <i class="fas fas fa-sharp  fa-solid fa-cart-plus  btn-outline-info "></i>
+                    <p>
                       Penjualan
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
+                    <li class="nav-item">
                       <a href="<?= BASEURL ?>penjualan/pemesanan" class="nav-link">
                         <i class="far fa-dot-circle nav-icon"></i>
                         <p>Data Pemesanan</p>
                       </a>
                     </li>
-                        
-                  <li class="nav-item">
+
+                    <li class="nav-item">
                       <a href="<?= BASEURL ?>penjualan/penjualan" class="nav-link">
                         <i class="far fa-dot-circle nav-icon"></i>
                         <p>Data Penjualan</p>
                       </a>
                     </li>
-                    
+
                   </ul>
                 </li>
-            <?php }
+                <?php }
+                    if (in_array('keuangan', $session['akses'])) { ?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="fas fa-money-check  fa-sharp  fa-solid   btn-outline-info "></i>  
+                    <p>
+                    Keuangan
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?= BASEURL ?>keuangan/konfirmasi" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Konfirmasi Pembayaran</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?= BASEURL ?>keuangan/order" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Tagihan Order</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?= BASEURL ?>keuangan/pembayaran" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Tagihan Pembayaran</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?= BASEURL ?>keuangan/laporan" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Laporan Keuangan</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+             <?php }
                   } ?>
 
           </ul>

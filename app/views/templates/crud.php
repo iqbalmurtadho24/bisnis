@@ -1,4 +1,3 @@
-
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -13,9 +12,8 @@
                     <!-- </div> -->
                     <!-- /.card-header -->
                     <div class="card-body ">
-
+ 
                         <table id="example" class="table table-sm table-suceess table-hover table-striped table-bordered dt-responsive display nowrap" style="width:100%"></table>
-
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -35,16 +33,15 @@
 
     var domain = "<?= BASEURL ?>";
     var subdomain = "<?= $data['subdomain'] ?>/";
-   
-    var tambah = "<?= isset($data['tambah']) ?$data['tambah'] : "" ?>";
+
+    var tambah = "<?= isset($data['tambah']) ? $data['tambah'] : "" ?>";
 
 
-    var edit = "<?= isset($data['edit']) ?$data['edit'] : "" ?>";
-    var update = "<?= isset($data['update']) ?$data['update'] : "" ?>";
-   
-    var edit_proses = "<?= isset($data['edit_proses']) ?$data['edit_proses'] : "" ?>";
-    var proses = "<?= isset($data['proses']) ?$data['proses'] : "" ?>";
+    var edit = "<?= isset($data['edit']) ? $data['edit'] : "" ?>";
+    var update = "<?= isset($data['update']) ? $data['update'] : "" ?>";
 
-    var delete_data = "<?= isset($data['delete']) ?$data['delete'] : ""  ?>";
+    var edit_proses = "<?= isset($data['edit_proses']) ? $data['edit_proses'] : "" ?>";
+    var proses = "<?= isset($data['proses']) ? $data['proses'] : "" ?>";
 
+    var delete_data = "<?= isset($data['delete']) ? $data['delete'] : ""  ?>";
 </script>

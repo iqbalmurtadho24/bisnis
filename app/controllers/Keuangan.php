@@ -3,21 +3,21 @@
 
 $data = SessionManager::getCurrentUser();
 
-class Penjualan extends Controller
+class Keuangan extends Controller
 {
 
 
-    private  $subdomain = "penjualan";
+    private  $subdomain = "Keuangan";
 
     public function index()
     {
 
-        $this->pemesanan("assalamu'alaikum-warohmatullohi-wabarokatuh", "success");
+        $this->konfirmasi("assalamu'alaikum-warohmatullohi-wabarokatuh", "success");
     }
 
-    public function pemesanan($pesan = '', $tipe = '')
+    public function konfirmasi($pesan = '', $tipe = '')
     {
-        $data['judul'] = "Data Pemesanan";
+        $data['judul'] = "Data Konfirmasi Pembayaran";
         $data['table'] = true;
         $data['button'] = true;
 
@@ -28,7 +28,7 @@ class Penjualan extends Controller
 
         $data['subdomain'] = $this->subdomain;
 
-        $user = $this->model('Penjualan_model')->get();
+        $user = $this->model('keuangan_model')->get();
         if (empty($user)) {
             $data['data'] = '[["","","","","","","","",""]]';
         } else {
@@ -40,9 +40,8 @@ class Penjualan extends Controller
                         $a1 = $value1;
                     } elseif ($key1 ==  'status_pembayaran') {
                         $button1 = '<button type="button" class="btn btn-success extras" data-status="sudah" data-id="' . $a1 . '" title="Order SUplier">
-                        Order 
-                        </button>';
-                        $button  = $button1 ;
+                        Order </button>';
+                        $button  = $button1;
                         array_push($b, $button);
                     } else {
                         array_push($b, $value1);
@@ -57,16 +56,17 @@ class Penjualan extends Controller
         {title:'Produk'},{title:'Jumlah'},{title:'Nama Penerima'},{title:'Kontak'},
         {title:'Alamat'},{title:'Harga'},{title:'Pembayaran Via'}]";
 
-        $data['edit'] = 'edit_penjualan';
-        $data['update'] = 'update_penjualan';
+        $data['edit'] = 'edit';
+        $data['update'] = 'update';
 
         $this->view('templates/header', $data);
         $this->view('templates/crud', $data);
         $this->view('templates/footer', $data);
     }
-    public function penjualan($pesan = '', $tipe = '')
+
+    public function order($pesan = '', $tipe = '')
     {
-        $data['judul'] = "Data Penjualan";
+        $data['judul'] = "Data Tagihan Order";
         $data['table'] = true;
         $data['button'] = true;
 
@@ -77,18 +77,21 @@ class Penjualan extends Controller
 
         $data['subdomain'] = $this->subdomain;
 
-        $user = $this->model('Penjualan_model')->get1();
+        $user = $this->model('keuangan_model')->get1();
         if (empty($user)) {
-            $data['data'] = '[["","","","","","","","","",""]]';
+            $data['data'] = '[["","","","","","","","","","","",""]]';
         } else {
             $a = [];
             foreach ($user as $key) {
                 $b = [];
                 foreach ($key as $key1 => $value1) {
                     if ($key1 == 'kd_pemesanan') {
-                        $button = '<button type="button" class="btn btn-warning" data-id="' . $value1 . '" title="edit user"><i class="fas fa-edit"></i></button>';
+                        $button1 = '<button type="button"
+                        class="btn btn-success extras" 
+                        data-status="sudah" data-id="' . $value1 . '" title="  Order SUplier">
+                        Order</button>';
+                        $button  = $button1;
                         array_push($b, $button);
-
                     } else {
                         array_push($b, $value1);
                     }
@@ -98,17 +101,22 @@ class Penjualan extends Controller
             $data['data'] = json_encode($a);
         }
 
-        $data['column'] = "[{title:'Aksi'},{title:'Nama Penerima'},
-        {title:'Kontak'},{title:'Produk'},{title:'Jumlah Barang'},{title:'Total Harga'},
-        {title:'Nama Suplier'},{title:'Jasa Pengiriman'},{title:'Resi Pengiriman'},{title:'Status Pengiriman'}]";
+        $data['column'] = "[
+        {title:'Aksi'},{title:'Petugas'},
+        {title:'Nama Penerima'},{title:'Kontak'},
+        {title:'Produk'},{title:'Jumlah'},
+        {title:'Total Harga'},{title:'Status Order Suplier'},
+        {title:'Nama Suplier'},{title:'Platform'},
+        {title:'Invoice'},{title:'Status Tagihan Suplier'}]";
 
-        $data['edit'] = 'edit_penjualan';
-        $data['update'] = 'update_penjualan';
+        $data['edit'] = 'edit1';
+        $data['update'] = 'update1';
 
         $this->view('templates/header', $data);
         $this->view('templates/crud', $data);
         $this->view('templates/footer', $data);
     }
+
 
     public function tambah()
     {

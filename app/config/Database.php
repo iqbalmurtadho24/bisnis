@@ -26,7 +26,7 @@ final class Database
           
             $query = "update user set
             session = '' , ip_address=''
-            where TIMESTAMPDIFF(minute, last_access ,now()) > 9999  or status_akun != '1' ";
+            where TIMESTAMPDIFF(minute, last_access ,now()) > 9999   ";
             self::query($query);
             self::execute();
 
@@ -34,14 +34,11 @@ final class Database
             die($th->getMessage());
         }
 
-
-
     }
 
     //secure from sql injection
     public function query($query)
     {
-
         $this->stmt = $this->dbh->prepare($query);
     }
     public function bind($param, $value, $type = null)

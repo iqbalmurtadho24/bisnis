@@ -9,7 +9,7 @@
 <script src="<?= BASEURL ?>js/flasher.js"></script>
 
 <script src="<?= BASEURL ?>js/adminlte/bootstrap.bundle.min.js"></script>
-<script src="<?= BASEURL ?>js/bs-select/bootstrap-select.min.js"></script>
+<script src='<?= BASEURL ?>js/select2/select2.min.js' type='text/javascript'></script>
 
 <?php if (isset($data['table'])) { ?>
     <script src="<?= BASEURL ?>js/datatables/jquery.dataTables.min.js"></script>
@@ -22,7 +22,7 @@
 <?php if (isset($data['button'])) { ?>
     <script src="<?= BASEURL ?>js/datatables-buttons/dataTables.buttons.min.js"></script>
     <script src="<?= BASEURL ?>js/datatables-buttons/buttons.bootstrap4.min.js"></script>
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="edit"  role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="proses" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="proses"  role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="extras" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="extras"  role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
@@ -92,6 +92,8 @@
                         <div id="extras-form">
 
                         </div>
+                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -104,7 +106,7 @@
         </div>
     </div>
    
-    <div class="modal fade  " id="tambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade  " id="tambah"  role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
@@ -130,7 +132,7 @@
             </div>
         </div>
     </div>
-<?php } ?>
+    <?php } ?>
 <script src="<?= BASEURL ?>js/adminlte/adminlte.js"></script>
 
 <script src="<?= BASEURL ?>js/script.js"></script>

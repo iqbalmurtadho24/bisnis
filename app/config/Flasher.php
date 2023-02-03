@@ -9,8 +9,10 @@ class flasher
         return  '<div class="notyf" data="' . $pesan . '" type="' . $tipe . '"></div>';
     }
 
-    public static function input($data, string $column, string  $type = "text", $hidden = "", string $required = "required",  string $disabled = "",  array $option = [], $checked = "")
+    public static function input($data, string $column, string  $type = "text", $hidden = "", string $required = "required",  string $disabled = "",  array $option = [], $checked = "", $id = "")
     {
+        $id = empty($id) ? "":"id = '$id'";
+
         if ($type == "select") {
 
             $op = "";
@@ -20,34 +22,38 @@ class flasher
                 if ($value == $data) $op .= "<option value='$value' selected>" . ucwords($key) . "</option>";
                 else    $op .= "<option value='$value'>" . ucwords($key) . "</option>";
             }
+
             $input =
                 "<div class='input-group'>
                     <span class='input-group-text'>" . ucwords(str_replace("_", " ", $column)) . "</span>
-                    <select class='form-control extend-toggle ' data-live-search='true' name='$column' $disabled $required>
+                    <select  name='$column' $disabled $required $id>
                         <option value=''>-- Pilih " . ucwords(str_replace("_", " ", $column)) . " </option>
                         $op
                     </select>
                 </div>";
         } elseif ($type == "checkbox" || $type == "radio") {
+            $id = empty($id) ? "":"id = '$id'";
             $input =
                 "<div class='form-check form-check-inline'>
-                <input class='form-check-input' type='$type' name='$column' value='$data' $checked>
+                <input class='form-check-input' type='$type' name='$column' value='$data' $checked $id>
                 <label class='form-check-label'>" . ucwords(str_replace("_", " ", $column)) . "</label>
             </div>";
         } elseif (!empty($hidden)) {
-            $input = "<input  type='$type' name='$column' value='$data' $hidden>";
+            $id = empty($id) ? "":"id = '$id'";
+            $input = "<input  type='$type' name='$column' value='$data' $id $hidden>";
         } else {
+            $id = empty($id) ? "":"id = '$id'";
             $input = "
             <div class='input-group'>
                 <span class='input-group-text'>" . ucwords(str_replace("_", " ", $column)) . "</span>
-                <input class='form-control' value='$data' type='$type' name='$column' $required $disabled>
+                <input class='form-control' value='$data' type='$type' name='$column' $id $required $disabled>
             </div>";
         }
 
         return $input;
     }
 
-    public static     function last_date ($date)
+    public static     function last_date($date)
     {
         return  date("Y-m-t", strtotime($date));
     }

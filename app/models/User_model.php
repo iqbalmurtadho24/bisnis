@@ -32,7 +32,7 @@ class User_model
             if (is_array($result)) {
                 $pass = Security::pass_verify($password, $result['password']);
                 $data = $this->db->single();
-                // var_dump($pass)or die();
+                // var_dump($data)or die();
                 if ($pass == 1 && !empty($data['nama']))  return $data;
                 else return false;
             } else return false;
@@ -331,7 +331,7 @@ class User_model
         $rw = Security::xss_input($_POST['rw']);
         $desa = Security::xss_input($_POST['desa']);
         $kecamatan = Security::xss_input($_POST['kecamatan']);
-        $kota_kabupaten = Security::xss_input($_POST['kota_kabupaten']);
+        $kota_kabupaten = Security::xss_input($_POST['kabupaten']);
         $provinsi = Security::xss_input($_POST['provinsi']);
         $kontak = Security::xss_input($_POST['kontak']);
         $email = Security::xss_input($_POST['email']);

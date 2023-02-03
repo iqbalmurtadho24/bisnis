@@ -1,10 +1,10 @@
 <?php
 
-class Penjualan_model
+class Keuangan_model
 {
     private  $table = 'chat';
     private  $table1 = 'pemesanan';    
-    private  $table2 = 'user';
+    
     private  $table3 = 'merek';
     private  $table4 = 'series';
     private  $table5 = 'suplier';
@@ -23,14 +23,14 @@ class Penjualan_model
     {
         $this->db->query("SELECT c.kd_pemesanan,c.status_pembayaran,
         c.waktu_pemesanan,concat(d.series,'-',e.merek)  produk ,
-        c.jumlah,c.nama_penerima,   a.kontak,
-        concat(c.alamat,'  ',c.desa,'  ',c.kecamatan,'  ',c.kabupaten,'  ',c.provinsi) ,
-        c.jumlah_harga,c.bank
+        c.jumlah,c.nama_penerima,
+        a.kontak, concat(c.alamat,'  ',c.desa,'  ',c.kecamatan,'  ',c.kabupaten,'  ',c.provinsi) ,           		
+        c.jumlah_harga,c.metode_pembayaran
         FROM {$this->table1} c 
         left join {$this->table} a on c.kd_pemesanan = a.kd_pemesanan 
-        left join {$this->table5} f on c.id_suplier = f.id_suplier 
         inner join {$this->table4} d on a.kd_produk = d.kd_series 
         inner join {$this->table3} e on d.kd_merek = e.kd_merek         
+        where status_pembayaran
         order by c.waktu_pemesanan desc 
         ");
         // var_dump($this->db->resultSet()) or die;
@@ -39,13 +39,18 @@ class Penjualan_model
 
     public function get1()
     {
-        $this->db->query("SELECT c.kd_pemesanan,c.nama_penerima,a.kontak,   concat(d.series,'-',e.merek)  produk ,c.jumlah,
-        c.jumlah_harga,f.nama,c.status_order_suplier,c.jasa_pengiriman,c.resi_pengiriman,c.status_pengiriman
+        $this->db->query("SELECT c.kd_pemesanan,g.nama,
+        c.nama_penerima,a.kontak,
+           concat(d.series,'-',e.merek)  produk ,c.jumlah,
+           c.jumlah_harga,c.status_order_suplier,
+           f.nama suplier,f.platform,
+        c.invoice_suplier,c.status_pembayaran_suplier
         FROM {$this->table1} c 
         left join {$this->table} a on c.kd_pemesanan = a.kd_pemesanan 
         left join {$this->table5} f on c.id_suplier = f.id_suplier 
         inner join {$this->table4} d on a.kd_produk = d.kd_series 
         inner join {$this->table3} e on d.kd_merek = e.kd_merek    
+        inner join {$this->table6} g on c.id_admin_penjualan = g.id_user    
         where c.status_pembayaran = 'lunas'
         order by c.waktu_pemesanan desc;
         ");

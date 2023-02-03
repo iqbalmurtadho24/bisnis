@@ -18,7 +18,7 @@ class SessionManager extends Controller
 
         $data = new Controller;
         $hasil = $data->model('User_model')->login();
-
+        // var_dump($hasil) or die;
         if (is_array($hasil)) {
 
 
@@ -28,7 +28,7 @@ class SessionManager extends Controller
             $jwt = self::jwt_encode($hasil, $hasil['session']);
             self::set_cookies($jwt);
             $access = $data->model('User_model')->get1($hasil['id']);
-
+                // var_dump($access) or die;
             return $access;
         } else {
             return false;

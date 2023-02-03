@@ -163,18 +163,19 @@ class SDM extends Controller
         $data['tambah'] = 'tambah_detail';
         
         $username = $this->model('User_model')->username();
+        $provinsi = $this->model("Alamat_model")->provinsi();
 
         $output = flasher::input("", 'user', 'select', "", "required", "", $username);
         $output .= flasher::input("", 'nama');
         $output .= flasher::input("", 'tgl_lahir','date');
         $output .= flasher::input("", 'nik','number');
+        $output .= flasher::input("", 'provinsi', 'select', "", "required", "", $provinsi,"",'provinsi');
+        $output .= flasher::input("", 'kabupaten', 'select', "", "required", "");
+        $output .= flasher::input("", 'kecamatan', 'select', "", "required", "");
+        $output .= flasher::input("", 'desa', 'select', "", "required", "");
         $output .= flasher::input("", 'jalan');
         $output .= flasher::input("", 'rt','number');
         $output .= flasher::input("", 'rw','number');
-        $output .= flasher::input("", 'desa');
-        $output .= flasher::input("", 'kecamatan');
-        $output .= flasher::input("", 'kota_kabupaten');
-        $output .= flasher::input("", 'provinsi');
         $output .= flasher::input("", 'kontak','number');
         $output .= flasher::input("", 'email',"email");
 
@@ -250,18 +251,21 @@ class SDM extends Controller
     {
         $id = Security::xss_input($_POST['id']);
         $user = $this->model('User_model')->get_single2($id);
+        $provinsi = $this->model("Alamat_model")->provinsi();
+
         // var_dump($user) or die;
         $output = flasher::input($user['id_user'], 'user', "text", "hidden");
         $output .= flasher::input($user['nama'], 'nama');
         $output .= flasher::input($user['tgl_lahir'], 'tgl_lahir','date');
         $output .= flasher::input($user['nik'], 'nik','number');
+        $output .= flasher::input($user['provinsi'], 'provinsi', 'select', "", "required", "", $provinsi,"",'provinsi');
+        $output .= flasher::input($user['kota_kabupaten'], 'kabupaten', 'select', "", "required", "");
+        $output .= flasher::input($user['kecamatan'], 'kecamatan', 'select', "", "required", "");
+        $output .= flasher::input($user['desa'], 'desa', 'select', "", "required", "");
         $output .= flasher::input($user['jalan'], 'jalan');
         $output .= flasher::input($user['rt'], 'rt','number');
         $output .= flasher::input($user['rw'], 'rw','number');
-        $output .= flasher::input($user['desa'], 'desa');
-        $output .= flasher::input($user['kecamatan'], 'kecamatan');
-        $output .= flasher::input($user['kota_kabupaten'], 'kota_kabupaten');
-        $output .= flasher::input($user['provinsi'], 'provinsi');
+
         $output .= flasher::input($user['kontak'], 'kontak','number');
         $output .= flasher::input($user['email'], 'email');
 
