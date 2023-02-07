@@ -26,7 +26,7 @@ class flasher
             $input =
                 "<div class='input-group'>
                     <span class='input-group-text'>" . ucwords(str_replace("_", " ", $column)) . "</span>
-                    <select  name='$column' $disabled $required $id>
+                    <select data-width='67%' name='$column' $disabled $required $id>
                         <option value=''>-- Pilih " . ucwords(str_replace("_", " ", $column)) . " </option>
                         $op
                     </select>

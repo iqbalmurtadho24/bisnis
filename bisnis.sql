@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 10:10 AM
+-- Generation Time: Feb 07, 2023 at 03:47 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -90750,7 +90750,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `status_akun`, `session`, `ip_address`, `last_access`) VALUES
-(8, '1', '$2y$10$SOX65kMmCRkQOQlmMyNZTuQNXwcmcL1j0/wXVFwc1h0TDVNJ4CMFG', '1', '$2y$10$HclERXAfHF1mJBFRWmc.EODuQykxgyykHHrx3Go5yfjWFeIKDbI9q', '::1', '2023-02-03 16:06:43'),
+(8, '1', '$2y$10$SOX65kMmCRkQOQlmMyNZTuQNXwcmcL1j0/wXVFwc1h0TDVNJ4CMFG', '1', '$2y$10$kUUikkKHAXKjkeK4rFPoNORdFpYUTAaC2XO7m8XBpNcpxh6Zc1H7y', '::1', '2023-02-07 09:47:04'),
 (9, '3', '$2y$10$SOX65kMmCRkQOQlmMyNZTuQNXwcmcL1j0/wXVFwc1h0TDVNJ4CMFG', '1', '', '', '0000-00-00 00:00:00'),
 (11, 'minuq', '$2y$10$6haFNM3YHoksh0okEYP5G.bOyas2ia9flPkoD8fT/f.vgsvQHDvWS', '1', '', '', '0000-00-00 00:00:00'),
 (12, '8', '$2y$10$M.Z1U2ars7DhmC/2bzyBQu4HrE956S4zOXCLeJV698FFaa4z/bacu', '1', '', '', '0000-00-00 00:00:00'),
