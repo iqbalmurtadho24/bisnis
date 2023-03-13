@@ -26,7 +26,7 @@ class flasher
             $input =
                 "<div class='input-group'>
                     <span class='input-group-text'>" . ucwords(str_replace("_", " ", $column)) . "</span>
-                    <select data-width='67%' name='$column' $disabled $required $id>
+                    <select  class='selectpicker form-control' name='$column' data-live-search='true' $disabled $required $id>
                         <option value=''>-- Pilih " . ucwords(str_replace("_", " ", $column)) . " </option>
                         $op
                     </select>
@@ -53,6 +53,9 @@ class flasher
         return $input;
     }
 
+    public static function img($src ,$add = ""){
+        return "<img src='$src' $add >";
+    }
     public static     function last_date($date)
     {
         return  date("Y-m-t", strtotime($date));
