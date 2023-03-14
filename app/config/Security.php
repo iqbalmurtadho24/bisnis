@@ -3,19 +3,39 @@
 final class Security  extends Controller
 {
 
-   public static string $img_santri = "img/santri/"; 
+   public static string $img_santri = "img/santri/";
+
+
+   ###upload mechanism
+   /*   $loc = "../public/" . Security::$img_santri;
+   $kk = "";
+   $ijazah = "";
+   $skl = "";
+   if (!empty($_FILES['akte']['name'])) {
+       $rand = Security::random(125);
+       $name = $loc . $rand . ".jpg";
+       if (file_exists($loc . $data['akte'] . ".jpg")) {
+           Security::remove_img($data['akte']);
+       }
+
+      move_uploaded_file($_FILES['akte']['tmp_name'], $name);
+       $akte = ",akte = '" . $rand . "'";
+   } */
+
+
+
    public function __construct()
    {
       $data = new Controller;
-      
-      unset($data);                
+
+      unset($data);
       $this->xss_protection();
       $this->same_origin();
    }
 
    private function same_origin()
    {
-      header('Access-Control-Allow-Origin:'.BASEURL);
+      header('Access-Control-Allow-Origin:' . BASEURL);
    }
 
    private function xss_protection()
@@ -51,41 +71,38 @@ final class Security  extends Controller
 
    public static function  xss_input($value)
    {
-      
-         return  htmlspecialchars(strip_tags($value, '<b><i>'), ENT_IGNORE | ENT_HTML401 | ENT_QUOTES | ENT_SUBSTITUTE);
 
+      return  htmlspecialchars(strip_tags($value, '<b><i>'), ENT_IGNORE | ENT_HTML401 | ENT_QUOTES | ENT_SUBSTITUTE);
    }
 
-   public static function max_file(int $val,int $max)
+   public static function max_file(int $val, int $max)
    {
-       return $val > $max ;
+      return $val > $max;
    }
 
    public static function ex_file(string $location)
    {
-       return pathinfo($location, PATHINFO_EXTENSION) ;
+      return pathinfo($location, PATHINFO_EXTENSION);
    }
 
-   public static function remove_img(string $file )
+   public static function remove_img(string $file)
    {
       // chmod("../public/".self::$img_santri.$file.".jpg", 0777);
- 
-      unlink( "../public/".self::$img_santri.$file.".jpg");
+
+      unlink("../public/" . self::$img_santri . $file . ".jpg");
    }
    public static function random($int)
    {
-       return  bin2hex(random_bytes($int));
+      return  bin2hex(random_bytes($int));
    }
 
    public static function pass_hash($value)
    {
       return password_hash($value, PASSWORD_BCRYPT);
    }
-   
+
    public static function pass_verify($value, $hash): bool
    {
       return password_verify($value, $hash);
-   }  
-
-
+   }
 }
